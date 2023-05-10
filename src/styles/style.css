@@ -110,6 +110,54 @@ body {
 
 
 
+/* ----------------------------- Section Title ----------------------------- */
+.section-title {
+    position: relative;
+    width: fit-content;
+}
+
+.section-title .box-before {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    background: var(--primary-6);
+    position: absolute;
+    left: -30px;
+    top: -35px;
+}
+
+.section-title p {
+    color: var(--primary-100);
+    font-size: .9rem;
+    font-weight: 600;
+    position: relative;
+    left: 8px;
+}
+
+.section-title p::before {
+    content: '';
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    background: var(--primary-6);
+    position: absolute;
+    left: -8px;
+    top: -3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ----------------------------- Section Background ----------------------------- */
 .left-top-bg {
     width: 900px;
@@ -183,7 +231,7 @@ body {
 .navigation-bg {
     width: 100%;
     background: var(--bg-primary-70);
-    z-index: 1;
+    z-index: 10;
     left: 0;
     position: fixed;
 }
@@ -441,7 +489,150 @@ body {
 
 
 /* ----------------------------- Service we provide ----------------------------- */
-.service-provide{
+.service-provide {
     background: var(--primary-5);
     padding: 100px 0;
+    position: relative;
+}
+
+.service-provide .circles {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.service-provide .heading {
+    font-size: 3.3rem;
+    line-height: 60px;
+    margin: 30px 0 50px 0 !important;
+    background: -webkit-linear-gradient(0turn, var(--dark-85), var(--dark-50));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.service-provide .contents .service {
+    padding: 55px 0;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.service-provide .contents .service::before,
+.service-provide .contents .service::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    background: var(--dark-50);
+}
+
+.service-provide .contents .service::before {
+    top: -1px;
+}
+
+.service-provide .contents .service::after {
+    bottom: 0;
+}
+
+.service-provide .contents .service .count {
+    width: 10%;
+}
+
+.service-provide .contents .service .service-name-info {
+    width: 50%;
+}
+
+.service-provide .contents .service .action-image {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.service-provide .contents .service .count p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--dark-100);
+}
+
+.service-provide .contents .service .service-name-info .name {
+    font-size: 20px;
+    color: var(--dark-85);
+    font-weight: 400;
+
+}
+
+.service-provide .contents .service .service-name-info .info .detail {
+    font-size: 1rem;
+    color: var(--dark-70);
+    font-weight: 400;
+    margin-bottom: 40px !important;
+    margin-top: 35px !important;
+}
+
+.service-provide .contents .service .service-name-info .info .lets-work {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.service-provide .contents .service .service-name-info .info .lets-work a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark-100);
+    position: relative;
+    cursor: pointer;
+}
+
+.service-provide .contents .service .service-name-info .info .lets-work a::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    background: var(--dark-50);
+    bottom: -6px;
+}
+
+.service-provide .contents .service .action-image .more-info {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark-85);
+    position: relative;
+    cursor: pointer;
+
+}
+
+.service-provide .contents .service .action-image .more-info::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    background: var(--dark-50);
+    bottom: -6px;
+}
+
+.service-provide .contents .service .action-image .image {
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+    margin-top: 30px !important;
+}
+
+.service-provide .contents .service .service-name-info .info,
+.service-provide .contents .service .action-image .image {
+    overflow: hidden;
+    max-height: 0;
+    transition: all .8s cubic-bezier(0, 1, 0, 1);
+}
+
+.service-provide .contents .service .service-name-info .info.show,
+.service-provide .contents .service .action-image .image.show {
+    height: auto;
+    max-height: 1000px;
+    transition: all .8s cubic-bezier(1, 0, 1, 0);
 }
