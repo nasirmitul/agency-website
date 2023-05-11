@@ -5,6 +5,8 @@ import ServiceProvide from '../components/Home/ServiceProvide';
 import WorkProcess from '../components/Home/WorkProcess';
 import FAQ from '../components/Home/FAQ';
 import ChooseUs from '../components/Home/ChooseUs';
+import ClientSays from '../components/Home/ClientSays';
+import GotAProject from '../components/Home/GotAProject';
 
 const HomeLayout = () => {
     return (
@@ -15,6 +17,8 @@ const HomeLayout = () => {
             <WorkProcess></WorkProcess>
             <FAQ></FAQ>
             <ChooseUs></ChooseUs>
+            <ClientSays></ClientSays>
+            <GotAProject></GotAProject>
         </div>
     );
 };

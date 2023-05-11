@@ -506,6 +506,7 @@ body {
     line-height: 60px;
     margin: 30px 0 50px 0 !important;
     background: -webkit-linear-gradient(0turn, var(--dark-85), var(--dark-50));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -654,7 +655,7 @@ body {
 
 
 
-/* ----------------------------- Service we provide ----------------------------- */
+/* ----------------------------- Our Work Process ----------------------------- */
 .work-process {
     background-image: url('../images/triangles.svg');
     background-size: cover;
@@ -742,6 +743,7 @@ body {
     line-height: 60px;
     margin-bottom: 50px !important;
     background: -webkit-linear-gradient(0turn, var(--dark-100), var(--dark-50));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
@@ -890,4 +892,128 @@ body {
     width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- What our client's says ----------------------------- */
+.client-says {
+    padding: 100px 0;
+}
+
+.client-says .title {
+    font-size: 3.3rem;
+    line-height: 60px;
+    margin-bottom: 30px !important;
+    background: -webkit-linear-gradient(0turn, var(--dark-85), var(--dark-50));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.client-says .content {
+    display: flex;
+    gap: 50px;
+    position: relative;
+    padding-left: 50px;
+}
+
+.client-says .content::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background: var(--dark-70);
+    left: 0;
+    top: 0;
+}
+
+.client-says .content .review {
+    width: 90%;
+}
+
+
+.client-says .content .review .review-content {
+    width: min(1000px, 90%);
+}
+
+.client-says .content .review .review-content .name-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.client-says .content .review .review-content .name-info .client-img {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.client-says .content .review .review-content .name-info .name-position .name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-85);
+    line-height: 30px;
+}
+
+.client-says .content .review .review-content .name-info .name-position .position {
+    color: var(--dark-85);
+    font-size: .9rem;
+    font-weight: 400;
+    position: relative;
+    padding-left: 40px !important;
+}
+
+.client-says .content .review .review-content .name-info .name-position .position::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 30px;
+    background: var(--dark-50);
+    left: 0;
+    top: 10px;
+}
+
+.client-says .content .review .review-content .statement q {
+    color: var(--dark-85);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.client-says .content .action {
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.client-says .content .action img {
+    width: 50px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- What our client's says ----------------------------- */
+.client-says {
+    padding: 100px 0;
 }
