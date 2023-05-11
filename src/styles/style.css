@@ -1341,7 +1341,7 @@ swiper-container {
     width: 100%;
 }
 
-.footer .terms-policy::after{
+.footer .terms-policy::after {
     content: '';
     position: absolute;
     height: 1px;
@@ -1351,8 +1351,37 @@ swiper-container {
     bottom: -40px;
 }
 
-.footer .copyright{
+.footer .copyright {
     text-align: center;
     color: var(--dark-50);
     font-size: .9rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- About Us Heading ----------------------------- */
+
+.about-heading {
+    padding: 100px 0 150px 0;
+}
+
+.about-heading .title {
+    margin-top: 15px !important;
+    font-size: 3.5rem;
+    font-weight: 200;
+    color: var(--dark-85);
+    width: min(650px, 90%);
+    line-height: 70px;
 }
