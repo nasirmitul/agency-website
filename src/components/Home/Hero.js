@@ -3,6 +3,7 @@ import heroImage from '../../images/hero-image.svg'
 import heroIcon1 from '../../images/heroIcon1.svg'
 import heroIcon2 from '../../images/heroIcon2.svg'
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -20,10 +21,12 @@ const Hero = () => {
                             </h1>
                         </div>
                         <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                        <div className="cta">
-                            <button className="custom-button">Contact Us</button>
-                            <div className="right-triangle"></div>
-                        </div>
+                        <Link to='contact-us'>
+                            <div className="cta">
+                                <button className="custom-button">Contact Us</button>
+                                <div className="right-triangle"></div>
+                            </div>
+                        </Link>
                         <div className="numbers">
                             <div className="number-one">
                                 <h2 className="number">20</h2>

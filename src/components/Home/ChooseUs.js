@@ -1,6 +1,11 @@
 import React from 'react';
 import SectionTitle from '../Utilities/SectionTitle';
 import building from '../../images/building.png'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 const ChooseUs = () => {
     return (
@@ -19,7 +24,18 @@ const ChooseUs = () => {
                         </ul>
                     </div>
                     <div className="right-content">
-                        <img src={building} alt="" />
+
+
+                        <Swiper
+                            modules={[Pagination]}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            className="mySwiper">
+                            <SwiperSlide><img src={building} alt="" /></SwiperSlide>
+                            <SwiperSlide><img src={building} alt="" /></SwiperSlide>
+                            <SwiperSlide><img src={building} alt="" /></SwiperSlide>
+                        </Swiper>
                     </div>
                 </div>
             </div>
