@@ -812,7 +812,7 @@ body {
     color: var(--dark-85);
     cursor: pointer;
     line-height: 30px;
-    transition: all .7s ;
+    transition: all .7s;
 }
 
 .faqs .contents .faq .faq-name-info .info {
@@ -829,5 +829,65 @@ body {
 
 .faqs .contents .faq .action .more-info.show {
     transform: rotate(135deg);
-    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- Why Choose Us ----------------------------- */
+.choose-us {
+    padding: 100px 0;
+}
+
+.choose-us .content {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    margin-top: 30px;
+}
+
+.choose-us .content .left-content {
+    width: 50%;
+}
+
+.choose-us .content .right-content {
+    width: 50%;
+}
+
+.choose-us .content .left-content .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-85);
+    line-height: 22px;
+    margin-bottom: 15px !important;
+}
+
+.choose-us .content .left-content .desc {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark-85);
+    margin-bottom: 15px !important;
+}
+
+.choose-us .content .left-content .steps li {
+    color: var(--dark-85);
+    font-size: .9rem;
+    font-weight: 600;
+    list-style: url('../images/arrowRightPrimarySmall.svg');
+    margin-bottom: 5px;
+    margin-left: 16px;
+}
+
+.choose-us .content .right-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }

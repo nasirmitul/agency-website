@@ -4,6 +4,7 @@ import Achievements from '../components/Home/Achievements';
 import ServiceProvide from '../components/Home/ServiceProvide';
 import WorkProcess from '../components/Home/WorkProcess';
 import FAQ from '../components/Home/FAQ';
+import ChooseUs from '../components/Home/ChooseUs';
 
 const HomeLayout = () => {
     return (
@@ -13,6 +14,7 @@ const HomeLayout = () => {
             <ServiceProvide></ServiceProvide>
             <WorkProcess></WorkProcess>
             <FAQ></FAQ>
+            <ChooseUs></ChooseUs>
         </div>
     );
 };
