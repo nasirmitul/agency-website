@@ -53,10 +53,9 @@ const FAQ = () => {
                                     <div className={`info ${viewFaq === i ? 'show' : ''}`}>
                                         <p className="detail">{faq.faqDetail}</p>
                                     </div>
-
                                 </div>
-                                <div className="action-image">
-                                    <p onClick={() => toggle(i)} className="more-info">{viewFaq === i ? '-' : '+'}</p>
+                                <div className="action">
+                                    <p onClick={() => toggle(i)} className={`more-info ${viewFaq === i ? 'show' : ''}`}>+</p>
                                 </div>
                             </div>
                         ))

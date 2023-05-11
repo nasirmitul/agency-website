@@ -732,3 +732,102 @@ body {
 
 
 
+/* ----------------------------- FAQ ----------------------------- */
+.faqs {
+    padding: 100px 0;
+}
+
+.faqs .heading {
+    font-size: 3.3rem;
+    line-height: 60px;
+    margin-bottom: 50px !important;
+    background: -webkit-linear-gradient(0turn, var(--dark-100), var(--dark-50));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.faqs .contents .faq {
+    padding: 55px 0 50px 0;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.faqs .contents .faq::before,
+.faqs .contents .faq::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    background: var(--dark-50);
+}
+
+.faqs .contents .faq::before {
+    top: -1px;
+}
+
+.faqs .contents .faq::after {
+    bottom: 0;
+}
+
+.faqs .contents .faq .count {
+    width: 10%;
+}
+
+.faqs .contents .faq .faq-name-info {
+    width: 80%;
+}
+
+.faqs .contents .faq .action {
+    width: 10%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.faqs .contents .faq .count p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--dark-100);
+}
+
+.faqs .contents .faq .faq-name-info .name {
+    font-size: 20px;
+    color: var(--dark-85);
+    font-weight: 400;
+}
+
+.faqs .contents .faq .faq-name-info .info .detail {
+    font-size: 1rem;
+    color: var(--dark-70);
+    font-weight: 400;
+    margin-top: 35px !important;
+}
+
+.faqs .contents .faq .action .more-info {
+    font-size: 2rem;
+    font-weight: 200;
+    color: var(--dark-85);
+    cursor: pointer;
+    line-height: 30px;
+    transition: all .7s ;
+}
+
+.faqs .contents .faq .faq-name-info .info {
+    overflow: hidden;
+    max-height: 0;
+    transition: all .7s cubic-bezier(0, 1, 0, 1);
+}
+
+.faqs .contents .faq .faq-name-info .info.show {
+    height: auto;
+    max-height: 1000px;
+    transition: all .7s cubic-bezier(1, 0, 1, 0);
+}
+
+.faqs .contents .faq .action .more-info.show {
+    transform: rotate(135deg);
+    
+}
