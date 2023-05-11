@@ -75,7 +75,7 @@ body {
 }
 
 .container {
-    width: min(var(--container-width), 95%);
+    width: min(var(--container-width), 90%);
     margin: auto;
 }
 
@@ -173,12 +173,12 @@ body {
 }
 
 .right-bottom-bg {
-    width: 900px;
-    height: 900px;
+    width: 400px;
+    height: 400px;
     background: var(--primary-6);
     border-radius: 50%;
     position: absolute;
-    right: -450px;
+    right: 0px;
     bottom: -300px;
     z-index: -1;
     backdrop-filter: blur(2px);
@@ -234,8 +234,8 @@ body {
     z-index: 10;
     left: 0;
     position: fixed;
+    backdrop-filter: blur(10px);
 }
-
 
 .navigation {
     display: flex;
@@ -246,7 +246,7 @@ body {
     width: min(var(--container-width), 90%);
     left: 50%;
     transform: translateX(-50%);
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(2px);
 }
 
 .navigation::after {
@@ -512,7 +512,7 @@ body {
 
 
 .service-provide .contents .service {
-    padding: 55px 0;
+    padding: 55px 0 40px 0;
     display: flex;
     align-items: flex-start;
     position: relative;
@@ -636,3 +636,99 @@ body {
     max-height: 1000px;
     transition: all .8s cubic-bezier(1, 0, 1, 0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- Service we provide ----------------------------- */
+.work-process {
+    background-image: url('../images/triangles.svg');
+    background-size: cover;
+    /* background-position: center; */
+    height: 100%;
+    margin: 10px;
+    padding: 100px 0;
+}
+
+.work-process .process-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.work-process .process-steps .process {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.work-process .process-steps .process .step-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.work-process .process-steps .process .step-line .step-count {
+    color: var(--primary-100);
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.work-process .process-steps .process .step-line .line {
+    height: 2px;
+    width: 35px;
+    background: linear-gradient(0.25turn, var(--primary-100), var(--bg-primary));
+    position: relative;
+    bottom: 1px;
+}
+
+.work-process .process-steps .process .process-detail .process-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-85);
+    line-height: 22px;
+    margin-bottom: 15px !important;
+}
+
+.work-process .process-steps .process .process-detail .process-desc {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark-85);
+    margin-bottom: 15px !important;
+}
+
+.work-process .process-steps .process .process-detail .steps li {
+    color: var(--dark-85);
+    font-size: .9rem;
+    font-weight: 600;
+    list-style: url('../images/arrowRightPrimarySmall.svg');
+    margin-bottom: 5px;
+    margin-left: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

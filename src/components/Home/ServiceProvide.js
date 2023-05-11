@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SectionTitle from '../Utilities/SectionTitle';
 import circles from '../../images/circles.svg'
 import { Link } from 'react-router-dom';
@@ -42,8 +42,6 @@ const ServiceProvide = () => {
     }
 
 
-
-
     return (
         <div className='service-provide'>
             <img className='circles' src={circles} alt="" />
@@ -74,7 +72,7 @@ const ServiceProvide = () => {
 
                                 </div>
                                 <div className="action-image">
-                                    <p onClick={() => toggle(i)} className="more-info">View {viewService == i ? 'Less' : 'More'} Information</p>
+                                    <p onClick={() => toggle(i)} className="more-info">View {viewService === i ? 'Less' : 'More'} Information</p>
                                     <img className={`image ${viewService === i ? 'show' : ''}`} src={webImage} alt="" />
 
                                 </div>
