@@ -25,7 +25,6 @@ const ChooseUs = () => {
                     </div>
                     <div className="right-content">
 
-
                         <Swiper
                             modules={[Pagination]}
                             pagination={{
