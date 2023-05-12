@@ -21,7 +21,6 @@ const Heading = () => {
 
 
             <img className='heading-line-svg' src={lineBend} alt="" />
-
             <PageTopStyleBg></PageTopStyleBg>
         </div>
     );

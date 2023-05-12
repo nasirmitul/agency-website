@@ -4,7 +4,9 @@ import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 const Contact = () => {
     return (
         <div className='container pt-110'>
-            <h1>Contact</h1>
+            <div className="contact-headin">
+                
+            </div>
             <PageTopStyleBg></PageTopStyleBg>
         </div>
     );

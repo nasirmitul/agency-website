@@ -1759,4 +1759,126 @@ swiper-container {
 
 
 
-/* ------------ Heading ------------ */
+/* ------------ All Projects ------------ */
+.all-projects {
+    margin-bottom: 180px;
+    width: 100%;
+    position: relative;
+}
+
+.all-projects::after {
+    content: '';
+    position: absolute;
+    height: calc(100% + 100px);
+    width: 1px;
+    background: var(--dark-50);
+    left: 50%;
+    transform: translateX(-50%);
+    top: -50px;
+}
+
+.all-projects .project-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -130px;
+    position: relative;
+}
+
+.all-projects .project-data:nth-child(odd) {
+    align-items: flex-start;
+}
+
+.all-projects .project-data:nth-child(even) {
+    align-items: flex-end;
+
+}
+
+.all-projects .project-data:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background: var(--gray);
+    z-index: 2;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.all-projects .project-data:nth-child(even)::before {
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background: var(--gray);
+    z-index: 2;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+.all-projects .project .project-img {
+    height: 350px;
+    width: 550px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.all-projects .project .project-info {
+    position: relative;
+    z-index: 3;
+}
+
+.all-projects .project .project-info .project-name {
+    font-size: 20px;
+    color: var(--dark-85);
+    font-weight: 400;
+    margin-bottom: 5px !important;
+}
+
+.all-projects .project .project-info .project-type {
+    font-size: 14px;
+    color: var(--dark-85);
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 5px !important;
+}
+
+.all-projects .project .project-info .details {
+    font-size: 16px;
+    color: var(--primary-100);
+    font-weight: 500;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.all-projects .project .project-info .details:hover {
+    transform: translateX(8px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- Contact ----------------------------- */
