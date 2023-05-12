@@ -1371,7 +1371,8 @@ swiper-container {
 
 
 
-/* ----------------------------- About Us Heading ----------------------------- */
+/* ----------------------------- About Us ----------------------------- */
+/* ------------ Heading ------------ */
 
 .about-heading {
     padding: 100px 0 150px 0;
@@ -1384,4 +1385,93 @@ swiper-container {
     color: var(--dark-85);
     width: min(650px, 90%);
     line-height: 70px;
+}
+
+.heading-line-svg {
+    position: absolute;
+    right: 0;
+    top: 250px;
+}
+
+
+/* ------------ Why Different ------------ */
+.why-different {
+    background: var(--primary-5);
+    padding: 100px 0;
+    position: relative;
+}
+
+.why-different .arrowSvg {
+    position: absolute;
+    left: 250px;
+    bottom: -70px;
+}
+
+.why-different section {
+    display: flex;
+    gap: 30px;
+}
+
+.why-different section h2.section-title {
+    margin-top: 15px !important;
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--dark-85);
+    width: min(650px, 90%);
+    line-height: 55px;
+    width: 30%;
+}
+
+.why-different section .points {
+    width: 70%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px;
+}
+
+.why-different section .points .point {
+    position: relative;
+}
+
+.why-different section .points .point::before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 1px;
+    background: var(--dark-50);
+    left: -30px;
+    top: 0;
+}
+
+.why-different section .points .point .count {
+    color: var(--dark-85);
+    font-size: .9rem;
+    font-weight: 500;
+    margin-bottom: 8px !important;
+}
+
+.why-different section .points .point h5.title {
+    color: var(--dark-85);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 20px !important;
+}
+
+.why-different section .points .point .desc {
+    color: var(--dark-70);
+    font-size: 1rem;
+}
+
+
+
+
+
+
+
+/* ------------ Why Different ------------ */
+.we-value {
+    padding: 130px 0;
+    position: relative;
 }
