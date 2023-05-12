@@ -1882,3 +1882,99 @@ swiper-container {
 
 
 /* ----------------------------- Contact ----------------------------- */
+.contact .contact-heading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.contact .contact-heading .heading-texts {
+    width: min(800px, 95%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact .contact-heading .heading-texts .title {
+    margin-top: 15px !important;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--dark-85);
+    width: min(650px, 90%);
+    line-height: 65px;
+    text-align: center;
+}
+
+.contact .contact-heading .heading-texts .desc {
+    margin-top: 25px !important;
+    font-size: 1rem;
+    font-weight: 200;
+    color: var(--dark-100);
+    width: min(750px, 100%);
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+.contact-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 70px;
+    width: 65%;
+}
+
+.contact-form form .name-email {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    width: 100%;
+}
+
+.contact-form form .name-email .name,
+.contact-form form .name-email .email,
+.contact-form form .message {
+    width: 100%;
+    position: relative;
+}
+
+.contact-form form input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 18px;
+    color: var(--dark-85);
+    border-bottom: 1px solid var(--black-20);
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.contact-form form input+.line-after {
+    position: absolute;
+    height: 1px;
+    width: 0%;
+    background: var(--primary-100);
+    bottom: 0px;
+    transition: .9s;
+}
+
+.contact-form form input:focus+.line-after {
+    width: 100%;
+}
+
