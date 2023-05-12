@@ -1475,3 +1475,77 @@ swiper-container {
     padding: 130px 0;
     position: relative;
 }
+
+.we-value section h2.section-title {
+    margin-top: 15px !important;
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--dark-85);
+    width: min(650px, 90%);
+    line-height: 55px;
+    width: 300px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 320px;
+}
+
+.we-value section .points .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.we-value section .points .row .point.right {
+    text-align: end;
+}
+
+.we-value section .points .row .point.center {
+    text-align: center;
+}
+
+.we-value section .points .row.row-two {
+    padding: 0 100px;
+}
+
+.we-value section .points .row.row-three {
+    justify-content: center;
+    margin-bottom: -55px;
+}
+
+.we-value section .points .point {
+    width: 370px;
+    margin-bottom: 55px;
+}
+
+.we-value section .points .point .count {
+    color: var(--dark-85);
+    font-size: .9rem;
+    font-weight: 500;
+    margin-bottom: 8px !important;
+}
+
+.we-value section .points .point h5.title {
+    color: var(--dark-85);
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 20px !important;
+}
+
+.we-value section .points .point .desc {
+    color: var(--dark-70);
+    font-size: 1rem;
+}
+
+
+
+
+
+
+/* ------------ Our Team ------------ */
+.our-team {
+    background: var(--primary-5);
+    padding: 100px 0;
+    position: relative;
+}
