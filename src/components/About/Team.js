@@ -1,7 +1,9 @@
 import React from 'react';
 import niloy from '../../images/niloy.png'
-import { AiFillLinkedin, AiFillGithub, AiFillProfile, AiFillFacebook } from 'react-icons/ai';
-import { CgProfile } from 'react-icons/cg';
+import { AiFillGithub } from 'react-icons/ai';
+import { BiUser } from 'react-icons/bi';
+import { GrFacebookOption } from 'react-icons/gr';
+import { ImLinkedin2 } from 'react-icons/im';
 
 
 const Team = () => {
@@ -26,10 +28,10 @@ const Team = () => {
                                 <p className="role">Mobile App Developer</p>
                                 <p className="position">CEO</p>
                                 <div className="social">
-                                    <a href="" target='_blank'><AiFillLinkedin></AiFillLinkedin></a>
                                     <a href="" target='_blank'><AiFillGithub></AiFillGithub></a>
-                                    <a href="" target='_blank'><CgProfile></CgProfile></a>
-                                    <a href="" target='_blank'><AiFillFacebook></AiFillFacebook></a>
+                                    <a href="" target='_blank'><BiUser></BiUser></a>
+                                    <a href="" target='_blank'><GrFacebookOption></GrFacebookOption></a>
+                                    <a href="" target='_blank'><ImLinkedin2></ImLinkedin2></a>
                                 </div>
                             </div>
                         </div>
@@ -40,10 +42,10 @@ const Team = () => {
                                 <p className="role">Mobile App Developer</p>
                                 <p className="position">CEO</p>
                                 <div className="social">
-                                    <a href="" target='_blank'><AiFillLinkedin></AiFillLinkedin></a>
                                     <a href="" target='_blank'><AiFillGithub></AiFillGithub></a>
-                                    <a href="" target='_blank'><CgProfile></CgProfile></a>
-                                    <a href="" target='_blank'><AiFillFacebook></AiFillFacebook></a>
+                                    <a href="" target='_blank'><BiUser></BiUser></a>
+                                    <a href="" target='_blank'><GrFacebookOption></GrFacebookOption></a>
+                                    <a href="" target='_blank'><ImLinkedin2></ImLinkedin2></a>
                                 </div>
                             </div>
                         </div>
@@ -54,10 +56,10 @@ const Team = () => {
                                 <p className="role">Mobile App Developer</p>
                                 <p className="position">CEO</p>
                                 <div className="social">
-                                    <a href="" target='_blank'><AiFillLinkedin></AiFillLinkedin></a>
                                     <a href="" target='_blank'><AiFillGithub></AiFillGithub></a>
-                                    <a href="" target='_blank'><CgProfile></CgProfile></a>
-                                    <a href="" target='_blank'><AiFillFacebook></AiFillFacebook></a>
+                                    <a href="" target='_blank'><BiUser></BiUser></a>
+                                    <a href="" target='_blank'><GrFacebookOption></GrFacebookOption></a>
+                                    <a href="" target='_blank'><ImLinkedin2></ImLinkedin2></a>
                                 </div>
                             </div>
                         </div>
