@@ -11,6 +11,7 @@
     --primary-10: rgba(89, 40, 220, 0.1);
     --primary-6: rgba(88, 40, 220, 0.06);
     --primary-5: rgba(88, 40, 220, 0.05);
+    --primary-0: rgba(88, 40, 220, 0.0);
 
     --secondary-100: #FFD8D9;
     --secondary-20: rgba(255, 216, 217, 0.2);
@@ -1481,7 +1482,6 @@ swiper-container {
     font-size: 3rem;
     font-weight: 200;
     color: var(--dark-85);
-    width: min(650px, 90%);
     line-height: 55px;
     width: 300px;
     text-align: center;
@@ -1548,4 +1548,102 @@ swiper-container {
     background: var(--primary-5);
     padding: 100px 0;
     position: relative;
+}
+
+.our-team .team-info .team-heading {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.our-team .team-info .team-heading .title {
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--dark-85);
+    line-height: 55px;
+    text-align: center;
+    margin-bottom: 15px !important;
+}
+
+.our-team .team-info .team-heading .desc {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: var(--dark-70);
+}
+
+
+.our-team .team-info .team-data {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.our-team .team-info .team-data .team-member {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.our-team .team-info .team-data .team-member:hover .others-info {
+    top: 0;
+}
+
+.our-team .team-info .team-data .team-member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+}
+
+.our-team .team-info .team-data .team-member .others-info {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top, var(--primary-100), var(--primary-0));
+    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    transition: .5s;
+
+}
+
+.our-team .team-info .team-data .team-member .others-info .name {
+    font-size: 20px;
+    color: var(--bg-primary);
+    font-weight: 500;
+    margin-bottom: 5px !important;
+}
+
+.our-team .team-info .team-data .team-member .others-info .role {
+    font-size: 12px;
+    color: var(--bg-primary);
+    font-weight: 300;
+    margin-bottom: 5px !important;
+}
+
+.our-team .team-info .team-data .team-member .others-info .position {
+    font-size: 14px;
+    color: var(--bg-primary);
+    font-weight: 400;
+    margin-bottom: 5px !important;
+}
+
+.our-team .team-info .team-data .team-member .others-info .social {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+.our-team .team-info .team-data .team-member .others-info .social a {
+    color: var(--bg-primary);
+    font-size: 1.4rem;
 }
