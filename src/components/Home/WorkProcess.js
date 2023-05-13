@@ -26,7 +26,7 @@ const WorkProcess = () => {
                     </div>
                     <div className="process">
                         <div className="step-line">
-                            <p className="step-count">01</p>
+                            <p className="step-count">02</p>
                             <div className="line"></div>
                         </div>
                         <div className="process-detail">
@@ -41,7 +41,7 @@ const WorkProcess = () => {
                     </div>
                     <div className="process">
                         <div className="step-line">
-                            <p className="step-count">01</p>
+                            <p className="step-count">03</p>
                             <div className="line"></div>
                         </div>
                         <div className="process-detail">
@@ -54,7 +54,6 @@ const WorkProcess = () => {
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

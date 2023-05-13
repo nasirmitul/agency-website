@@ -1,5 +1,8 @@
 import React from 'react';
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
+import SectionTitle from '../Utilities/SectionTitle';
+import plane from '../../images/plane.svg'
+
 
 const Contact = () => {
     return (
@@ -31,7 +34,48 @@ const Contact = () => {
                         </div>
                         <button type="submit" className="custom-button">Send</button>
                     </form>
+
+                    <img className='planeSvg' src={plane} alt="" />
                 </div>
+
+
+                <div className="other-possible-way">
+                    <SectionTitle title='Other Possible Way'></SectionTitle>
+
+                    <div className="possible-ways">
+                        <div className="ways">
+                            <div className="ways-line">
+                                <p className="ways-count">01</p>
+                                <div className="line"></div>
+                            </div>
+                            <div className="ways-detail">
+                                <h5 className="ways-title">Contact Through</h5>
+                                <ul className="contact-way">
+                                    <li>email</li>
+                                    <li>phone</li>
+                                    <li>whatsapp</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="ways">
+                            <div className="ways-line">
+                                <p className="ways-count">02</p>
+                                <div className="line"></div>
+                            </div>
+                            <div className="ways-detail">
+                                <h5 className="ways-title">Social</h5>
+                                <ul className="contact-way">
+                                    <li>facebook</li>
+                                    <li>instagram</li>
+                                    <li>linkedin</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
             <PageTopStyleBg></PageTopStyleBg>
         </div>

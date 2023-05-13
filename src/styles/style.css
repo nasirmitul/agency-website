@@ -1914,29 +1914,22 @@ swiper-container {
     text-align: center;
 }
 
-
-
-
-
-
-
-
-
-
-
 .contact-form {
-    width: 100%;
+    width: min(800px, 100%);
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    margin-bottom: 150px;
 }
 
 .contact-form form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 70px;
-    width: 65%;
+    gap: 60px;
+    width: 100%;
 }
 
 .contact-form form .name-email {
@@ -1958,11 +1951,12 @@ swiper-container {
     border: none;
     background: transparent;
     outline: none;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--dark-85);
     border-bottom: 1px solid var(--black-20);
     padding-bottom: 10px;
     position: relative;
+    z-index: 3;
 }
 
 .contact-form form input+.line-after {
@@ -1978,3 +1972,78 @@ swiper-container {
     width: 100%;
 }
 
+.contact-form form button {
+    position: relative;
+    z-index: 3;
+    width: fit-content;
+    margin: auto;
+}
+
+.contact-form .planeSvg {
+    position: absolute;
+    left: -250px;
+    bottom: -430px;
+    z-index: -1;
+}
+
+.contact .other-possible-way {
+    width: min(800px, 100%);
+    margin: auto;
+    margin-bottom: 200px;
+}
+
+.contact .possible-ways {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.contact .possible-ways .ways {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.contact .possible-ways .ways .ways-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.contact .possible-ways .ways .ways-line .ways-count {
+    color: var(--primary-100);
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.contact .possible-ways .ways .ways-line .line {
+    height: 2px;
+    width: 35px;
+    background: linear-gradient(0.25turn, var(--primary-100), var(--bg-primary));
+    position: relative;
+    bottom: 1px;
+}
+
+.contact .possible-ways .ways .ways-detail .ways-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-85);
+    line-height: 22px;
+    margin-bottom: 15px !important;
+}
+
+.contact .possible-ways .ways .ways-detail .contact-way li {
+    color: var(--dark-85);
+    font-size: .9rem;
+    font-weight: 600;
+    list-style: url('../images/arrowRightPrimarySmall.svg');
+    margin-bottom: 5px;
+    margin-left: 16px;
+    cursor: pointer;
+    transition: .6s;
+}
+
+.contact .possible-ways .ways .ways-detail .contact-way li:hover{
+    transform: translateX(8px);
+}
