@@ -10,6 +10,7 @@ import AdminAbout from "../components/Admin/AdminAbout";
 import AdminProjects from "../components/Admin/AdminProjects";
 import AdminContact from "../components/Admin/AdminContact";
 import AdminProfile from "../components/Admin/AdminProfile";
+import AdminFooter from "../components/Admin/AdminFooter";
 
 
 const MainRouter = createBrowserRouter([
@@ -62,7 +63,11 @@ const MainRouter = createBrowserRouter([
             {
                 path: '/admin/profile',
                 element: <AdminProfile></AdminProfile>
-            }
+            },
+            {
+                path: '/admin/footer',
+                element: <AdminFooter></AdminFooter>
+            },
         ]
     }
 ]);

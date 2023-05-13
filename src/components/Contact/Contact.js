@@ -2,9 +2,11 @@ import React from 'react';
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import SectionTitle from '../Utilities/SectionTitle';
 import plane from '../../images/plane.svg'
+import scrollToTop from '../Utilities/ScrollToTop';
 
 
 const Contact = () => {
+    scrollToTop();
     return (
         <div className='container pt-110'>
             <div className="contact">

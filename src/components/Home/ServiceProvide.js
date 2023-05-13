@@ -63,7 +63,6 @@ const ServiceProvide = () => {
                                     <p className="name">{service.serviceName}</p>
                                     <div className={`info ${viewService === i ? 'show' : ''}`}>
                                         <p className="detail">{service.serviceDetail}</p>
-
                                         <div className="lets-work">
                                             <Link to='/'>Let's Work Together</Link>
                                             <img src={arrowTopRightDiagonal} alt="" />

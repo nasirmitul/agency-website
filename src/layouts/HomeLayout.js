@@ -7,8 +7,10 @@ import FAQ from '../components/Home/FAQ';
 import ChooseUs from '../components/Home/ChooseUs';
 import ClientSays from '../components/Home/ClientSays';
 import GotAProject from '../components/Home/GotAProject';
+import scrollToTop from '../components/Utilities/ScrollToTop';
 
 const HomeLayout = () => {
+    scrollToTop();
     return (
         <div>
             <Hero></Hero>

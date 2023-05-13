@@ -1,12 +1,12 @@
 import React from 'react';
 import AdminPageTitle from '../Utilities/AdminPageTitle';
 
-const AdminProjects = () => {
+const AdminFooter = () => {
     return (
         <div className='admin-container'>
-            <AdminPageTitle title='Admin Projects Section'></AdminPageTitle>
+            <AdminPageTitle title='Admin Footer Section'></AdminPageTitle>
         </div>
     );
 };
 
-export default AdminProjects;
+export default AdminFooter;

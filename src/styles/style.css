@@ -17,8 +17,8 @@
     --secondary-20: rgba(255, 216, 217, 0.2);
 
     --gray: #D9D9D9;
-
     --danger: #e02323;
+    --white: #FCFCFC;
 
     --bg-primary-70: rgba(232, 233, 233, 0.70);
     --bg-primary: #E8E9E9;
@@ -75,6 +75,7 @@ ul {
 body {
     background: var(--bg-primary) !important;
     overflow-x: hidden;
+    /* white-space: pre-line; */
 }
 
 .container {
@@ -2179,14 +2180,20 @@ swiper-container {
     min-height: 100vh;
     z-index: 1;
     left: 45px;
+    padding-bottom: 15px;
+}
+
+.admin-page-title {
+    background: var(--dark-100);
 }
 
 .admin-page-title h2 {
-    color: var(--primary-100);
+    color: var(--white);
     font-size: 1.5rem;
     font-weight: 500;
     position: relative;
     padding: 20px 0 !important;
+    margin-bottom: 27px !important;
 }
 
 .admin-page-title h2::after {
@@ -2194,7 +2201,7 @@ swiper-container {
     position: absolute;
     height: 1px;
     width: calc(100% + 50px);
-    background: var(--dark-50);
+    background: var(--gray);
     left: -25px;
     bottom: 0;
 }
@@ -2204,7 +2211,9 @@ svg {
     cursor: pointer;
 }
 
-
+.admin-body {
+    background: var(--dark-100);
+}
 
 
 /* ------------ Admin Navigation ------------ */
@@ -2218,8 +2227,18 @@ svg {
     position: fixed;
     left: 0;
     top: 0;
-    background: var(--primary-100);
+    background: var(--dark-50);
     width: 90px;
+}
+
+.admin-side-navigation::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background: var(--gray);
+    right: 0;
+    top: 0;
 }
 
 .admin-side-navigation .logo svg {
@@ -2235,13 +2254,13 @@ svg {
 }
 
 .admin-side-navigation .navigation-items ul li a.active,
-.admin-side-navigation .settings a.active {
+.admin-side-navigation a.active {
     position: relative;
     transition: .4s;
 }
 
 .admin-side-navigation .navigation-items ul li a.active::after,
-.admin-side-navigation .settings a.active::after {
+.admin-side-navigation a.active::after {
     position: absolute;
     content: '';
     height: 5px;
@@ -2260,4 +2279,237 @@ svg {
 
 
 
-/* ------------ Admin Home Section ------------ */
+/* ------------ Admin Common Section ------------ */
+.admin-common .common-section {
+    background: var(--bg-primary);
+    padding: 25px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-10);
+    margin-bottom: 20px;
+}
+
+.admin-common .common-section .heading {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.admin-common .common-section .heading::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background: var(--gray);
+    left: 0;
+    bottom: 0;
+}
+
+.admin-common .common-section .heading .title {
+    font-size: 20px;
+    color: var(--primary-100);
+    font-weight: 500;
+}
+
+.admin-common .common-section .heading .actions {
+    display: flex;
+    gap: 40px;
+}
+
+.admin-common .common-section .heading .actions img {
+    width: 30px;
+    cursor: pointer;
+}
+
+.admin-common .common-section .body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-common .common-section .body .data {
+    display: flex;
+}
+
+.admin-common .common-section .body .data .content-title {
+    width: 200px;
+    color: var(--dark-85);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.admin-common .common-section .body .data .content-data {
+    width: calc(100% - 250px);
+    color: var(--dark-70);
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+
+
+
+
+
+
+
+/* ------------ Admin Common Section / Number - Two Nested ------------ */
+
+.admin-common .common-section.number-two-nested .body .data .content-title {
+    width: 60px;
+    margin-top: 10px !important;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two {
+    width: calc(100% - 60px);
+    border: 1px solid var(--dark-50);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-title {
+    font-weight: 500;
+    margin-bottom: 5px !important;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-body {
+    font-size: 14px;
+    color: var(--dark-70);
+}
+
+
+
+
+
+
+
+/* ------------ Admin Contact Section ------------ */
+.admin-contact .admin-contact-heading .heading .title span {
+    font-size: 12px;
+    margin-left: 10px !important;
+}
+
+.admin-contact .admin-contact-heading .heading .actions .mark-read {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-100);
+    cursor: pointer;
+}
+
+.admin-contact .body {
+    gap: 5px !important;
+}
+
+.admin-contact .body .data {
+    gap: 15px;
+    border: 1px solid var(--black-20);
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: .5s;
+}
+
+.admin-contact .body .data:hover {
+    background: var(--primary-5);
+    cursor: pointer;
+}
+
+.admin-contact .body .data .content-count {
+    width: 50px;
+}
+
+.admin-contact .body .data .content-title {
+    width: 25% !important;
+}
+
+.admin-contact .body .data .content-data {
+    width: 65% !important;
+    font-size: 14px !important;
+}
+
+.admin-contact .body .data .mark-read-action-delete {
+    width: 5%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 35px;
+}
+
+.admin-contact .body .data .mark-read-action-delete .mark-read-show-icon {
+    display: flex;
+    align-items: center;
+}
+
+.admin-contact .body .data .mark-read-action-delete img {
+    cursor: pointer;
+    width: 25px;
+}
+
+.view-mail-popup-bg {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background: var(--dark-50);
+    backdrop-filter: blur(3px);
+    left: 0;
+    top: 0;
+    z-index: 20;
+    transform: scale(0);
+    transition: .5s;
+}
+
+.view-mail-popup-bg.open {
+    transform: scale(1);
+}
+
+
+.view-mail-popup {
+    position: absolute;
+    max-height: calc(100vh - 200px);
+    height: auto;
+    width: min(1200px, 90%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-primary);
+    padding: 25px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-10);
+    overflow-y: scroll;
+}
+
+
+.view-mail-popup .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.view-mail-popup .heading .subject {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-100);
+}
+
+.view-mail-popup .heading .mark-read {
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--dark-70);
+    cursor: pointer;
+}
+
+.view-mail-popup .email-account {
+    margin-bottom: 25px;
+}
+
+.view-mail-popup .email-account .email {
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--dark-85);
+}
+
+.view-mail-popup .mail-body {
+    font-size: 1rem;
+    color: var(--dark-85);
+    line-height: 20px;
+}

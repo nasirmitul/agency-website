@@ -6,7 +6,10 @@ const AdminLayout = () => {
     return (
         <div>
             <AdminNavigation></AdminNavigation>
-            <Outlet></Outlet>
+            <div className="admin-body">
+                <Outlet></Outlet>
+            </div>
+
         </div>
     );
 };
