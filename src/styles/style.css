@@ -18,6 +18,8 @@
 
     --gray: #D9D9D9;
 
+    --danger: #e02323;
+
     --bg-primary-70: rgba(232, 233, 233, 0.70);
     --bg-primary: #E8E9E9;
     --bg-secondary: #D1DEE1;
@@ -69,12 +71,10 @@ ul {
     padding: 0 !important;
 }
 
-html {
-    overflow-x: hidden;
-}
 
 body {
     background: var(--bg-primary) !important;
+    overflow-x: hidden;
 }
 
 .container {
@@ -294,6 +294,14 @@ swiper-container {
 
 
 /* ----------------------------- Navigation ----------------------------- */
+.navigation .hamburger-icon {
+    display: none;
+}
+
+.mobile-items {
+    display: none;
+}
+
 .navigation-bg {
     width: 100%;
     background: var(--bg-primary-70);
@@ -312,7 +320,6 @@ swiper-container {
     width: min(var(--container-width), 90%);
     left: 50%;
     transform: translateX(-50%);
-    backdrop-filter: blur(2px);
 }
 
 .navigation::after {
@@ -2044,6 +2051,213 @@ swiper-container {
     transition: .6s;
 }
 
-.contact .possible-ways .ways .ways-detail .contact-way li:hover{
+.contact .possible-ways .ways .ways-detail .contact-way li:hover {
     transform: translateX(8px);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- Responsive Design ----------------------------- */
+
+@media only screen and (max-width: 1000px) {
+
+    .navigation .items {
+        display: none;
+    }
+
+    .navigation .cta {
+        display: none;
+    }
+
+    .navigation .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navigation .hamburger-icon .line-one,
+    .navigation .hamburger-icon .line-two {
+        height: 1px;
+        width: 45px;
+        background: var(--dark-85);
+        transition: .5s;
+    }
+
+    .navigation .hamburger-icon.open {
+        gap: 0px;
+    }
+
+    .navigation .hamburger-icon .line-two {
+        position: relative;
+        top: -1px;
+    }
+
+    .mobile-items {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 88px);
+        width: 0%;
+        background: var(--bg-primary);
+        left: 0;
+        top: 88px;
+        z-index: 10;
+        gap: 10px;
+        transition: .5s;
+    }
+
+    .mobile-items a {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--dark-70);
+        transition: .5s;
+        position: relative;
+        display: none;
+        transition: .5s;
+        transition-delay: .3s;
+    }
+
+    .mobile-items.open {
+        width: 100%;
+    }
+
+    .mobile-items.open a {
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- Admin Section ----------------------------- */
+
+/* ------------ Common CSS ------------ */
+.admin-container {
+    width: calc(100% - 140px);
+    margin: auto;
+    position: relative;
+    min-height: 100vh;
+    z-index: 1;
+    left: 45px;
+}
+
+.admin-page-title h2 {
+    color: var(--primary-100);
+    font-size: 1.5rem;
+    font-weight: 500;
+    position: relative;
+    padding: 20px 0 !important;
+}
+
+.admin-page-title h2::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: calc(100% + 50px);
+    background: var(--dark-50);
+    left: -25px;
+    bottom: 0;
+}
+
+svg {
+    stroke: var(--gray);
+    cursor: pointer;
+}
+
+
+
+
+/* ------------ Admin Navigation ------------ */
+.admin-side-navigation {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 25px 25px;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--primary-100);
+    width: 90px;
+}
+
+.admin-side-navigation .logo svg {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.admin-side-navigation .navigation-items ul {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.admin-side-navigation .navigation-items ul li a.active,
+.admin-side-navigation .settings a.active {
+    position: relative;
+    transition: .4s;
+}
+
+.admin-side-navigation .navigation-items ul li a.active::after,
+.admin-side-navigation .settings a.active::after {
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 5px;
+    background: var(--gray);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -2px;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+
+
+
+
+
+
+/* ------------ Admin Home Section ------------ */
