@@ -19,7 +19,7 @@ const AdminContact = () => {
                     </div>
 
                     <div className="email-account">
-                        <a href="mailto:niloysarker@gmail.com" className="email">niloysarker@gmail.com</a>
+                        <a href="mailto:niloysarker@gmail.com" className="email">From: niloysarker@gmail.com</a>
                     </div>
 
                     <div className="mail-body">
@@ -32,7 +32,84 @@ const AdminContact = () => {
 
             <div className="admin-container">
                 <AdminPageTitle title='Admin Contact Section'></AdminPageTitle>
+
+                <div className="admin-contact-top-heading admin-common">
+                    <div className="admin-Contact-top common-section">
+                        <div className="heading">
+                            <p className="title">Heading</p>
+                            <div className="actions">
+                                <img src={edit} alt="" className="edit" />
+                            </div>
+                        </div>
+
+
+                        <div className="body">
+                            <div className="data">
+                                <p className="content-title">Title:</p>
+                                <p className="content-data">Let's make it happen together</p>
+                            </div>
+                            <div className="data">
+                                <p className="content-title">Description:</p>
+                                <p className="content-data">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto deleniti optio perspiciatis atque nemo. Officia officiis dolore iure in ipsam veniam placeat maiores ipsum labore? Optio quasi distinctio molestias laudantium.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="admin-contact-other-possible-ways admin-common">
+                    <div className="common-section">
+                        <div className="heading">
+                            <p className="title">Contact Though</p>
+                            <div className="actions">
+                                <img src={edit} alt="" className="edit" />
+                            </div>
+                        </div>
+
+                        <div className="body">
+                            <div className="data">
+                                <p className="content-title">Email:</p>
+                                <a href='' className="content-data">niloysarker@gmail.com</a>
+                            </div>
+                            <div className="data">
+                                <p className="content-title">Phone:</p>
+                                <a href='' className="content-data">01700000000</a>
+                            </div>
+                            <div className="data">
+                                <p className="content-title">WhatsApp:</p>
+                                <a href='' className="content-data">01700000000</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="common-section">
+                        <div className="heading">
+                            <p className="title">Social</p>
+                            <div className="actions">
+                                <img src={edit} alt="" className="edit" />
+                            </div>
+                        </div>
+
+                        <div className="body">
+                            <div className="data">
+                                <p className="content-title">Facebook:</p>
+                                <a href='' className="content-data">facebook.com/niloysarker</a>
+                            </div>
+                            <div className="data">
+                                <p className="content-title">Instagram:</p>
+                                <a href='' className="content-data">instagram.com/niloysarker</a>
+                            </div>
+                            <div className="data">
+                                <p className="content-title">Twitter:</p>
+                                <a href='' className="content-data">twitter.com/niloysarker</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="admin-contact admin-common">
+
+
+
+
                     <div className="admin-contact-heading common-section">
                         <div className="heading">
                             <p className="title">Contact Emails <span>04</span></p>

@@ -1010,6 +1010,7 @@ swiper-container {
     border-radius: 50%;
     cursor: pointer;
     position: relative;
+    z-index: 1;
 }
 
 .client-says .title {
@@ -2183,12 +2184,12 @@ swiper-container {
     padding-bottom: 15px;
 }
 
-.admin-page-title {
+/* .admin-page-title {
     background: var(--dark-100);
-}
+} */
 
 .admin-page-title h2 {
-    color: var(--white);
+    color: var(--dark-85);
     font-size: 1.5rem;
     font-weight: 500;
     position: relative;
@@ -2211,10 +2212,10 @@ svg {
     cursor: pointer;
 }
 
-.admin-body {
+/* .admin-body {
     background: var(--dark-100);
 }
-
+ */
 
 /* ------------ Admin Navigation ------------ */
 .admin-side-navigation {
@@ -2227,7 +2228,7 @@ svg {
     position: fixed;
     left: 0;
     top: 0;
-    background: var(--dark-50);
+    background: var(--primary-100);
     width: 90px;
 }
 
@@ -2383,6 +2384,164 @@ svg {
 
 
 
+/* ------------ Admin About/team Section ------------ */
+.admin-common .admin-about-team .heading .actions .close {
+    transform: rotate(45deg);
+}
+
+.admin-common .admin-about-team .member-gap {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.admin-common .admin-about-team .member-gap .section {
+    width: 50%;
+    border: 1px solid var(--dark-50);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.admin-common .admin-about-team .member-gap .section .text {
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--dark-85);
+}
+
+.admin-common .admin-about-team .member-gap .section .number {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-85);
+}
+
+.admin-common .admin-about-team .member-gap .section .edit {
+    cursor: pointer;
+}
+
+.admin-common .admin-about-team .body .data {
+    display: flex;
+    align-items: center;
+}
+
+.admin-common .admin-about-team .body .data .member-img {
+    width: 8%;
+}
+
+.admin-common .admin-about-team .body .data .member-img img {
+    height: 55px;
+    width: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.admin-common .admin-about-team .body .data .name {
+    width: 20%;
+    font-weight: 500;
+    color: var(--dark-85);
+}
+
+.admin-common .admin-about-team .body .data .position {
+    width: 20%;
+    color: var(--dark-85);
+}
+
+.admin-common .admin-about-team .body .data .role {
+    width: 30%;
+    color: var(--dark-85);
+}
+
+.admin-common .admin-about-team .body .data .edit-icon {
+    width: 22%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.admin-common .admin-about-team .body .data .edit-icon .edit {
+    cursor: pointer;
+}
+
+
+
+
+/* ------------ Admin Projects Section ------------ */
+.admin-projects .admin-projects-heading .heading .title span {
+    font-size: 12px;
+    margin-left: 10px !important;
+}
+
+.admin-projects .admin-projects-heading .heading .actions .plus {
+    cursor: pointer;
+    transform: rotate(45deg);
+}
+
+.admin-projects .admin-projects-heading .body {
+    gap: 5px !important;
+}
+
+.admin-projects .admin-projects-heading .body .data {
+    border: 1px solid var(--dark-50);
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.admin-projects .admin-projects-heading .body .data:hover {
+    background: var(--primary-5);
+    border: 1px solid var(--primary-100);
+}
+
+.admin-projects .admin-projects-heading .body .data .count {
+    width: 5%;
+    color: var(--dark-85);
+    font-weight: 600;
+}
+
+.admin-projects .admin-projects-heading .body .data .project-img {
+    width: 15%;
+    height: 68px;
+}
+
+.admin-projects .admin-projects-heading .body .data .project-img img {
+    width: 120px;
+    height: 100% !important;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.admin-projects .admin-projects-heading .body .data .project-name {
+    width: 25%;
+    color: var(--dark-85);
+    font-weight: 600;
+}
+
+.admin-projects .admin-projects-heading .body .data .project-type {
+    width: 30%;
+    color: var(--dark-85);
+}
+
+.admin-projects .admin-projects-heading .body .data .edit-delete-icon {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.admin-projects .admin-projects-heading .body .data .edit-delete-icon img {
+    cursor: pointer;
+    width: 25px;
+}
+
+
+
+
+
 /* ------------ Admin Contact Section ------------ */
 .admin-contact .admin-contact-heading .heading .title span {
     font-size: 12px;
@@ -2402,7 +2561,7 @@ svg {
 
 .admin-contact .body .data {
     gap: 15px;
-    border: 1px solid var(--black-20);
+    border: 1px solid var(--dark-50);
     padding: 8px 10px;
     border-radius: 4px;
     transition: .5s;
@@ -2410,6 +2569,7 @@ svg {
 
 .admin-contact .body .data:hover {
     background: var(--primary-5);
+    border: 1px solid var(--primary-100);
     cursor: pointer;
 }
 
@@ -2445,10 +2605,10 @@ svg {
 }
 
 .view-mail-popup-bg {
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100%;
-    background: var(--dark-50);
+    background: var(--black-20);
     backdrop-filter: blur(3px);
     left: 0;
     top: 0;
@@ -2463,7 +2623,7 @@ svg {
 
 
 .view-mail-popup {
-    position: absolute;
+    position: fixed;
     max-height: calc(100vh - 200px);
     height: auto;
     width: min(1200px, 90%);
