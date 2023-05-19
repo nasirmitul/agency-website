@@ -104,6 +104,13 @@ body {
     padding-top: 110px;
 }
 
+.not-available {
+    text-align: center;
+    margin: 20px 0 !important;
+    color: var(--primary-100);
+    font-weight: 400;
+    font-size: .9rem;
+}
 
 
 
@@ -1955,7 +1962,8 @@ swiper-container {
     position: relative;
 }
 
-.contact-form form input {
+.contact-form form input,
+.contact-form form textarea {
     width: 100%;
     border: none;
     background: transparent;
@@ -1968,16 +1976,24 @@ swiper-container {
     z-index: 3;
 }
 
-.contact-form form input+.line-after {
+.contact-form form textarea {
+    height: 70px !important;
+    margin-bottom: -7px !important;
+}
+
+.contact-form form input~.line-after,
+.contact-form form textarea~.line-after {
     position: absolute;
     height: 1px;
     width: 0%;
     background: var(--primary-100);
     bottom: 0px;
     transition: .9s;
+    z-index: 4;
 }
 
-.contact-form form input:focus+.line-after {
+.contact-form form input:focus~.line-after,
+.contact-form form textarea:focus~.line-after {
     width: 100%;
 }
 
@@ -2184,10 +2200,6 @@ swiper-container {
     padding-bottom: 15px;
 }
 
-/* .admin-page-title {
-    background: var(--dark-100);
-} */
-
 .admin-page-title h2 {
     color: var(--dark-85);
     font-size: 1.5rem;
@@ -2212,10 +2224,80 @@ svg {
     cursor: pointer;
 }
 
-/* .admin-body {
-    background: var(--dark-100);
+span.number-count {
+    font-size: 12px;
+    margin-left: 10px !important;
 }
- */
+
+
+/* ----- confirm box ----- */
+.confirm-popup {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: var(--black-20);
+    backdrop-filter: blur(3px);
+    left: 0;
+    top: 0;
+    z-index: 20;
+    transform: scale(0);
+    transition: .5s;
+}
+
+.confirm-popup.open {
+    transform: scale(1);
+}
+
+.confirm-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-primary);
+    padding: 40px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-10);
+    overflow-y: scroll;
+}
+
+.confirm-box .message {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--dark-85);
+    margin-bottom: 20px !important;
+}
+
+.confirm-box .message span {
+    color: var(--danger);
+}
+
+.confirm-box .actions {
+    display: flex;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-box .actions button {
+    padding: 10px 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--white);
+    border-radius: 2px;
+}
+
+.confirm-box .actions button.cancel {
+    background: var(--gray);
+    color: var(--dark-85);
+}
+
+.confirm-box .actions button.delete {
+    background: var(--danger);
+    color: var(--white);
+}
+
 
 /* ------------ Admin Navigation ------------ */
 .admin-side-navigation {
@@ -2323,6 +2405,10 @@ svg {
     cursor: pointer;
 }
 
+.admin-common .common-section .heading .actions img.plus {
+    transform: rotate(45deg);
+}
+
 .admin-common .common-section .body {
     display: flex;
     flex-direction: column;
@@ -2354,7 +2440,7 @@ svg {
 
 
 
-/* ------------ Admin Common Section / Number - Two Nested ------------ */
+/* ------------ Admin Common Section / Number - Two/Three Nested ------------ */
 
 .admin-common .common-section.number-two-nested .body .data .content-title {
     width: 60px;
@@ -2362,7 +2448,8 @@ svg {
 }
 
 .admin-common .common-section.number-two-nested .body .data .content-data-nested-two {
-    width: calc(100% - 60px);
+    /* width: calc(100% - 60px); */
+    width: 100%;
     border: 1px solid var(--dark-50);
     padding: 10px;
     border-radius: 4px;
@@ -2373,14 +2460,161 @@ svg {
     margin-bottom: 5px !important;
 }
 
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-title-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .temp-title,
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .temp-desc {
+    color: var(--dark-85);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: 10px !important;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-title-heading .nested-two-title-actions {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-title-heading .nested-two-title-actions img {
+    cursor: pointer;
+}
+
 .admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-body {
     font-size: 14px;
     color: var(--dark-70);
 }
 
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-others-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--dark-50);
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-others-items .nested-others-single-item {
+    display: flex;
+    align-items: center;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-others-items .nested-others-single-item .others-item-count {
+    width: 70px !important;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-85);
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-others-items .nested-others-single-item .other-item-data {
+    font-size: .9rem;
+    color: var(--dark-85);
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .content-img {
+    height: 100px;
+    width: 200px;
+    margin-top: 5px;
+}
+
+.admin-common .common-section.number-two-nested .body .data .content-data-nested-two .content-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
 
 
 
+
+
+/* ------------ Admin Home/why choose us Section ------------ */
+.admin-common .admin-home-why-choose-use .data {
+    width: 100%;
+}
+
+.admin-common .admin-home-why-choose-use .nested-others-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--dark-50);
+    padding: 10px;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.admin-common .admin-home-why-choose-use .nested-others-items .nested-others-single-item {
+    display: flex;
+    align-items: center;
+}
+
+.admin-common .admin-home-why-choose-use .nested-others-items .nested-others-single-item .others-item-count {
+    width: 70px !important;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-85);
+}
+
+.admin-common .admin-home-why-choose-use .nested-others-items .nested-others-single-item .other-item-data {
+    font-size: .9rem;
+    color: var(--dark-85);
+}
+
+
+
+/* ------------ Admin Home/client says Section ------------ */
+.admin-home-client-says .body .data .content-data-nested-two {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.admin-home-client-says .body .data .content-data-nested-two .client-image-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-home-client-says .body .data .content-data-nested-two .client-image-actions .client-image {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.admin-home-client-says .body .data .content-data-nested-two .client-image-actions .action {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.admin-home-client-says .body .data .content-data-nested-two .client-image-actions .action img {
+    cursor: pointer;
+}
+
+.admin-home-client-says .body .data .content-data-nested-two .client-name,
+.admin-home-client-says .body .data .content-data-nested-two .client-role,
+.admin-home-client-says .body .data .content-data-nested-two .client-message {
+    display: flex;
+}
+
+.admin-home-client-says .body .data .content-data-nested-two .client-name .name-title,
+.admin-home-client-says .body .data .content-data-nested-two .client-role .role-title,
+.admin-home-client-says .body .data .content-data-nested-two .client-message .message-title {
+    width: 100px;
+    color: var(--dark-85);
+    font-weight: 600;
+}
+
+.admin-home-client-says .body .data .content-data-nested-two .client-name .name,
+.admin-home-client-says .body .data .content-data-nested-two .client-role .role,
+.admin-home-client-says .body .data .content-data-nested-two .client-message .message {
+    color: var(--dark-85);
+    font-weight: 400;
+}
 
 
 
@@ -2468,10 +2702,7 @@ svg {
 
 
 /* ------------ Admin Projects Section ------------ */
-.admin-projects .admin-projects-heading .heading .title span {
-    font-size: 12px;
-    margin-left: 10px !important;
-}
+
 
 .admin-projects .admin-projects-heading .heading .actions .plus {
     cursor: pointer;
@@ -2543,10 +2774,7 @@ svg {
 
 
 /* ------------ Admin Contact Section ------------ */
-.admin-contact .admin-contact-heading .heading .title span {
-    font-size: 12px;
-    margin-left: 10px !important;
-}
+
 
 .admin-contact .admin-contact-heading .heading .actions .mark-read {
     font-size: 14px;
@@ -2554,6 +2782,13 @@ svg {
     color: var(--primary-100);
     cursor: pointer;
 }
+
+.admin-contact .admin-contact-heading .heading .actions .all-viewed {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark-50);
+}
+
 
 .admin-contact .body {
     gap: 5px !important;
@@ -2565,6 +2800,15 @@ svg {
     padding: 8px 10px;
     border-radius: 4px;
     transition: .5s;
+}
+
+.admin-contact .body .data.marked-read {
+    background: var(--gray);
+}
+
+.admin-contact .body .data .contact-mail-data {
+    display: flex;
+    width: 100%;
 }
 
 .admin-contact .body .data:hover {
@@ -2602,6 +2846,12 @@ svg {
 .admin-contact .body .data .mark-read-action-delete img {
     cursor: pointer;
     width: 25px;
+    position: relative;
+    z-index: 3;
+}
+
+.admin-contact .body .data img.delete-icon {
+    margin-left: 0px !important;
 }
 
 .view-mail-popup-bg {
@@ -2621,7 +2871,6 @@ svg {
     transform: scale(1);
 }
 
-
 .view-mail-popup {
     position: fixed;
     max-height: calc(100vh - 200px);
@@ -2637,7 +2886,6 @@ svg {
     overflow-y: scroll;
 }
 
-
 .view-mail-popup .heading {
     display: flex;
     justify-content: space-between;
@@ -2646,17 +2894,38 @@ svg {
 }
 
 .view-mail-popup .heading .subject {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: var(--dark-100);
+    color: var(--dark-85);
+    display: flex;
+    align-items: center;
 }
 
-.view-mail-popup .heading .mark-read {
+.view-mail-popup .heading .subject img.tick {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.view-mail-popup .heading .read-delete-action {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.view-mail-popup .heading .read-delete-action .mark-read {
     font-size: .8rem;
     font-weight: 500;
     color: var(--dark-70);
     cursor: pointer;
 }
+
+.view-mail-popup .heading .read-delete-action .delete {
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--danger);
+    cursor: pointer;
+}
+
 
 .view-mail-popup .email-account {
     margin-bottom: 25px;
@@ -2665,11 +2934,16 @@ svg {
 .view-mail-popup .email-account .email {
     font-size: .9rem;
     font-weight: 500;
-    color: var(--dark-85);
+    color: var(--dark-50);
+}
+
+.view-mail-popup .email-account .email span {
+    color: var(--dark-100);
 }
 
 .view-mail-popup .mail-body {
     font-size: 1rem;
     color: var(--dark-85);
     line-height: 20px;
+    white-space: pre-line;
 }

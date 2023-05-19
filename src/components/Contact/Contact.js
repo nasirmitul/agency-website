@@ -3,10 +3,57 @@ import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import SectionTitle from '../Utilities/SectionTitle';
 import plane from '../../images/plane.svg'
 import scrollToTop from '../Utilities/ScrollToTop';
+import { toast } from 'react-hot-toast';
 
 
 const Contact = () => {
     scrollToTop();
+
+    const handleContactForm = (e) => {
+        e.preventDefault();
+        const form = e.target;
+
+        const name = form.name.value;
+        const email = form.email.value;
+        const message = form.message.value;
+
+        const contactData = {
+            name,
+            email,
+            message,
+            markRead: false,
+            time: new Date()
+        }
+        console.log(contactData);
+
+
+
+        fetch('http://localhost:5000/contact-mail', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(contactData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    form.reset();
+                    toast.success('Thanks for the contact. we will reach you soon.', {
+                        duration: 7000,
+                        style: {
+                            minWidth: 'fit-content',
+                        },
+                    })
+                }
+            })
+            .catch(error => console.log(error))
+    }
+
+
+
+
     return (
         <div className='container pt-110'>
             <div className="contact">
@@ -18,20 +65,19 @@ const Contact = () => {
                 </div>
 
                 <div className="contact-form">
-                    <form>
+                    <form onSubmit={handleContactForm}>
                         <div className="name-email">
                             <div className="name">
-                                <input type="text" placeholder='Name' required />
+                                <input name='name' type="text" placeholder='Name' required />
                                 <div className="line-after"></div>
                             </div>
                             <div className="email">
-                                <input type="email" placeholder='Email' required />
+                                <input name='email' type="email" placeholder='Email' required />
                                 <div className="line-after"></div>
                             </div>
-
                         </div>
                         <div className="message">
-                            <input type="text" placeholder='Message' required />
+                            <textarea name='message' placeholder='Message' required ></textarea>
                             <div className="line-after"></div>
                         </div>
                         <button type="submit" className="custom-button">Send</button>

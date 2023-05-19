@@ -39,7 +39,7 @@ const AdminProjects = () => {
 
                     <div className="admin-projects-heading common-section">
                         <div className="heading">
-                            <p className="title">All Projects <span>06</span></p>
+                            <p className="title">All Projects <span className='number-count'>06</span></p>
                             <div className="actions">
                                 <img src={close} alt="" className="plus" />
                             </div>
