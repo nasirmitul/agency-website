@@ -17,7 +17,7 @@ const AdminContact = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/contact-mail')
+        fetch('https://projitize.vercel.app/contact-mail')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -27,7 +27,7 @@ const AdminContact = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/contact-mail/unread')
+        fetch('https://projitize.vercel.app/contact-mail/unread')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -40,7 +40,7 @@ const AdminContact = () => {
     const handleMailDelete = () => {
         toast.loading('deleting mail...');
         setOpenMail(null);
-        fetch(`http://localhost:5000/delete-contact-mail/${deleteMail}`, {
+        fetch(`https://projitize.vercel.app/delete-contact-mail/${deleteMail}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -60,7 +60,7 @@ const AdminContact = () => {
 
     const handleUpdateMarkRead = (id) => {
         toast.loading('marking as read...');
-        fetch(`http://localhost:5000/update-mark-read/${id}`, {
+        fetch(`https://projitize.vercel.app/update-mark-read/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -80,7 +80,7 @@ const AdminContact = () => {
 
     const handleUpdateMarkUnRead = (id) => {
         toast.loading('marking as unread...');
-        fetch(`http://localhost:5000/update-mark-un-read/${id}`, {
+        fetch(`https://projitize.vercel.app/update-mark-un-read/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -100,7 +100,7 @@ const AdminContact = () => {
 
     const handleMarkAllAsRead = () => {
         toast.loading('marking all as read...');
-        fetch(`http://localhost:5000/mark-all-as-read`, {
+        fetch(`https://projitize.vercel.app/mark-all-as-read`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -238,14 +238,13 @@ const AdminContact = () => {
 
                     <div className="admin-contact-heading common-section">
                         <div className="heading">
-                            <p className="title">Contact Emails <span className='number-count'>{(contactMails.length + checkMarkRead.length) - contactMails.length}</span></p>
+                            <p className="title">Contact Emails <span className='number-count'>{(contactMails.length + checkMarkRead.length) - contactMails.length} / {contactMails.length}</span></p>
                             <div className="actions">
 
                                 {
                                     checkMarkRead.length > 0 ?
                                         <p onClick={handleMarkAllAsRead} className='mark-read'>mark all as read</p> :
                                         <p className='all-viewed'>all mail viewed</p>}
-
                             </div>
                         </div>
 

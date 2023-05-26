@@ -28,7 +28,7 @@ const Contact = () => {
 
 
 
-        fetch('http://localhost:5000/contact-mail', {
+        fetch('https://projitize.vercel.app/contact-mail', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -41,6 +41,14 @@ const Contact = () => {
                 if (data.acknowledged) {
                     form.reset();
                     toast.success('Thanks for the contact. we will reach you soon.', {
+                        duration: 7000,
+                        style: {
+                            minWidth: 'fit-content',
+                        },
+                    })
+                }
+                else {
+                    toast.error('Sorry, mail not sent. Please try again.', {
                         duration: 7000,
                         style: {
                             minWidth: 'fit-content',

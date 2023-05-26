@@ -1,7 +1,5 @@
 import React from 'react';
 import heroImage from '../../images/hero-image-two.svg'
-import heroIcon1 from '../../images/heroIcon1.svg'
-import heroIcon2 from '../../images/heroIcon2.svg'
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import { Link } from 'react-router-dom';
 

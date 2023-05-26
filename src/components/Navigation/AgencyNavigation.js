@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const AgencyNavigation = () => {
     const [navigationOpen, setNavigationOpen] = useState(false);
@@ -11,7 +11,7 @@ const AgencyNavigation = () => {
         <div className='navigation-bg'>
             <div className="navigation">
                 <div className="logo">
-                    <h2>Noobz</h2>
+                    <Link to='/'><h2>Projitize</h2></Link>
                 </div>
                 <div className={`items`}>
                     <NavLink to='/'>Home</NavLink>

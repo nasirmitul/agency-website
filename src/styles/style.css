@@ -184,6 +184,60 @@ swiper-container {
 
 
 
+/* ----------------------------- Spinner ----------------------------- */
+.spinner {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    border: 4.5px solid var(--dark-50);
+    border-radius: 50%;
+    border-color: var(--primary-10) var(--dark-50);
+    animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2.2px;
+    border: inherit;
+    border-radius: 50%;
+}
+
+.spinner::before {
+    border-color: var(--primary-100) var(--dark-5);
+    animation: inherit;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+}
+
+.spinner::after {
+    margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ----------------------------- Section Title ----------------------------- */
 .section-title {
     position: relative;
@@ -2299,6 +2353,162 @@ span.number-count {
 }
 
 
+
+
+
+
+
+
+
+
+/* ------------ Admin Navigation ------------ */
+
+.common-popup-bg {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: var(--black-20);
+    backdrop-filter: blur(3px);
+    left: 0;
+    top: 0;
+    z-index: 20;
+    transform: scale(0);
+    transition: .5s;
+}
+
+.common-popup-bg.open {
+    transform: scale(1);
+}
+
+.common-popup {
+    position: fixed;
+    max-height: calc(100vh - 200px);
+    height: auto;
+    width: min(700px, 100%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-primary);
+    padding: 25px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-10);
+    overflow-y: scroll;
+}
+
+.common-popup .common-popup-heading {
+    color: var(--primary-100);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px !important;
+}
+
+.common-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+
+.common-popup form .input-field {
+    position: relative;
+}
+
+.common-popup form .input-field span {
+    position: absolute;
+    font-size: .7rem;
+    color: var(--white);
+    background: var(--primary-100);
+    padding: 1px 10px;
+    left: 15px;
+    top: -8px;
+    z-index: 2;
+    border-radius: 2px;
+}
+
+.common-popup form input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--dark-50);
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark-100);
+    border-radius: 3px;
+    outline: none;
+    position: relative;
+}
+
+.common-popup form input:focus {
+    border: 1px solid var(--primary-100);
+}
+
+.common-popup form .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.common-popup form .actions div.cancel,
+.common-popup form .actions button.submit {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: .9rem;
+    cursor: pointer;
+    color: var(--dark-85);
+    text-align: center;
+    outline: none;
+    border: none;
+    font-weight: 500;
+}
+
+.common-popup form .actions div.cancel {
+    background: var(--gray);
+}
+
+.common-popup form .actions button.submit {
+    background: var(--primary-100);
+    color: var(--white);
+}
+
+.common-popup form .add-image input {
+    display: none;
+}
+
+.common-popup form .add-image label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 2px dotted var(--dark-50);
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.common-popup form .add-image label img {
+    height: 30px;
+    width: 30px;
+}
+
+.common-popup form .add-image p {
+    color: var(--dark-70);
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.common-popup form .add-image p span {
+    color: var(--dark-85);
+    font-weight: 600;
+}
+
+
+
 /* ------------ Admin Navigation ------------ */
 .admin-side-navigation {
     display: flex;
@@ -2463,6 +2673,7 @@ span.number-count {
 .admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-title-heading {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .admin-common .common-section.number-two-nested .body .data .content-data-nested-two .temp-title,
@@ -2516,8 +2727,8 @@ span.number-count {
 }
 
 .admin-common .common-section.number-two-nested .body .data .content-data-nested-two .content-img {
-    height: 100px;
-    width: 200px;
+    height: 150px;
+    width: 110px;
     margin-top: 5px;
 }
 
@@ -2529,6 +2740,64 @@ span.number-count {
 }
 
 
+
+
+
+/* ------------ Admin Home/add service Section ------------ */
+.common-popup .home-add-service form .home-add-service-selected-image {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.common-popup .home-add-service form .home-add-service-selected-image .image {
+    height: 100%;
+    width: 220px;
+    object-fit: cover;
+}
+
+
+/* ------------ Admin Home/work process section ------------ */
+.common-popup .home-work-process-edit form .input-field.add-point .add {
+    cursor: pointer;
+    background: var(--primary-100);
+    padding: 8px 15px;
+    border-radius: 3px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: white;
+}
+
+.common-popup .home-work-process-edit form .work-process-previous-point {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.common-popup .home-work-process-edit form .work-process-previous-point .point {
+    background: var(--gray);
+    padding: 5px 7px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.common-popup .home-work-process-edit form .work-process-previous-point .point .cancel-button {
+    height: 20px;
+    width: 20px;
+    background: var(--primary-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 2px;
+    line-height: 10px;
+    cursor: pointer;
+}
 
 
 
@@ -2617,6 +2886,21 @@ span.number-count {
 }
 
 
+.common-popup .home-client-says form .home-client-says-selected-image {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.common-popup .home-client-says form .home-client-says-selected-image .image {
+    height: 100%;
+    width: 100px;
+    object-fit: cover;
+}
+
+
 
 /* ------------ Admin About/team Section ------------ */
 .admin-common .admin-about-team .heading .actions .close {
@@ -2692,18 +2976,30 @@ span.number-count {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: 40px;
 }
 
 .admin-common .admin-about-team .body .data .edit-icon .edit {
     cursor: pointer;
 }
 
+.common-popup .about-add-team-member form .about-add-team-member-selected-image {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.common-popup .about-add-team-member form .about-add-team-member-selected-image .image {
+    height: 100%;
+    width: 220px;
+    object-fit: cover;
+}
 
 
 
 /* ------------ Admin Projects Section ------------ */
-
-
 .admin-projects .admin-projects-heading .heading .actions .plus {
     cursor: pointer;
     transform: rotate(45deg);
@@ -2770,7 +3066,122 @@ span.number-count {
 }
 
 
+/* ------------ Admin Projects Section/add project ------------ */
+.common-popup .add-new-project .add-project-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
 
+.common-popup .add-new-project .add-project-heading h4 {
+    color: var(--primary-100);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.common-popup .add-new-project .add-project-heading .cancel-icon {
+    color: var(--dark-85);
+    font-size: 1.3rem;
+    cursor: pointer;
+    width: 25px;
+    height: 25px !important;
+}
+
+.common-popup .add-new-project form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    gap: 20px;
+}
+
+.common-popup .add-new-project form input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--dark-50);
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark-100);
+    border-radius: 3px;
+    outline: none;
+}
+
+.common-popup .add-new-project form input#projectImages {
+    display: none;
+}
+
+.common-popup .add-new-project form .image-label {
+    width: 100% !important;
+    border: 1px solid var(--dark-50);
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.common-popup .add-new-project form .image-label p {
+    color: var(--dark-70);
+    font-size: .9rem;
+    margin-bottom: 10px !important;
+}
+
+.common-popup .add-new-project form .image-label .image-icon {
+    font-size: 1.3rem;
+    color: var(--primary-100);
+}
+
+.common-popup .add-new-project form input:focus {
+    border: 1px solid var(--primary-100);
+}
+
+.common-popup .add-new-project form button {
+    padding: 10px 15px;
+    border: 1px solid var(--dark-50);
+    background: var(--primary-100);
+    color: var(--white);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+.common-popup .add-new-project form .all-selected-images {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.common-popup .add-new-project form .all-selected-images .single-image {
+    position: relative;
+}
+
+.common-popup .add-new-project form .all-selected-images .selected-img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid var(--dark-5);
+    position: relative;
+}
+
+.common-popup .add-new-project form .all-selected-images .remove-img {
+    position: absolute;
+    right: 5px;
+    top: -5px;
+    padding: 5px;
+    background: white;
+    color: var(--primary-100);
+    z-index: 4;
+    font-size: 1.5rem;
+    border-radius: 50%;
+}
 
 
 /* ------------ Admin Contact Section ------------ */
