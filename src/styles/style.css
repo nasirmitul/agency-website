@@ -71,6 +71,9 @@ ul {
     padding: 0 !important;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background: var(--bg-primary) !important;
@@ -177,10 +180,6 @@ swiper-container {
 
 .client-says .heading .actions .left::after,
 .client-says .heading .actions .right::after {} */
-
-
-
-
 
 
 
@@ -325,6 +324,66 @@ swiper-container {
 
 
 
+/* ----------------------------- Go To Top ----------------------------- */
+.go-to-top {
+    position: fixed;
+    right: 40px;
+    bottom: 50px;
+    z-index: 100;
+}
+
+.go-to-top a {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: .5s;
+}
+
+.go-to-top a:hover {
+    transform: translateY(-10px);
+    gap: 28px;
+}
+
+.go-to-top a .line-before {
+    height: 80px;
+    width: 1px;
+    background: var(--dark-85);
+    transition: .5s;
+    transition-delay: .1s;
+}
+
+.go-to-top a:hover .line-before {
+    height: 95px;
+    background: var(--primary-100);
+}
+
+.go-to-top a p {
+    color: var(--dark-85);
+    font-size: .9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transition: .5s;
+}
+
+.go-to-top a:hover p {
+    color: var(--primary-100);
+}
+
+
+
+
+
+
+
+
+
+
+
 /* ----------------------------- Scroll bar ----------------------------- */
 ::-webkit-scrollbar {
     width: 5px;
@@ -358,6 +417,7 @@ swiper-container {
 /* ----------------------------- Navigation ----------------------------- */
 .navigation .hamburger-icon {
     display: none;
+    transition: .5s;
 }
 
 .mobile-items {
@@ -394,11 +454,8 @@ swiper-container {
     bottom: 0;
 }
 
-.navigation .logo h2 {
-    color: var(--primary-100);
-    font-size: 25px;
-    font-weight: 800;
-    text-transform: uppercase;
+.navigation .logo img {
+    width: 30px;
 }
 
 .navigation .items {
@@ -484,22 +541,23 @@ swiper-container {
     color: var(--dark-85);
     line-height: 65px;
     margin-bottom: 20px !important;
+
 }
 
-.hero-section .left-section .heading h1 img.img1 {
-    width: fit-content;
-    display: inline-block;
-    width: 130px;
+.hero-section .left-section .heading h1 span {
     position: relative;
-    top: 20px;
 }
 
-.hero-section .left-section .heading h1 img.img2 {
-    width: fit-content;
-    display: inline-block;
-    width: 50px;
-    position: relative;
-    top: 10px;
+.hero-section .left-section .heading h1 span.color {
+    color: var(--primary-100);
+}
+
+
+.hero-section .left-section .heading h1 span img {
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 250px;
 }
 
 .hero-section .left-section .description {
@@ -507,6 +565,7 @@ swiper-container {
     color: var(--dark-100);
     font-weight: 400;
     margin-bottom: 40px !important;
+    white-space: pre-line;
 }
 
 .hero-section .left-section .cta {
@@ -652,6 +711,7 @@ swiper-container {
     display: flex;
     align-items: flex-start;
     position: relative;
+    cursor: pointer;
 }
 
 .service-provide .contents .service::before,
@@ -707,6 +767,7 @@ swiper-container {
     font-weight: 400;
     margin-bottom: 40px !important;
     margin-top: 35px !important;
+    white-space: pre-line;
 }
 
 .service-provide .contents .service .service-name-info .info .lets-work {
@@ -786,10 +847,6 @@ swiper-container {
 
 
 
-
-
-
-
 /* ----------------------------- Our Work Process ----------------------------- */
 .work-process {
     background-image: url('../images/triangles.svg');
@@ -839,6 +896,7 @@ swiper-container {
     color: var(--dark-85);
     line-height: 22px;
     margin-bottom: 15px !important;
+    white-space: pre-line;
 }
 
 .work-process .process-steps .process .process-detail .process-desc {
@@ -846,6 +904,7 @@ swiper-container {
     font-weight: 400;
     color: var(--dark-85);
     margin-bottom: 15px !important;
+    white-space: pre-line;
 }
 
 .work-process .process-steps .process .process-detail .steps li {
@@ -889,6 +948,8 @@ swiper-container {
     display: flex;
     align-items: flex-start;
     position: relative;
+    cursor: pointer;
+    white-space: pre-line;
 }
 
 .faqs .contents .faq::before,
@@ -1009,6 +1070,7 @@ swiper-container {
     color: var(--dark-85);
     line-height: 22px;
     margin-bottom: 15px !important;
+    white-space: pre-line;
 }
 
 .choose-us .content .left-content .desc {
@@ -1016,6 +1078,7 @@ swiper-container {
     font-weight: 400;
     color: var(--dark-85);
     margin-bottom: 15px !important;
+    white-space: pre-line;
 }
 
 .choose-us .content .left-content .steps li {
@@ -1145,6 +1208,7 @@ swiper-container {
     color: var(--dark-85);
     font-size: 1rem;
     font-weight: 400;
+    white-space: pre-line;
 }
 
 .client-says .content .action {
@@ -1242,6 +1306,10 @@ swiper-container {
     font-size: 25px;
     font-weight: 800;
     text-transform: uppercase;
+}
+
+.footer .heading .logo a img {
+    width: 100px;
 }
 
 .footer .heading .get-started {
@@ -1529,11 +1597,13 @@ swiper-container {
     font-weight: 400;
     line-height: 30px;
     margin-bottom: 20px !important;
+    white-space: pre-line;
 }
 
 .why-different section .points .point .desc {
     color: var(--dark-70);
     font-size: 1rem;
+    white-space: pre-line;
 }
 
 
@@ -1602,11 +1672,13 @@ swiper-container {
     font-weight: 400;
     line-height: 30px;
     margin-bottom: 20px !important;
+    white-space: pre-line;
 }
 
 .we-value section .points .point .desc {
     color: var(--dark-70);
     font-size: 1rem;
+    white-space: pre-line;
 }
 
 
@@ -1640,6 +1712,7 @@ swiper-container {
     display: flex;
     justify-content: center;
     color: var(--dark-70);
+    white-space: pre-line;
 }
 
 
@@ -1663,6 +1736,7 @@ swiper-container {
 .our-team .team-info .team-data .team-member img {
     width: 100%;
     height: 100%;
+    max-height: 600px;
     object-fit: cover;
     cursor: pointer;
     border-radius: 5px;
@@ -1788,6 +1862,7 @@ swiper-container {
     color: var(--dark-85);
     width: min(650px, 90%);
     line-height: 70px;
+    white-space: pre-line;
 }
 
 .projects-heading .desc {
@@ -1796,6 +1871,7 @@ swiper-container {
     font-weight: 200;
     color: var(--dark-100);
     width: min(750px, 100%);
+    white-space: pre-line;
 }
 
 .projects-heading .scroll {
@@ -1890,6 +1966,10 @@ swiper-container {
     border-radius: 50%;
 }
 
+.all-projects .project-data .project {
+    background: red;
+}
+
 .all-projects .project .project-img {
     height: 350px;
     width: 550px;
@@ -1982,6 +2062,7 @@ swiper-container {
     color: var(--dark-100);
     width: min(750px, 100%);
     text-align: center;
+    white-space: pre-line;
 }
 
 .contact-form {
@@ -2112,6 +2193,12 @@ swiper-container {
     margin-bottom: 15px !important;
 }
 
+.contact .possible-ways .ways .ways-detail .contact-way {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .contact .possible-ways .ways .ways-detail .contact-way li {
     color: var(--dark-85);
     font-size: .9rem;
@@ -2125,99 +2212,6 @@ swiper-container {
 
 .contact .possible-ways .ways .ways-detail .contact-way li:hover {
     transform: translateX(8px);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ----------------------------- Responsive Design ----------------------------- */
-
-@media only screen and (max-width: 1000px) {
-
-    .navigation .items {
-        display: none;
-    }
-
-    .navigation .cta {
-        display: none;
-    }
-
-    .navigation .hamburger-icon {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .navigation .hamburger-icon .line-one,
-    .navigation .hamburger-icon .line-two {
-        height: 1px;
-        width: 45px;
-        background: var(--dark-85);
-        transition: .5s;
-    }
-
-    .navigation .hamburger-icon.open {
-        gap: 0px;
-    }
-
-    .navigation .hamburger-icon .line-two {
-        position: relative;
-        top: -1px;
-    }
-
-    .mobile-items {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: calc(100vh - 88px);
-        width: 0%;
-        background: var(--bg-primary);
-        left: 0;
-        top: 88px;
-        z-index: 10;
-        gap: 10px;
-        transition: .5s;
-    }
-
-    .mobile-items a {
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: var(--dark-70);
-        transition: .5s;
-        position: relative;
-        display: none;
-        transition: .5s;
-        transition-delay: .3s;
-    }
-
-    .mobile-items.open {
-        width: 100%;
-    }
-
-    .mobile-items.open a {
-        display: block;
-    }
 }
 
 
@@ -2426,7 +2420,8 @@ span.number-count {
     border-radius: 2px;
 }
 
-.common-popup form input {
+.common-popup form input,
+.common-popup form textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid var(--dark-50);
@@ -2439,7 +2434,12 @@ span.number-count {
     position: relative;
 }
 
-.common-popup form input:focus {
+.common-popup form textarea {
+    height: 120px;
+}
+
+.common-popup form input:focus,
+.common-popup form textarea:focus {
     border: 1px solid var(--primary-100);
 }
 
@@ -2544,6 +2544,8 @@ span.number-count {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    position: relative;
+    z-index: 100;
 }
 
 .admin-side-navigation .navigation-items ul li a.active,
@@ -2697,6 +2699,7 @@ span.number-count {
 .admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-two-body {
     font-size: 14px;
     color: var(--dark-70);
+    /* white-space: pre-line; */
 }
 
 .admin-common .common-section.number-two-nested .body .data .content-data-nested-two .nested-others-items {
@@ -3150,7 +3153,7 @@ span.number-count {
     border-radius: 3px;
 }
 
-.common-popup .add-new-project form .all-selected-images {
+.common-popup form .all-selected-images {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
@@ -3158,11 +3161,11 @@ span.number-count {
     position: relative;
 }
 
-.common-popup .add-new-project form .all-selected-images .single-image {
+.common-popup form .all-selected-images .single-image {
     position: relative;
 }
 
-.common-popup .add-new-project form .all-selected-images .selected-img {
+.common-popup form .all-selected-images .selected-img {
     height: 80px;
     width: 80px;
     object-fit: cover;
@@ -3171,7 +3174,7 @@ span.number-count {
     position: relative;
 }
 
-.common-popup .add-new-project form .all-selected-images .remove-img {
+.common-popup form .all-selected-images .remove-img {
     position: absolute;
     right: 5px;
     top: -5px;
@@ -3181,6 +3184,14 @@ span.number-count {
     z-index: 4;
     font-size: 1.5rem;
     border-radius: 50%;
+}
+
+
+/* ------------ Admin Projects Section/edit project ------------ */
+.common-popup form .input-field.edit-project-prev-images {
+    padding: 25px 15px 8px 15px;
+    border: 1px solid var(--dark-50);
+    border-radius: 3px;
 }
 
 
@@ -3357,4 +3368,96 @@ span.number-count {
     color: var(--dark-85);
     line-height: 20px;
     white-space: pre-line;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- Responsive Design ----------------------------- */
+
+@media only screen and (max-width: 1000px) {
+    .navigation .items {
+        display: none;
+    }
+
+    .navigation .cta {
+        display: none;
+    }
+
+    .navigation .hamburger-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navigation .hamburger-icon .line-one,
+    .navigation .hamburger-icon .line-two {
+        height: 1px;
+        width: 45px;
+        background: var(--dark-85);
+        transition: .5s;
+    }
+
+    .navigation .hamburger-icon.open {
+        gap: 0px;
+    }
+
+    .navigation .hamburger-icon .line-two {
+        position: relative;
+        top: -1px;
+    }
+
+    .mobile-items {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 0;
+        width: 100%;
+        background: var(--bg-primary);
+        left: 0;
+        top: 88px;
+        z-index: 10;
+        gap: 10px;
+        transition: .5s;
+    }
+
+    .mobile-items a {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--dark-70);
+        transition: .5s;
+        position: relative;
+        display: none;
+        transition: .5s;
+        transition-delay: .3s;
+    }
+
+    .mobile-items.open {
+        height: calc(100vh - 88px);
+    }
+
+    .mobile-items.open a {
+        display: block;
+    }
 }

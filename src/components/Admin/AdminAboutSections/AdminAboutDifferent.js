@@ -81,13 +81,12 @@ const AdminAboutDifferent = () => {
 
                             <div className="input-field">
                                 <span>Title</span>
-                                <input type="text" placeholder='Title' name='title' defaultValue={openEditDifferent?.title} required />
+                                <textarea type="text" placeholder='Title' name='title' defaultValue={openEditDifferent?.title} required ></textarea>
                             </div>
                             <div className="input-field">
                                 <span>Description</span>
-                                <input type="text" placeholder='Description' name='description' defaultValue={openEditDifferent?.description} required />
+                                <textarea type="text" placeholder='Description' name='description' defaultValue={openEditDifferent?.description} required ></textarea>
                             </div>
-
                             <div className="actions">
                                 <div onClick={() => setOpenEditDifferent(false)} className='cancel'>Cancel</div>
                                 <button className='submit' type='submit'>Submit</button>

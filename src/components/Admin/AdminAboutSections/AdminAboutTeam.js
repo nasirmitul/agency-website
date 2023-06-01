@@ -480,7 +480,7 @@ const AdminAboutTeam = () => {
                             <input type="text" placeholder='Member Position (ex: CEO)' name='position' required />
                             <input type="text" placeholder='Member Role (ex: mobile app developer)' name='role' required />
 
-                            <input type="number" placeholder='Serial' name='serial' min='1' defaultValue={allTeamMembers.length + 1} required />
+                            <input type="number" placeholder='Serial' name='serial' min='1' required />
 
                             <input type="url" placeholder='Portfolio' name='portfolio' />
                             <input type="url" placeholder='Github' name='github' />
@@ -546,7 +546,7 @@ const AdminAboutTeam = () => {
 
             <div className="admin-about-team common-section">
                 <div className="heading">
-                    <p className="title">Our Amazing Team</p>
+                    <p className="title">Our Amazing Team <span className='number-count'>{allTeamMembers.length}</span></p>
                     <div className="actions">
                         <img onClick={() => setOpenAddTeamMember(true)} src={plus} alt="" className="close" />
                     </div>

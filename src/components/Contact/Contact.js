@@ -1,13 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import SectionTitle from '../Utilities/SectionTitle';
 import plane from '../../images/plane.svg'
 import scrollToTop from '../Utilities/ScrollToTop';
 import { toast } from 'react-hot-toast';
+import GoToTop from '../../layouts/GoToTop';
 
 
 const Contact = () => {
     scrollToTop();
+    const [copiedText, setCopiedText] = useState('');
+    const [contactHeading, setContactHeading] = useState([]);
+    const [contactThrough, setContactThrough] = useState([]);
+    const [contactSocial, setContactSocial] = useState([]);
+
+
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/contact/contact-through')
+            .then(res => res.json())
+            .then(data => {
+                setContactThrough(data);
+            })
+    }, [])
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/contact/social')
+            .then(res => res.json())
+            .then(data => {
+                setContactSocial(data);
+            })
+    }, [])
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/contact/heading')
+            .then(res => res.json())
+            .then(data => {
+                setContactHeading(data);
+            })
+    }, [])
+
+
+
+
+
 
     const handleContactForm = (e) => {
         e.preventDefault();
@@ -60,15 +96,31 @@ const Contact = () => {
     }
 
 
+    const handleCopyText = (text, field) => {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                setCopiedText(text);
+                toast.success(`${field} ${text} Copied to clipboard`, {
+                    duration: 7000,
+                    style: {
+                        minWidth: 'fit-content',
+                    },
+                })
+            })
+            .catch((error) => {
+                toast.error(error)
+            });
+    };
 
 
     return (
         <div className='container pt-110'>
+            <GoToTop></GoToTop>
             <div className="contact">
                 <div className="contact-heading">
                     <div className="heading-texts">
-                        <h2 className="title">Let’s Make it Happen Together</h2>
-                        <p className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                        <h2 className="title">{contactHeading.title}</h2>
+                        <p className="desc">{contactHeading.description}</p>
                     </div>
                 </div>
 
@@ -107,9 +159,10 @@ const Contact = () => {
                             <div className="ways-detail">
                                 <h5 className="ways-title">Contact Through</h5>
                                 <ul className="contact-way">
-                                    <li>email</li>
-                                    <li>phone</li>
-                                    <li>whatsapp</li>
+                                    <li onClick={() => handleCopyText(contactThrough.email, 'Email Address')}>Email</li>
+                                    <li onClick={() => handleCopyText(contactThrough.phone, 'Phone Number')}>Phone</li>
+                                    <a href={`https://wa.me/${contactThrough.whatsapp}`} target='_blank'><li>WhatsApp</li></a>
+                                    <a href={`https://telegram.me/${contactThrough.telegram}`} target='_blank'><li>Telegram</li></a>
                                 </ul>
                             </div>
                         </div>
@@ -121,9 +174,9 @@ const Contact = () => {
                             <div className="ways-detail">
                                 <h5 className="ways-title">Social</h5>
                                 <ul className="contact-way">
-                                    <li>facebook</li>
-                                    <li>instagram</li>
-                                    <li>linkedin</li>
+                                    <a href={contactSocial.linkedin} target='_blank'><li>linkedin</li></a>
+                                    <a href={contactSocial.facebook} target='_blank'><li>facebook</li></a>
+                                    <a href={contactSocial.instagram} target='_blank'><li>instagram</li></a>
                                 </ul>
                             </div>
                         </div>

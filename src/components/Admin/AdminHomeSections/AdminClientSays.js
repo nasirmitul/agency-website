@@ -291,8 +291,7 @@ const AdminClientSays = () => {
                         <form onSubmit={handleClientSaysForm} action="">
                             <input type="text" placeholder='Name' name='name' required />
                             <input type="text" placeholder='Role' name='role' required />
-                            <input type="text" placeholder='Message' name='message' required />
-
+                            <textarea type="text" placeholder='Message' name='message' required></textarea>
                             {
                                 selectedClientImage?.length > 0 &&
                                 <div className='home-client-says-selected-image'>
@@ -335,7 +334,7 @@ const AdminClientSays = () => {
                             </div>
                             <div className="input-field">
                                 <span>Message</span>
-                                <input type="text" placeholder='Message' name='message' defaultValue={editReview?.message} required />
+                                <textarea type="text" placeholder='Message' name='message' defaultValue={editReview?.message} required></textarea>
                             </div>
 
                             <div className='home-client-says-selected-image'>

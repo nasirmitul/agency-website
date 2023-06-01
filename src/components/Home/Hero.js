@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import heroImage from '../../images/hero-image-two.svg'
+import wordMark from '../../images/wordMark.svg'
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
+
+
+    const [hero, setHero] = useState([]);
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/home-data/hero')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setHero(data)
+            })
+    }, [])
+
     return (
         <div className='container'>
             <div className="hero-section pt-110">
@@ -12,28 +25,25 @@ const Hero = () => {
                     <div className="left-content">
                         <div className="heading">
                             <h1>
-                                Lorem ipsum dolor sit amet, con se
-                                {/* <img className='img1' src={heroIcon1} alt="" /> */}
-                                cte turadipiscing elit, sed do eiusmod.
-                                {/* <img className='img2' src={heroIcon2} alt="" /> */}
+                                Unleash Digital <span className='color'>Brilliance</span>. Your <span className='color'> Gateway</span> to Custom Apps, Stunning Websites, and Striking Designs.
                             </h1>
                         </div>
-                        <p className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                        <Link to='contact-us'>
+                        <p className="description">{hero.description}</p>
+                        <Link to='/projects'>
                             <div className="cta">
-                                <button className="custom-button">Contact Us</button>
+                                <button className="custom-button">Our Works</button>
                                 <div className="right-triangle"></div>
                             </div>
                         </Link>
                         <div className="numbers">
                             <div className="number-one">
-                                <h2 className="number">20</h2>
+                                <h2 className="number">{hero.projects}</h2>
                                 <p className="number-info">total <br />projects</p>
                             </div>
                             <div className="divider"></div>
                             <div className="number-two">
-                                <h2 className="number">03</h2>
-                                <p className="number-info">months <br />of experience</p>
+                                <h2 className="number">{hero.experience}</h2>
+                                <p className="number-info">years <br />of experience</p>
                             </div>
                         </div>
                     </div>
@@ -41,8 +51,6 @@ const Hero = () => {
                 <section className="right-section">
                     <img src={heroImage} alt="" />
                 </section>
-
-
 
                 <PageTopStyleBg></PageTopStyleBg>
             </div>

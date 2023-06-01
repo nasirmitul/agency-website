@@ -14,7 +14,37 @@ const AdminContact = () => {
     const [deleteMail, setDeleteMail] = useState(null);
     const [checkMarkRead, setCheckMarkRead] = useState([])
     const [contactMails, setContactMails] = useState([])
+    const [openEditHeading, setOpenEditHeading] = useState(false);
+    const [openEditContactThrough, setOpenEditContactThrough] = useState(false);
+    const [openEditSocial, setOpenEditSocial] = useState(false);
 
+    const [contactHeading, setContactHeading] = useState([]);
+    const [contactContactThrough, setContactContactThrough] = useState([]);
+    const [contactSocial, setContactSocial] = useState([]);
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/contact/contact-through')
+            .then(res => res.json())
+            .then(data => {
+                setContactContactThrough(data);
+            })
+    }, [refetch])
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/contact/social')
+            .then(res => res.json())
+            .then(data => {
+                setContactSocial(data);
+            })
+    }, [refetch])
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/contact/heading')
+            .then(res => res.json())
+            .then(data => {
+                setContactHeading(data);
+            })
+    }, [refetch])
 
     useEffect(() => {
         fetch('https://projitize.vercel.app/contact-mail')
@@ -24,7 +54,6 @@ const AdminContact = () => {
                 setContactMails(data);
             })
     }, [refetch])
-
 
     useEffect(() => {
         fetch('https://projitize.vercel.app/contact-mail/unread')
@@ -115,6 +144,118 @@ const AdminContact = () => {
             })
     }
 
+    const handleHeadingUpdate = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        toast.loading('Updating contact heading data ...')
+
+        const title = form.title.value;
+        const description = form.description.value;
+        const updateHeading = {
+            title,
+            description
+        }
+
+        fetch(`https://projitize.vercel.app/contact/update-heading`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateHeading)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount >= 1) {
+                    setRefetch(!refetch);
+                    setOpenEditHeading(false)
+                    toast.dismiss();
+                    toast.success('Data Updated')
+                }
+                else {
+                    setOpenEditHeading(true)
+                    toast.dismiss();
+                    toast.error('Sorry, data not updated')
+                }
+            })
+    }
+
+    const handleContactThroughUpdate = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        toast.loading('Updating contact through data ...')
+
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const whatsapp = form.whatsapp.value;
+        const telegram = form.telegram.value;
+        const updateContactThrough = {
+            email,
+            phone,
+            whatsapp,
+            telegram,
+        }
+
+        fetch(`https://projitize.vercel.app/contact/update-contact-through`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateContactThrough)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount >= 1) {
+                    setRefetch(!refetch);
+                    setOpenEditContactThrough(false)
+                    toast.dismiss();
+                    toast.success('Data Updated')
+                }
+                else {
+                    setOpenEditContactThrough(true)
+                    toast.dismiss();
+                    toast.error('Sorry, data not updated')
+                }
+            })
+    }
+
+    const handleSocialUpdate = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        toast.loading('Updating contact social data ...')
+
+        const linkedin = form.linkedin.value;
+        const facebook = form.facebook.value;
+        const instagram = form.instagram.value;
+
+        const updateSocial = {
+            linkedin,
+            facebook,
+            instagram
+        }
+
+        fetch(`https://projitize.vercel.app/contact/update-social`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateSocial)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount >= 1) {
+                    setRefetch(!refetch);
+                    setOpenEditSocial(false)
+                    toast.dismiss();
+                    toast.success('Data Updated')
+                }
+                else {
+                    setOpenEditSocial(true)
+                    toast.dismiss();
+                    toast.error('Sorry, data not updated')
+                }
+            })
+    }
+
     return (
         <div>
             <div className={`view-mail-popup-bg ${openMail && 'open'}`}>
@@ -141,8 +282,6 @@ const AdminContact = () => {
                 </div>
             </div>
 
-
-
             <div className={`confirm-popup ${deleteMail && 'open'}`}>
                 <div className="confirm-box">
                     <p className="message">Are you sure you want to <span>delete</span>?</p>
@@ -153,7 +292,84 @@ const AdminContact = () => {
                 </div>
             </div>
 
+            <div className={`common-popup-bg ${openEditHeading && 'open'}`}>
+                <div className="common-popup">
+                    <div className="update-contact-heading">
+                        <h4 className="common-popup-heading">Update Contact Heading</h4>
+                        <form onSubmit={handleHeadingUpdate} action="">
+                            <div className="input-field">
+                                <span>Title</span>
+                                <input type="text" defaultValue={contactHeading?.title} placeholder='Title' name='title' required />
+                            </div>
+                            <div className="input-field">
+                                <span>Description</span>
+                                <textarea type="text" defaultValue={contactHeading?.description} placeholder='Description' name='description' required ></textarea>
+                            </div>
 
+                            <div className="actions">
+                                <div onClick={() => setOpenEditHeading(false)} className='cancel'>Cancel</div>
+                                <button className='submit' type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div className={`common-popup-bg ${openEditContactThrough && 'open'}`}>
+                <div className="common-popup">
+                    <div className="update-contact-contact-heading">
+                        <h4 className="common-popup-heading">Update Contact Through Section</h4>
+                        <form onSubmit={handleContactThroughUpdate} action="">
+                            <div className="input-field">
+                                <span>Email</span>
+                                <input type="email" placeholder='Email' defaultValue={contactContactThrough?.email} name='email' required />
+                            </div>
+                            <div className="input-field">
+                                <span>Phone</span>
+                                <input type="tel" placeholder='Phone' defaultValue={contactContactThrough?.phone} name='phone' required />
+                            </div>
+                            <div className="input-field">
+                                <span>WhatsApp</span>
+                                <input type="tel" placeholder='WhatsApp' defaultValue={contactContactThrough?.whatsapp} name='whatsapp' required />
+                            </div>
+                            <div className="input-field">
+                                <span>Telegram</span>
+                                <input type="tel" placeholder='Telegram' defaultValue={contactContactThrough?.telegram} name='telegram' required />
+                            </div>
+                            <div className="actions">
+                                <div onClick={() => setOpenEditContactThrough(false)} className='cancel'>Cancel</div>
+                                <button className='submit' type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div className={`common-popup-bg ${openEditSocial && 'open'}`}>
+                <div className="common-popup">
+                    <div className="update-contact-contact-heading">
+                        <h4 className="common-popup-heading">Update Contact Social Section</h4>
+                        <form onSubmit={handleSocialUpdate} action="">
+                            <div className="input-field">
+                                <span>LinkedIn</span>
+                                <input type="url" placeholder='LinkedIn' defaultValue={contactSocial?.linkedin} name='linkedin' required />
+                            </div>
+                            <div className="input-field">
+                                <span>FaceBook</span>
+                                <input type="url" placeholder='FaceBook' defaultValue={contactSocial?.facebook} name='facebook' required />
+                            </div>
+                            <div className="input-field">
+                                <span>Instagram</span>
+                                <input type="url" placeholder='Instagram' defaultValue={contactSocial?.instagram} name='instagram' required />
+                            </div>
+                            <div className="actions">
+                                <div onClick={() => setOpenEditSocial(false)} className='cancel'>Cancel</div>
+                                <button className='submit' type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
             <div className="admin-container">
@@ -164,19 +380,17 @@ const AdminContact = () => {
                         <div className="heading">
                             <p className="title">Heading</p>
                             <div className="actions">
-                                <img src={edit} alt="" className="edit" />
+                                <img onClick={() => setOpenEditHeading(true)} src={edit} alt="" className="edit" />
                             </div>
                         </div>
-
-
                         <div className="body">
                             <div className="data">
                                 <p className="content-title">Title:</p>
-                                <p className="content-data">Let's make it happen together</p>
+                                <p className="content-data">{contactHeading.title || 'loading ...'}</p>
                             </div>
                             <div className="data">
                                 <p className="content-title">Description:</p>
-                                <p className="content-data">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto deleniti optio perspiciatis atque nemo. Officia officiis dolore iure in ipsam veniam placeat maiores ipsum labore? Optio quasi distinctio molestias laudantium.</p>
+                                <p className="content-data">{contactHeading.description || 'loading ...'}</p>
                             </div>
                         </div>
                     </div>
@@ -187,22 +401,26 @@ const AdminContact = () => {
                         <div className="heading">
                             <p className="title">Contact Though</p>
                             <div className="actions">
-                                <img src={edit} alt="" className="edit" />
+                                <img onClick={() => setOpenEditContactThrough(true)} src={edit} alt="" className="edit" />
                             </div>
                         </div>
 
                         <div className="body">
                             <div className="data">
                                 <p className="content-title">Email:</p>
-                                <a href='' className="content-data">niloysarker@gmail.com</a>
+                                <a href='' className="content-data">{contactContactThrough.email || 'loading ..'}</a>
                             </div>
                             <div className="data">
                                 <p className="content-title">Phone:</p>
-                                <a href='' className="content-data">01700000000</a>
+                                <a href='' className="content-data">{contactContactThrough.phone || 'loading ..'}</a>
                             </div>
                             <div className="data">
                                 <p className="content-title">WhatsApp:</p>
-                                <a href='' className="content-data">01700000000</a>
+                                <a href='' className="content-data">{contactContactThrough.whatsapp || 'loading ..'}</a>
+                            </div>
+                            <div className="data">
+                                <p className="content-title">Telegram:</p>
+                                <a href='' className="content-data">{contactContactThrough.telegram || 'loading ..'}</a>
                             </div>
                         </div>
                     </div>
@@ -210,32 +428,27 @@ const AdminContact = () => {
                         <div className="heading">
                             <p className="title">Social</p>
                             <div className="actions">
-                                <img src={edit} alt="" className="edit" />
+                                <img onClick={() => setOpenEditSocial(true)} src={edit} alt="" className="edit" />
                             </div>
                         </div>
-
                         <div className="body">
                             <div className="data">
+                                <p className="content-title">LinkedIn:</p>
+                                <a href='' className="content-data">{contactSocial.linkedin || 'loading ..'}</a>
+                            </div>
+                            <div className="data">
                                 <p className="content-title">Facebook:</p>
-                                <a href='' className="content-data">facebook.com/niloysarker</a>
+                                <a href='' className="content-data">{contactSocial.facebook || 'loading ..'}</a>
                             </div>
                             <div className="data">
                                 <p className="content-title">Instagram:</p>
-                                <a href='' className="content-data">instagram.com/niloysarker</a>
-                            </div>
-                            <div className="data">
-                                <p className="content-title">Twitter:</p>
-                                <a href='' className="content-data">twitter.com/niloysarker</a>
+                                <a href='' className="content-data">{contactSocial.instagram || 'loading ..'}</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="admin-contact admin-common">
-
-
-
-
                     <div className="admin-contact-heading common-section">
                         <div className="heading">
                             <p className="title">Contact Emails <span className='number-count'>{(contactMails.length + checkMarkRead.length) - contactMails.length} / {contactMails.length}</span></p>

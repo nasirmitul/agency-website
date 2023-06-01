@@ -168,7 +168,7 @@ const AdminFAQ = () => {
                         <h4 className="common-popup-heading">Add new FAQ</h4>
                         <form onSubmit={handleAddNewFAQ} action="">
                             <input type="text" placeholder='Title' name='title' required />
-                            <input type="text" placeholder='Description' name='description' required />
+                            <textarea type="text" placeholder='Description' name='description' required></textarea>
                             <div className="actions">
                                 <div onClick={() => setOpenAddNewFAQ(false)} className='cancel'>Cancel</div>
                                 <button className='submit' type='submit'>Submit</button>
@@ -190,7 +190,7 @@ const AdminFAQ = () => {
                             </div>
                             <div className="input-field">
                                 <span>Description</span>
-                                <input type="text" placeholder='Description' name='description' defaultValue={editFAQ?.description} required />
+                                <textarea type="text" placeholder='Description' name='description' defaultValue={editFAQ?.description} required ></textarea>
                             </div>
 
                             <div className="actions">

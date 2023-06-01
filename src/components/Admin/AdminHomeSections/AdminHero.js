@@ -74,7 +74,7 @@ const AdminHero = () => {
                             </div>
                             <div className="input-field">
                                 <span>Description</span>
-                                <input type="text" defaultValue={hero.description} placeholder='Description' name='description' required />
+                                <textarea type="text" defaultValue={hero.description} placeholder='Description' name='description' required ></textarea>
                             </div>
                             <div className="input-field">
                                 <span>Projects</span>

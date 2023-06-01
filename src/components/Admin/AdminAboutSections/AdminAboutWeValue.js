@@ -75,11 +75,11 @@ const AdminAboutWeValue = () => {
 
                             <div className="input-field">
                                 <span>Title</span>
-                                <input type="text" placeholder='Title' name='title' defaultValue={openWeValue?.title} required />
+                                <textarea  type="text" placeholder='Title' name='title' defaultValue={openWeValue?.title} required></textarea>
                             </div>
                             <div className="input-field">
                                 <span>Description</span>
-                                <input type="text" placeholder='Description' name='description' defaultValue={openWeValue?.description} required />
+                                <textarea type="text" placeholder='Description' name='description' defaultValue={openWeValue?.description} required></textarea>
                             </div>
 
                             <div className="actions">

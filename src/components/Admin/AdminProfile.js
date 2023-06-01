@@ -4,7 +4,10 @@ import AdminPageTitle from '../Utilities/AdminPageTitle';
 const AdminProfile = () => {
     return (
         <div className='admin-container'>
-        <AdminPageTitle title='Admin Profile Section'></AdminPageTitle>
+            <AdminPageTitle title='Admin Profile Section'></AdminPageTitle>
+            <div className="change-logo">
+                
+            </div>
         </div>
     );
 };

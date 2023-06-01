@@ -8,11 +8,13 @@ import ChooseUs from '../components/Home/ChooseUs';
 import ClientSays from '../components/Home/ClientSays';
 import GotAProject from '../components/Home/GotAProject';
 import scrollToTop from '../components/Utilities/ScrollToTop';
+import GoToTop from './GoToTop';
 
 const HomeLayout = () => {
     scrollToTop();
     return (
         <div>
+            <GoToTop></GoToTop>
             <Hero></Hero>
             <Achievements></Achievements>
             <ServiceProvide></ServiceProvide>

@@ -279,7 +279,7 @@ const AdminServiceProvide = () => {
                         <h4 className="common-popup-heading">Add new service</h4>
                         <form onSubmit={handleAddService} action="">
                             <input type="text" placeholder='Title' name='title' required />
-                            <input type="text" placeholder='Description' name='description' required />
+                            <textarea type="text" placeholder='Description' name='description' required></textarea>
 
                             {
                                 selectedAddServiceImage?.length > 0 &&
@@ -322,7 +322,7 @@ const AdminServiceProvide = () => {
                             </div>
                             <div className="input-field">
                                 <span>Description</span>
-                                <input type="text" placeholder='Description' name='description' defaultValue={openEditService?.description} required />
+                                <textarea type="text" placeholder='Description' name='description' defaultValue={openEditService?.description} required></textarea>
                             </div>
 
                             <div className='home-add-service-selected-image'>

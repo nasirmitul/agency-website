@@ -114,12 +114,12 @@ const AdminWhyChooseUs = () => {
 
                             <div className="input-field">
                                 <span>Title</span>
-                                <input type="text" placeholder='Title' name='title' defaultValue={openEditChooseUs?.title} required />
+                                <textarea type="text" placeholder='Title' name='title' defaultValue={openEditChooseUs?.title} required></textarea>
                             </div>
 
                             <div className="input-field">
                                 <span>Description</span>
-                                <input type="text" placeholder='Description' name='description' defaultValue={openEditChooseUs?.description} required />
+                                <textarea type="text" placeholder='Description' name='description' defaultValue={openEditChooseUs?.description} required ></textarea>
                             </div>
 
                             <div className="input-field add-point">
@@ -147,7 +147,6 @@ const AdminWhyChooseUs = () => {
                     </div>
                 </div>
             </div>
-
 
 
             <div className="admin-home-why-choose-use common-section">

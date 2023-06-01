@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const faqs = [
     {
@@ -27,6 +27,17 @@ const FAQ = () => {
 
     const [viewFaq, setViewFaq] = useState(null);
 
+    const [allFAQ, setAllFAQ] = useState([]);
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/home/all-faq')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setAllFAQ(data)
+            })
+    }, [])
+
     const toggle = (i) => {
         if (viewFaq === i) {
             return setViewFaq(null)
@@ -43,19 +54,19 @@ const FAQ = () => {
 
                 <div className="contents">
                     {
-                        faqs.map((faq, i) => (
-                            <div key={faq.id} className="faq">
+                        allFAQ.map((faq, i) => (
+                            <div onClick={() => toggle(i)} key={faq._id} className="faq">
                                 <div className="count">
                                     <p>{i + 1}/</p>
                                 </div>
                                 <div className="faq-name-info">
-                                    <p className="name">{faq.faqName}</p>
+                                    <p className="name">{faq.title}</p>
                                     <div className={`info ${viewFaq === i ? 'show' : ''}`}>
-                                        <p className="detail">{faq.faqDetail}</p>
+                                        <p className="detail">{faq.description}</p>
                                     </div>
                                 </div>
                                 <div className="action">
-                                    <p onClick={() => toggle(i)} className={`more-info ${viewFaq === i ? 'show' : ''}`}>+</p>
+                                    <p className={`more-info ${viewFaq === i ? 'show' : ''}`}>+</p>
                                 </div>
                             </div>
                         ))

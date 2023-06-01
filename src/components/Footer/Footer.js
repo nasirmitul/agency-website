@@ -3,6 +3,7 @@ import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import circles from '../../images/circles.svg'
 import rightArrowWhite from '../../images/rightArrowWhite.svg'
 import { Link } from 'react-router-dom';
+import projitize from '../../images/logoFull.svg'
 
 const Footer = () => {
     return (
@@ -14,7 +15,7 @@ const Footer = () => {
 
                 <div className="heading">
                     <div className="logo">
-                        <h3>Noobz</h3>
+                        <Link to='/'><img src={projitize} alt="" /></Link>
                     </div>
                     <div className="get-started">
                         <h3>Ready to get started?</h3>
@@ -63,7 +64,7 @@ const Footer = () => {
                 </div>
 
 
-                <p className="copyright">&copy; 2023, Noobz, All rights Reserved</p>
+                <p className="copyright">&copy; 2023, Projitize, All rights Reserved</p>
             </div>
         </div>
     );

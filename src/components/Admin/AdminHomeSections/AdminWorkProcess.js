@@ -28,8 +28,6 @@ const AdminWorkProcess = () => {
             allPoint = [...process.processPoints]
             setHoldPrevPoint(allPoint)
         }
-
-
     }
 
     const addNewServicePoint = () => {
@@ -120,12 +118,12 @@ const AdminWorkProcess = () => {
 
                             <div className="input-field">
                                 <span>Title</span>
-                                <input type="text" placeholder='Title' name='title' defaultValue={openEditWorkProcess?.title} required />
+                                <textarea type="text" placeholder='Title' name='title' defaultValue={openEditWorkProcess?.title} required ></textarea>
                             </div>
 
                             <div className="input-field">
                                 <span>Description</span>
-                                <input type="text" placeholder='Description' name='description' defaultValue={openEditWorkProcess?.description} required />
+                                <textarea  type="text" placeholder='Description' name='description' defaultValue={openEditWorkProcess?.description} required ></textarea>
                             </div>
 
                             <div className="input-field add-point">

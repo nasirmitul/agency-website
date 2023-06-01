@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
+import logo from '../../images/logo.svg'
+
 const AgencyNavigation = () => {
     const [navigationOpen, setNavigationOpen] = useState(false);
 
@@ -11,7 +13,7 @@ const AgencyNavigation = () => {
         <div className='navigation-bg'>
             <div className="navigation">
                 <div className="logo">
-                    <Link to='/'><h2>Projitize</h2></Link>
+                    <Link to='/'><img src={logo} alt="" /></Link>
                 </div>
                 <div className={`items`}>
                     <NavLink to='/'>Home</NavLink>
@@ -20,7 +22,7 @@ const AgencyNavigation = () => {
                     <NavLink to='/contact-us'>Contact</NavLink>
                 </div>
                 <div className="cta">
-                    <button className="custom-button">Contact Us</button>
+                    <NavLink to='/contact-us'><button className="custom-button">Contact Us</button></NavLink>
                 </div>
 
                 <div onClick={() => setNavigationOpen(!navigationOpen)} className={`hamburger-icon ${navigationOpen && 'open'}`}>

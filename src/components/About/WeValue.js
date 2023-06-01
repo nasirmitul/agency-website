@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const WeValue = () => {
+
+    const [weValueOne, setWeValueOne] = useState([])
+    const [weValueTwo, setWeValueTwo] = useState([])
+    const [weValueThree, setWeValueThree] = useState([])
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/about/we-value/row-one')
+            .then(res => res.json())
+            .then(data => setWeValueOne(data))
+    }, [])
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/about/we-value/row-two')
+            .then(res => res.json())
+            .then(data => setWeValueTwo(data))
+    }, [])
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/about/we-value/row-three')
+            .then(res => res.json())
+            .then(data => setWeValueThree(data))
+    }, [])
+
+
+
     return (
         <div className='we-value'>
             <div className="container">
@@ -8,34 +30,32 @@ const WeValue = () => {
                     <h2 className="section-title">5 things we value</h2>
                     <div className="points">
                         <div className="row row-one">
-                            <div className="point left">
-                                <p className="count">01.</p>
-                                <h5 className="title">Lorem ipsum dolor sit amet, consectetur </h5>
-                                <p className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Dolore magna aliqua. Ut enim ad minim veniam.</p>
-                            </div>
-                            <div className="point right">
-                                <p className="count">02.</p>
-                                <h5 className="title">Lorem ipsum dolor sit amet, consectetur </h5>
-                                <p className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Dolore magna aliqua. Ut enim ad minim veniam.</p>
-                            </div>
+                            {
+                                weValueOne.map((value, i) =>
+                                    <div key={value._id} className="point left">
+                                        <p className="count">0{i + 1}.</p>
+                                        <h5 className="title">{value.title}</h5>
+                                        <p className="desc">{value.description}</p>
+                                    </div>
+                                )
+                            }
                         </div>
                         <div className="row row-two">
-                            <div className="point left">
-                                <p className="count">03.</p>
-                                <h5 className="title">Lorem ipsum dolor sit amet, consectetur </h5>
-                                <p className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Dolore magna aliqua. Ut enim ad minim veniam.</p>
-                            </div>
-                            <div className="point right">
-                                <p className="count">04.</p>
-                                <h5 className="title">Lorem ipsum dolor sit amet, consectetur </h5>
-                                <p className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Dolore magna aliqua. Ut enim ad minim veniam.</p>
-                            </div>
+                            {
+                                weValueTwo.map((value, i) =>
+                                    <div key={value._id} className="point left">
+                                        <p className="count">0{i + 3}.</p>
+                                        <h5 className="title">{value.title}</h5>
+                                        <p className="desc">{value.description}</p>
+                                    </div>
+                                )
+                            }
                         </div>
                         <div className="row row-three">
                             <div className="point center">
                                 <p className="count">05.</p>
-                                <h5 className="title">Lorem ipsum dolor sit amet, consectetur </h5>
-                                <p className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                <h5 className="title">{weValueThree.title}</h5>
+                                <p className="desc">{weValueThree.description}</p>
                             </div>
                         </div>
                     </div>

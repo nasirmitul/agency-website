@@ -6,28 +6,36 @@ import close from '../../images/close.svg'
 import imageIcon from '../../images/image-icon.svg'
 import { MdCancel } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
-import { IoImages } from 'react-icons/io5';
 import { toast } from 'react-hot-toast';
-
 
 
 const AdminProjects = () => {
     const [openAddProjectForm, setOpenAddProjectForm] = useState(false)
+    const [openEditHeading, setOpenEditHeading] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
     const [refetch, setRefetch] = useState(false);
     const [deleteProject, setDeleteProject] = useState(null);
-
     const [allProjects, setAllProjects] = useState([])
+    const [projectsHeading, setProjectsHeading] = useState([])
+
+    const [selectedImagesEdit, setSelectedImagesEdit] = useState([]);
+    const [openEditProject, setOpenEditProject] = useState(null);
+    const [holdPrevProjectImage, setHoldPrevProjectImage] = useState([]);
+
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/projects/heading')
+            .then(res => res.json())
+            .then(data => setProjectsHeading(data))
+    }, [refetch])
 
     useEffect(() => {
         fetch('https://projitize.vercel.app/all-project')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setAllProjects(data);
             })
     }, [refetch])
-
 
 
     const handleProjectImages = (event) => {
@@ -46,7 +54,6 @@ const AdminProjects = () => {
         updatedImages.splice(index, 1);
         setSelectedImages(updatedImages);
     };
-
 
     const handleProjectAddFormSubmit = (e) => {
         toast.loading('Adding new project...');
@@ -132,7 +139,6 @@ const AdminProjects = () => {
         }
     }
 
-
     const handleProjectDelete = () => {
         toast.loading('deleting mail...');
         fetch(`https://projitize.vercel.app/delete-project/${deleteProject}`, {
@@ -153,7 +159,220 @@ const AdminProjects = () => {
             })
     }
 
+    const handleHeadingUpdate = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        toast.loading('Updating projects heading data ...')
 
+        const title = form.title.value;
+        const description = form.description.value;
+        const updateHeading = {
+            title,
+            description
+        }
+
+        fetch(`https://projitize.vercel.app/projects/update-heading`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateHeading)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount >= 1) {
+                    setRefetch(!refetch);
+                    setOpenEditHeading(false)
+                    toast.dismiss();
+                    toast.success('Data Updated')
+                }
+                else {
+                    setOpenEditHeading(true)
+                    toast.dismiss();
+                    toast.error('Sorry, data not updated')
+                }
+            })
+    }
+
+    let allProjectImages = [];
+    const handleProjectEditOpen = (project) => {
+        setOpenEditProject(project)
+
+        if (project?.projectImages?.length >= 1) {
+            allProjectImages = [...project.projectImages]
+            setHoldPrevProjectImage(allProjectImages)
+        }
+    }
+
+    const handleProjectImagesEditNew = (event) => {
+        const files = event.target.files;
+        const imageArray = [];
+
+        for (let i = 0; i < files.length; i++) {
+            const imageUrl = URL.createObjectURL(files[i]);
+            imageArray.push(imageUrl);
+        }
+        setSelectedImagesEdit(imageArray);
+    }
+
+    const handlePrevImageRemoveEditProject = (index) => {
+        const updatedImages = [...holdPrevProjectImage];
+        updatedImages.splice(index, 1);
+        setHoldPrevProjectImage(updatedImages);
+    };
+
+    const handleImageRemoveEditNew = (index) => {
+        const updatedImages = [...selectedImagesEdit];
+        updatedImages.splice(index, 1);
+        setSelectedImagesEdit(updatedImages);
+    };
+
+    const handleEditProject = (e) => {
+        toast.loading('Editing project...');
+        e.preventDefault();
+        const form = e.target;
+
+        const projectName = form.projectName.value;
+        const projectType = form.projectType.value;
+        const projectLiveLink = form.projectLiveLink.value;
+        const projectShortDesc = form.projectShortDesc.value;
+
+        const projectImages = form.projectImages.files;
+
+        const projectId = openEditProject._id;
+
+
+        if (projectImages.length <= 0) {
+            const updateProject = {
+                projectName,
+                projectType,
+                projectLiveLink,
+                projectShortDesc,
+                projectImages: holdPrevProjectImage
+            }
+
+            fetch(`https://projitize.vercel.app/projects/edit-project/${projectId}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updateProject)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.modifiedCount >= 1) {
+                        form.reset();
+                        setRefetch(!refetch);
+                        setHoldPrevProjectImage([])
+                        setOpenEditProject(null);
+                        toast.dismiss();
+                        toast.success('Project edited', {
+                            duration: 4000,
+                            style: {
+                                minWidth: 'fit-content',
+                            },
+                        })
+                    }
+                    else {
+                        setHoldPrevProjectImage([])
+                        setOpenEditProject(null);
+                        toast.dismiss();
+                        toast.error('Sorry, project not edited. Please try again.', {
+                            duration: 4000,
+                            style: {
+                                minWidth: 'fit-content',
+                            },
+                        })
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
+
+        else {
+            const updatedNewImage = [];
+
+            for (let i = 0; i < projectImages.length; i++) {
+                const data = new FormData()
+                data.append('file', projectImages[i])
+                data.append('upload_preset', 'projitize_project')
+                data.append('cloud_name', 'projitize')
+
+                fetch('https://api.cloudinary.com/v1_1/projitize/image/upload', {
+                    method: 'POST',
+                    body: data
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        updatedNewImage.push(data.url)
+                        if (updatedNewImage.length === projectImages.length) {
+
+                            const allNewImage = holdPrevProjectImage.concat(updatedNewImage)
+
+                            const updateProject = {
+                                projectName,
+                                projectType,
+                                projectLiveLink,
+                                projectShortDesc,
+                                projectImages: allNewImage
+                            }
+
+                            fetch(`https://projitize.vercel.app/projects/edit-project/${projectId}`, {
+                                method: 'PATCH',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(updateProject)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    console.log(data);
+                                    if (data.modifiedCount >= 1) {
+                                        form.reset();
+                                        setRefetch(!refetch);
+                                        setHoldPrevProjectImage([])
+                                        setSelectedImagesEdit([])
+                                        setOpenEditProject(null);
+                                        toast.dismiss();
+                                        toast.success('Project edited', {
+                                            duration: 4000,
+                                            style: {
+                                                minWidth: 'fit-content',
+                                            },
+                                        })
+                                    }
+                                    else {
+                                        setHoldPrevProjectImage([])
+                                        setSelectedImagesEdit([])
+                                        setOpenEditProject(null);
+                                        toast.dismiss();
+                                        toast.error('Sorry, project not edited. Please try again.', {
+                                            duration: 4000,
+                                            style: {
+                                                minWidth: 'fit-content',
+                                            },
+                                        })
+                                    }
+                                })
+                                .catch(error => {
+                                    console.log(error);
+                                })
+
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+
+
+
+        }
+
+    }
 
     return (
         <div>
@@ -167,8 +386,8 @@ const AdminProjects = () => {
                         <form onSubmit={handleProjectAddFormSubmit} action="">
                             <input type="text" placeholder='Project Name' name='projectName' />
                             <input type="text" placeholder='Project Type' name='projectType' />
-                            <input type="text" placeholder='Live Link' name='projectLiveLink' />
-                            <input type="text" placeholder='Short Description' name='projectShortDesc' />
+                            <input type="url" placeholder='Live Link' name='projectLiveLink' />
+                            <textarea type="text" placeholder='Short Description' name='projectShortDesc'></textarea>
 
 
 
@@ -177,7 +396,7 @@ const AdminProjects = () => {
                                 <div className="all-selected-images">
                                     {
                                         selectedImages.map((image, index) => (
-                                            <div className='single-image'>
+                                            <div key={index} className='single-image'>
                                                 <img className='selected-img' key={index} src={image} alt={`Selected Image ${index}`} />
                                                 <RxCross2 className='remove-img' onClick={() => handleImageRemove(index)}></RxCross2>
                                             </div>
@@ -188,7 +407,7 @@ const AdminProjects = () => {
 
 
                             <div className="add-image">
-                                <input onChange={handleProjectImages} id='projectImages' type="file" placeholder='Experience' name='projectImages' accept="image/png, image/gif, image/jpg, image/svg, image/jpeg" multiple required />
+                                <input onChange={handleProjectImages} id='projectImages' type="file" placeholder='Project Image' name='projectImages' accept="image/png, image/gif, image/jpg, image/svg, image/jpeg" multiple required />
                                 <label htmlFor="projectImages">
                                     <img src={imageIcon} alt="" />
                                     {
@@ -209,6 +428,91 @@ const AdminProjects = () => {
             </div>
 
 
+            <div className={`common-popup-bg ${openEditProject && 'open'}`}>
+                <div className="common-popup">
+                    <div className="update-hero">
+                        <h4 className="common-popup-heading">Edit Project</h4>
+                        <form onSubmit={handleEditProject} action="">
+                            <div className="input-field">
+                                <span>Project Name</span>
+                                <input type="text" placeholder='Project Name' defaultValue={openEditProject?.projectName} name='projectName' required />
+                            </div>
+                            <div className="input-field">
+                                <span>Project Type</span>
+                                <input type="text" placeholder='Project Type' defaultValue={openEditProject?.projectType} name='projectType' required />
+                            </div>
+                            <div className="input-field">
+                                <span>Live Link</span>
+                                <input type="url" placeholder='Live Link' defaultValue={openEditProject?.projectLiveLink} name='projectLiveLink' required />
+                            </div>
+                            <div className="input-field">
+                                <span>Short Description</span>
+                                <textarea type="text" placeholder='Short Description' defaultValue={openEditProject?.projectShortDesc} name='projectShortDesc' required ></textarea>
+                            </div>
+
+                            {
+                                holdPrevProjectImage.length > 0 &&
+                                <div className="input-field edit-project-prev-images">
+                                    <span>Previous Images</span>
+                                    {
+
+                                        <div className="all-selected-images">
+                                            {
+                                                holdPrevProjectImage.map((image, index) => (
+                                                    <div key={index} className='single-image'>
+                                                        <img className='selected-img' key={index} src={image} alt={`Selected Image ${index}`} />
+                                                        <RxCross2 className='remove-img' onClick={() => handlePrevImageRemoveEditProject(index)}></RxCross2>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            }
+
+                            {
+                                selectedImagesEdit.length > 0 &&
+                                <div className="input-field edit-project-prev-images">
+                                    <span>New Images</span>
+                                    <div className="all-selected-images">
+                                        {
+                                            selectedImagesEdit.map((image, index) => (
+                                                <div key={index} className='single-image'>
+                                                    <img className='selected-img' key={index} src={image} alt={`Selected Image ${index}`} />
+                                                    <RxCross2 className='remove-img' onClick={() => handleImageRemoveEditNew(index)}></RxCross2>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+
+
+                            <div className="add-image">
+                                <input onChange={handleProjectImagesEditNew} id='projectImagesEdit' type="file" placeholder='Project Image' name='projectImages' accept="image/png, image/gif, image/jpg, image/svg, image/jpeg" multiple />
+                                <label htmlFor="projectImagesEdit">
+                                    <img src={imageIcon} alt="" />
+                                    {
+                                        selectedImagesEdit.length > 0 ?
+                                            <p>Change Images</p> :
+                                            <p>Select <span>16:9</span> images for project. Supports, png, gif, jpg, svg, jpeg.</p>
+                                    }
+
+
+                                </label>
+                            </div>
+
+
+
+                            <div className="actions">
+                                <div onClick={() => setOpenEditProject(false)} className='cancel'>Cancel</div>
+                                <button className='submit' type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
             <div className={`confirm-popup ${deleteProject && 'open'}`}>
@@ -221,12 +525,33 @@ const AdminProjects = () => {
                 </div>
             </div>
 
+            <div className={`common-popup-bg ${openEditHeading && 'open'}`}>
+                <div className="common-popup">
+                    <div className="update-hero">
+                        <h4 className="common-popup-heading">Update Projects Heading</h4>
+                        <form onSubmit={handleHeadingUpdate} action="">
+                            <div className="input-field">
+                                <span>Title</span>
+                                <textarea type="text" defaultValue={projectsHeading?.title} placeholder='Title' name='title' required ></textarea>
+                            </div>
+                            <div className="input-field">
+                                <span>Description</span>
+                                <textarea type="text" defaultValue={projectsHeading?.description} placeholder='Description' name='description' required ></textarea>
+                            </div>
+
+                            <div className="actions">
+                                <div onClick={() => setOpenEditHeading(false)} className='cancel'>Cancel</div>
+                                <button className='submit' type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
 
             <div className='admin-container'>
                 <AdminPageTitle title='Admin Projects Section'></AdminPageTitle>
-
 
                 <div className="admin-projects admin-common">
 
@@ -234,7 +559,7 @@ const AdminProjects = () => {
                         <div className="heading">
                             <p className="title">Heading</p>
                             <div className="actions">
-                                <img src={edit} alt="" className="edit" />
+                                <img onClick={() => setOpenEditHeading(true)} src={edit} alt="" className="edit" />
                             </div>
                         </div>
 
@@ -242,11 +567,11 @@ const AdminProjects = () => {
                         <div className="body">
                             <div className="data">
                                 <p className="content-title">Title:</p>
-                                <p className="content-data">Projects we have done so far </p>
+                                <p className="content-data">{projectsHeading.title || 'loading ...'}</p>
                             </div>
                             <div className="data">
                                 <p className="content-title">Description:</p>
-                                <p className="content-data">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto deleniti optio perspiciatis atque nemo. Officia officiis dolore iure in ipsam veniam placeat maiores ipsum labore? Optio quasi distinctio molestias laudantium.</p>
+                                <p className="content-data">{projectsHeading.description || 'loading ...'}</p>
                             </div>
                         </div>
                     </div>
@@ -271,7 +596,7 @@ const AdminProjects = () => {
                                             <p className="project-name">{project.projectName}</p>
                                             <p className="project-type">{project.projectType}</p>
                                             <div className="edit-delete-icon">
-                                                <img src={edit} alt="" />
+                                                <img onClick={() => handleProjectEditOpen(project)} src={edit} alt="" />
                                                 <img onClick={() => setDeleteProject(project._id)} src={deleteIcon} alt="" className='delete' />
                                             </div>
                                         </div>
