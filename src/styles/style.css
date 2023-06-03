@@ -154,34 +154,6 @@ swiper-container {
 
 
 
-/* .swiper-button-next,
-.swiper-button-prev {
-    position: relative;
-}
-
-.client-says .heading .actions {
-    position: relative;
-}
-
-.client-says .heading .actions .next {
-    position: relative;
-}
-
-.client-says .heading .actions .next::after {
-    content: 'next';
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    background: red;
-    left: 0;
-    top: 0;
-    z-index: 100;
-}
-
-.client-says .heading .actions .left::after,
-.client-says .heading .actions .right::after {} */
-
-
 
 /* ----------------------------- Spinner ----------------------------- */
 .spinner {
@@ -329,7 +301,7 @@ swiper-container {
     position: fixed;
     right: 40px;
     bottom: 50px;
-    z-index: 100;
+    z-index: 4;
 }
 
 .go-to-top a {
@@ -374,8 +346,20 @@ swiper-container {
     color: var(--primary-100);
 }
 
+.go-to-top .arrow-up {
+    display: none;
+}
 
-
+.go-to-top .arrow-up .box {
+    height: 50px;
+    width: 50px;
+    display: grid;
+    place-content: center;
+    background: var(--primary-100);
+    border: 2px solid var(--bg-primary);
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 
 
@@ -427,7 +411,7 @@ swiper-container {
 .navigation-bg {
     width: 100%;
     background: var(--bg-primary-70);
-    z-index: 10;
+    z-index: 6;
     left: 0;
     position: fixed;
     backdrop-filter: blur(10px);
@@ -1585,6 +1569,7 @@ swiper-container {
     position: absolute;
     left: 250px;
     bottom: -70px;
+    z-index: -1;
 }
 
 .why-different section {
@@ -1652,7 +1637,7 @@ swiper-container {
 
 
 
-/* ------------ Why Different ------------ */
+/* ------------ We Value ------------ */
 .we-value {
     padding: 0px 0 130px 0;
     position: relative;
@@ -1674,6 +1659,8 @@ swiper-container {
 
 .we-value section .points .row {
     display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
     justify-content: space-between;
 }
 
@@ -1728,6 +1715,10 @@ swiper-container {
 
 
 /* ------------ Our Team ------------ */
+.team-data-m {
+    display: none;
+}
+
 .our-team {
     background: var(--primary-5);
     padding: 100px 0;
@@ -1815,12 +1806,6 @@ swiper-container {
     margin-bottom: 5px !important;
 }
 
-.our-team .team-info .team-data .team-member .others-info .position {
-    font-size: 14px;
-    color: var(--bg-primary);
-    font-weight: 400;
-    margin-bottom: 5px !important;
-}
 
 .our-team .team-info .team-data .team-member .others-info .social {
     display: flex;
@@ -2523,7 +2508,7 @@ span.number-count {
     backdrop-filter: blur(3px);
     left: 0;
     top: 0;
-    z-index: 20;
+    z-index: 10;
     transform: scale(0);
     transition: .5s;
 }
@@ -2601,7 +2586,7 @@ span.number-count {
     backdrop-filter: blur(3px);
     left: 0;
     top: 0;
-    z-index: 20;
+    z-index: 9;
     transform: scale(0);
     transition: .5s;
 }
@@ -2781,7 +2766,7 @@ span.number-count {
     flex-direction: column;
     gap: 30px;
     position: relative;
-    z-index: 100;
+    z-index: 20;
 }
 
 .admin-side-navigation .navigation-items ul li a.active,
@@ -3571,7 +3556,7 @@ span.number-count {
     backdrop-filter: blur(3px);
     left: 0;
     top: 0;
-    z-index: 20;
+    z-index: 10;
     transform: scale(0);
     transition: .5s;
 }
@@ -3683,6 +3668,30 @@ span.number-count {
 
 @media only screen and (max-width: 1350px) {
 
+    /* go to top */
+    .go-to-top {
+        right: 20px;
+        bottom: 30px;
+    }
+
+    .go-to-top .to-back-text {
+        display: none;
+    }
+
+    .go-to-top .arrow-up {
+        display: block;
+    }
+
+
+    /* about */
+    .our-team .team-info .team-data .team-member {
+        height: 510px;
+    }
+
+    .our-team .team-info .team-data .team-member .others-info {
+        padding: 30px;
+    }
+
     /* projects */
     .all-projects .project .project-img {
         height: 280px;
@@ -3693,6 +3702,79 @@ span.number-count {
 
 
 @media only screen and (max-width: 1100px) {
+
+    /* about */
+    .we-value {
+        padding: 0px 0 50px 0;
+    }
+
+    .we-value section h2.section-title {
+        margin-top: 100px !important;
+        margin-bottom: 50px !important;
+        width: 100%;
+        text-align: left;
+        left: 0;
+        transform: translate(0%);
+        top: 0px;
+    }
+
+    .we-value section .points .row.row-one .point:nth-child(2),
+    .we-value section .points .row.row-two .point:nth-child(2) {
+        text-align: start;
+    }
+
+    .we-value section .points .row .point.center {
+        text-align: left;
+    }
+
+    .we-value section .points .row.row-two {
+        padding: 0px;
+    }
+
+    .we-value section .points .row.row-three {
+        justify-content: flex-start;
+        margin-bottom: 0px;
+    }
+
+    .we-value section .points .point {
+        width: calc(50% - 20px);
+        position: relative;
+        padding-left: 25px;
+    }
+
+    .we-value section .points .point::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        background: var(--dark-50);
+    }
+
+    .our-team .team-info .team-data .team-member {
+        height: 410px;
+    }
+
+    .our-team .team-info .team-data .team-member .others-info {
+        padding: 20px;
+    }
+
+    .start-project {
+        padding: 60px;
+        gap: 40px;
+    }
+
+    .start-project .title {
+        font-size: 3.5rem;
+        line-height: 70px;
+    }
+
+    .start-project a .action-img {
+        height: 120px;
+        width: 120px;
+    }
+
 
     /* projects */
     .all-projects::after {
@@ -3786,6 +3868,7 @@ span.number-count {
         display: none;
         transition: .5s;
         transition-delay: .3s;
+        bottom: 44px;
     }
 
     .mobile-items.open {
@@ -3796,6 +3879,145 @@ span.number-count {
         display: block;
     }
 
+
+    /* about */
+    .about-heading {
+        padding: 60px 0 100px 0;
+    }
+
+    .about-heading .title {
+        font-size: 3rem;
+        line-height: 60px;
+    }
+
+    .heading-line-svg {
+        top: 200px;
+        width: 500px;
+    }
+
+    .why-different {
+        padding: 70px 0;
+    }
+
+    .why-different section {
+        gap: 60px;
+        flex-direction: column;
+    }
+
+    .why-different section h2.section-title {
+        margin-top: 0px !important;
+        width: 100%;
+    }
+
+    .why-different section .points {
+        width: 100%;
+        gap: 60px;
+    }
+
+    .why-different section .points .point {
+        /* position: relative; */
+        padding-left: 30px;
+        height: fit-content;
+    }
+
+    .why-different section .points .point::before {
+        left: 0px;
+    }
+
+    .we-value {
+        padding: 40px 0 50px 0;
+        position: relative;
+    }
+
+    .we-value section h2.section-title {
+        margin-top: 50px !important;
+        margin-bottom: 60px !important;
+    }
+
+    .we-value section .points .point {
+        padding-left: 30px;
+    }
+
+    .our-team {
+        padding: 60px 0;
+    }
+
+    .our-team .team-info .team-data {
+        display: none;
+    }
+
+    .team-data-m {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 3fr));
+        grid-gap: 20px;
+    }
+
+    .team-data-m .team-member-m {
+        width: 100%;
+        /* background: linear-gradient(0.5turn, var(--primary-5), var(--primary-10)); */
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid var(--white);
+    }
+
+    .team-data-m .team-member-m:nth-child(5n + 1) {
+        background: #F5EEF8;
+    }
+
+    .team-data-m .team-member-m:nth-child(5n + 2) {
+        background: #EBF5FB;
+    }
+
+    .team-data-m .team-member-m:nth-child(5n + 3) {
+        background: #E8F8F5;
+    }
+
+    .team-data-m .team-member-m:nth-child(5n + 4) {
+        background: #FEF9E7;
+    }
+
+    .team-data-m .team-member-m:nth-child(5n + 5) {
+        background: #FBEEE6;
+    }
+
+    .team-data-m .team-member-m img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 3px;
+    }
+
+    .team-data-m .team-member-m .others-info-m .name-m {
+        font-size: 20px;
+        color: var(--dark-85);
+        font-weight: 500;
+        margin-bottom: 1px !important;
+    }
+
+    .team-data-m .team-member-m .others-info-m .role-m {
+        font-size: 12px;
+        color: var(--dark-85);
+        font-weight: 300;
+        margin-bottom: 0px !important;
+    }
+
+    .team-data-m .team-member-m .others-info-m .social-m {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .team-data-m .team-member-m .others-info-m .social-m a img {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+    }
+
+    .start-project .title {
+        font-size: 3rem;
+        line-height: 60px;
+    }
 
     /* contact */
     .contact .possible-ways {
@@ -3832,6 +4054,28 @@ span.number-count {
 
 
 @media only screen and (max-width: 750px) {
+
+    /* about */
+    .why-different .arrowSvg {
+        left: 100px;
+        bottom: -70px;
+        width: 300px;
+    }
+
+    .start-project {
+        padding: 40px;
+        gap: 20px;
+    }
+
+    .start-project .title {
+        font-size: 2.3rem;
+        line-height: 50px;
+    }
+
+    .start-project a .action-img {
+        height: 100px;
+        width: 100px;
+    }
 
     /* projects */
     .projects-heading {
@@ -3941,6 +4185,84 @@ span.number-count {
 
 
 @media only screen and (max-width: 550px) {
+
+    /* about */
+    .about-heading .title {
+        font-size: 2.5rem;
+        line-height: 55px;
+    }
+
+    .why-different {
+        padding: 50px 0;
+    }
+
+    .why-different section {
+        gap: 30px;
+    }
+
+    .why-different section h2.section-title {
+        margin-top: 0px !important;
+        font-size: 2rem;
+    }
+
+    .why-different section .points {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 35px;
+    }
+
+    .why-different .arrowSvg {
+        left: 10px;
+        bottom: -70px;
+        width: 250px;
+    }
+
+    .we-value {
+        padding: 50px 0 25px 0;
+    }
+
+    .we-value section h2.section-title {
+        margin-top: 0px !important;
+        font-size: 2rem;
+        margin-bottom: 30px !important;
+    }
+
+    .we-value section .points .row {
+        flex-direction: column;
+        width: 100%;
+        gap: 0px;
+    }
+
+    .we-value section .points .point {
+        width: 100%;
+    }
+
+    .we-value section .points .point {
+        margin-bottom: 35px;
+    }
+
+    .our-team {
+        padding: 50px 0;
+    }
+
+    .our-team .team-info .team-heading .title {
+        font-size: 2rem;
+    }
+
+    .start-project {
+        padding: 40px;
+        gap: 20px;
+    }
+
+    .start-project .title {
+        font-size: 2.3rem;
+        line-height: 50px;
+    }
+
+    .start-project a .action-img {
+        height: 100px;
+        width: 100px;
+    }
 
     /* projects */
     .heading-line-svg {

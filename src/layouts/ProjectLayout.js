@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from '../components/Projects/Heading';
 import AllProjects from '../components/Projects/AllProjects';
 import scrollToTop from '../components/Utilities/ScrollToTop';
-import GoToTop from './GoToTop';
+import GoToTop from '../components/Utilities/GoToTop';
 
 const ProjectLayout = () => {
     scrollToTop();

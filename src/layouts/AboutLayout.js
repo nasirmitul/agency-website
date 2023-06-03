@@ -5,7 +5,7 @@ import WeValue from '../components/About/WeValue';
 import Team from '../components/About/Team';
 import StartProject from '../components/About/StartProject';
 import scrollToTop from '../components/Utilities/ScrollToTop';
-import GoToTop from './GoToTop';
+import GoToTop from '../components/Utilities/GoToTop';
 
 const AboutLayout = () => {
     scrollToTop();

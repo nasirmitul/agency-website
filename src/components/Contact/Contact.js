@@ -4,7 +4,8 @@ import SectionTitle from '../Utilities/SectionTitle';
 import plane from '../../images/plane.svg'
 import scrollToTop from '../Utilities/ScrollToTop';
 import { toast } from 'react-hot-toast';
-import GoToTop from '../../layouts/GoToTop';
+import GoToTop from '../Utilities/GoToTop';
+
 
 
 const Contact = () => {

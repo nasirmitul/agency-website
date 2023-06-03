@@ -36,7 +36,6 @@ const Team = () => {
                     </div>
 
                     <div style={{ "gridTemplateColumns": `repeat(${teamNoGap.noOfMember}, 1fr)`, "gap": `${teamNoGap.gapBetweenMember}px` }} className="team-data">
-
                         {
                             allTeamMembers.map(member =>
                                 <div key={member._id} className="team-member">
@@ -78,6 +77,53 @@ const Team = () => {
                             )
                         }
                     </div>
+
+
+
+                    <div className="team-data-m">
+                        {
+                            allTeamMembers.map(member =>
+                                <div key={member._id} className="team-member-m">
+                                    <img src={member.teamMemberDp} alt="" />
+                                    <div className="others-info-m">
+                                        <h5 className="name-m">{member.name}</h5>
+                                        <p className="role-m">{member.role}</p>
+                                        <div className="social-m">
+                                            {
+                                                member.portfolio && <a href={member.portfolio} target='_blank'><img src={profile} alt="" /></a>
+                                            }
+                                            {
+                                                member.github && <a href={member.github} target='_blank'><img src={gitHub} alt="" /></a>
+                                            }
+                                            {
+                                                member.linkedin && <a href={member.linkedin} target='_blank'><img src={linkedin} alt="" /></a>
+                                            }
+                                            {
+                                                member.facebook && <a href={member.facebook} target='_blank'><img src={facebook} alt="" /></a>
+                                            }
+                                            {
+                                                member.instagram && <a href={member.instagram} target='_blank'><img src={instagram} alt="" /></a>
+                                            }
+                                            {
+                                                member.twitter && <a href={member.twitter} target='_blank'><img src={twitter} alt="" /></a>
+                                            }
+                                            {
+                                                member.dribbble && <a href={member.dribbble} target='_blank'><img src={dribble} alt="" /></a>
+                                            }
+                                            {
+                                                member.telegram && <a href={`https://telegram.me/${member.telegram}`} target='_blank'><img src={telegram} alt="" /></a>
+                                            }
+                                            {
+                                                member.whatsapp && <a href={`https://wa.me/${member.whatsapp}`} target='_blank'><img src={whatsapp} alt="" /></a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+
+
                 </div>
             </div>
         </div>

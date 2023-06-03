@@ -53,7 +53,7 @@ const WeValue = () => {
                         </div>
                         <div className="row row-three">
                             <div className="point center">
-                                <p className="count">05.</p>
+                                <p className="count">0{weValueTwo.length + 3}.</p>
                                 <h5 className="title">{weValueThree.title}</h5>
                                 <p className="desc">{weValueThree.description}</p>
                             </div>
