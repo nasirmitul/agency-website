@@ -5,16 +5,36 @@ import deleteIcon from '../../../images/Delete.svg'
 import imageIcon from '../../../images/image-icon.svg'
 import { toast } from 'react-hot-toast';
 
+
+import profile from '../../../images/teamProfile.svg'
+import gitHub from '../../../images/teamGitHub.svg'
+import linkedin from '../../../images/teamLinkedin.svg'
+import facebook from '../../../images/teamFacebook.svg'
+import instagram from '../../../images/teamInstagram.svg'
+import twitter from '../../../images/teamTwitter.svg'
+import dribble from '../../../images/teamDribble.svg'
+import telegram from '../../../images/teamTelegram.svg'
+import whatsapp from '../../../images/teamWhatsapp.svg'
+
 const AdminAboutTeam = () => {
     const [teamNoGap, setTeamNoGap] = useState([])
+    const [teamHeading, setTeamHeading] = useState([])
     const [allTeamMembers, setAllTeamMembers] = useState([])
     const [openEditTeamNoGap, setOpenEditTeamNoGap] = useState(false)
     const [deleteMember, setDeleteMember] = useState(null);
     const [openEditTeamMember, setOpenEditTeamMember] = useState(false)
+    const [openEditTeamHeading, setOpenEditTeamHeading] = useState(false)
     const [SelectedTeamMemberDpEdit, setSelectedTeamMemberDpEdit] = useState(null)
     const [openAddTeamMember, setOpenAddTeamMember] = useState(false)
     const [selectedTeamMemberImage, setSelectedTeamMemberImage] = useState(null)
     const [refetch, setRefetch] = useState(false)
+
+    useEffect(() => {
+        fetch('https://projitize.vercel.app/about/team/heading')
+            .then(res => res.json())
+            .then(data => setTeamHeading(data))
+    }, [refetch])
+
 
     useEffect(() => {
         fetch('https://projitize.vercel.app/about/team-no-gap')
@@ -93,7 +113,6 @@ const AdminAboutTeam = () => {
 
 
         const name = form.name.value;
-        const position = form.position.value;
         const role = form.role.value;
 
         const serial = form.serial.value;
@@ -126,7 +145,6 @@ const AdminAboutTeam = () => {
 
                 const addNewTeamMember = {
                     name,
-                    position,
                     role,
                     portfolio,
                     github,
@@ -222,7 +240,6 @@ const AdminAboutTeam = () => {
         const form = e.target;
 
         const name = form.name.value;
-        const position = form.position.value;
         const role = form.role.value;
 
         const serial = form.serial.value;
@@ -245,7 +262,6 @@ const AdminAboutTeam = () => {
         if (addTeamMemberImage === undefined) {
             const editTeamMember = {
                 name,
-                position,
                 role,
                 portfolio,
                 github,
@@ -314,7 +330,6 @@ const AdminAboutTeam = () => {
                     console.log(data);
                     const editService = {
                         name,
-                        position,
                         role,
                         portfolio,
                         github,
@@ -374,6 +389,56 @@ const AdminAboutTeam = () => {
         }
     }
 
+    const handleEditTeamHeading = (e) => {
+        toast.loading('Updating team heading data...');
+        e.preventDefault();
+        const form = e.target;
+
+        const title = form.title.value;
+        const description = form.description.value;
+
+        const updateHeading = {
+            title,
+            description
+        }
+        fetch('https://projitize.vercel.app/about/edit-team-heading', {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateHeading)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount >= 1) {
+                    form.reset();
+                    setRefetch(!refetch);
+                    setOpenEditTeamHeading(false);
+                    toast.dismiss();
+                    toast.success('Data updated', {
+                        duration: 4000,
+                        style: {
+                            minWidth: 'fit-content',
+                        },
+                    })
+                }
+                else {
+                    setOpenEditTeamHeading(false);
+                    toast.dismiss();
+                    toast.error('Sorry, data not updated. Please try again.', {
+                        duration: 4000,
+                        style: {
+                            minWidth: 'fit-content',
+                        },
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div>
             <div className={`common-popup-bg ${openEditTeamMember && 'open'}`}>
@@ -385,10 +450,6 @@ const AdminAboutTeam = () => {
                             <div className="input-field">
                                 <span>Member Name</span>
                                 <input type="text" placeholder='Member Name' name='name' defaultValue={openEditTeamMember?.name} required />
-                            </div>
-                            <div className="input-field">
-                                <span>Member Position (ex: CEO)</span>
-                                <input type="text" placeholder='Member Position (ex: CEO)' name='position' defaultValue={openEditTeamMember?.position} required />
                             </div>
                             <div className="input-field">
                                 <span>Member Role (ex: mobile app developer)</span>
@@ -460,7 +521,6 @@ const AdminAboutTeam = () => {
                 </div>
             </div>
 
-
             <div className={`confirm-popup ${deleteMember && 'open'}`}>
                 <div className="confirm-box">
                     <p className="message">Are you sure you want to <span>delete</span>?</p>
@@ -477,7 +537,6 @@ const AdminAboutTeam = () => {
                         <h4 className="common-popup-heading">Add new team member</h4>
                         <form onSubmit={handleAddTeamMember} action="">
                             <input type="text" placeholder='Member Name' name='name' required />
-                            <input type="text" placeholder='Member Position (ex: CEO)' name='position' required />
                             <input type="text" placeholder='Member Role (ex: mobile app developer)' name='role' required />
 
                             <input type="number" placeholder='Serial' name='serial' min='1' required />
@@ -523,7 +582,7 @@ const AdminAboutTeam = () => {
             <div className={`common-popup-bg ${openEditTeamNoGap && 'open'}`}>
                 <div className="common-popup">
                     <div className="about-we-value edit">
-                        <h4 className="common-popup-heading">Edit things we value</h4>
+                        <h4 className="common-popup-heading">Edit value</h4>
                         <form onSubmit={handleEditTeamNoGap} action="">
 
                             <div className="input-field">
@@ -544,6 +603,29 @@ const AdminAboutTeam = () => {
                 </div>
             </div>
 
+            <div className={`common-popup-bg ${openEditTeamHeading && 'open'}`}>
+                <div className="common-popup">
+                    <div className="about-we-value edit">
+                        <h4 className="common-popup-heading">Edit Team Heading</h4>
+                        <form onSubmit={handleEditTeamHeading} action="">
+                            <div className="input-field">
+                                <span>Title</span>
+                                <textarea type="number" placeholder='Title' name='title' defaultValue={teamHeading?.title} required></textarea>
+                            </div>
+                            <div className="input-field">
+                                <span>Description</span>
+                                <textarea type="number" placeholder='Description' name='description' defaultValue={teamHeading?.description} required ></textarea>
+                            </div>
+
+                            <div className="actions">
+                                <div onClick={() => setOpenEditTeamHeading(false)} className='cancel'>Cancel</div>
+                                <button className='submit' type='submit'>Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <div className="admin-about-team common-section">
                 <div className="heading">
                     <p className="title">Our Amazing Team <span className='number-count'>{allTeamMembers.length}</span></p>
@@ -551,6 +633,22 @@ const AdminAboutTeam = () => {
                         <img onClick={() => setOpenAddTeamMember(true)} src={plus} alt="" className="close" />
                     </div>
                 </div>
+
+
+                <div className="team-title-description">
+                    <div className="data title-section">
+                        <div className="title-part">
+                            <p className="title ">Title:</p>
+                            <p className="title-data">{teamHeading?.title}</p>
+                        </div>
+                        <img onClick={() => setOpenEditTeamHeading(true)} src={edit} alt="" />
+                    </div>
+                    <div className="data">
+                        <p className="description">Description: </p>
+                        <p className="description-data">{teamHeading?.description}</p>
+                    </div>
+                </div>
+
 
                 <div className="member-gap">
                     <div className="member-in-row section">
@@ -575,8 +673,39 @@ const AdminAboutTeam = () => {
                                         <img src={member.teamMemberDp} alt="" className="member-img" />
                                     </div>
                                     <p className="name">{member.name} ({member.serial})</p>
-                                    <p className="position">{member.position}</p>
                                     <p className="role">{member.role}</p>
+                                    <div className="admin-social">
+                                        {
+                                            member.portfolio && <a href={member.portfolio} target='_blank'><img src={profile} alt="" /></a>
+                                        }
+                                        {
+                                            member.github && <a href={member.github} target='_blank'><img src={gitHub} alt="" /></a>
+                                        }
+                                        {
+                                            member.linkedin && <a href={member.linkedin} target='_blank'><img src={linkedin} alt="" /></a>
+                                        }
+                                        {
+                                            member.facebook && <a href={member.facebook} target='_blank'><img src={facebook} alt="" /></a>
+                                        }
+                                        {
+                                            member.instagram && <a href={member.instagram} target='_blank'><img src={instagram} alt="" /></a>
+                                        }
+                                        {
+                                            member.twitter && <a href={member.twitter} target='_blank'><img src={twitter} alt="" /></a>
+                                        }
+                                        {
+                                            member.dribbble && <a href={member.dribbble} target='_blank'><img src={dribble} alt="" /></a>
+                                        }
+                                        {
+                                            member.telegram && <a href={`https://telegram.me/${member.telegram}`} target='_blank'><img src={telegram} alt="" /></a>
+                                        }
+                                        {
+                                            member.whatsapp && <a href={`https://wa.me/${member.whatsapp}`} target='_blank'><img src={whatsapp} alt="" /></a>
+                                        }
+                                    </div>
+
+
+
                                     <div className="edit-icon">
                                         <img onClick={() => setOpenEditTeamMember(member)} src={edit} alt="" className="edit" />
                                         <img onClick={() => setDeleteMember(member._id)} src={deleteIcon} alt="" className="edit" />

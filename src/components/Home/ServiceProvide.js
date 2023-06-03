@@ -50,10 +50,13 @@ const ServiceProvide = () => {
                                     <p className="name">{service.title}</p>
                                     <div className={`info ${viewService === i ? 'show' : ''}`}>
                                         <p className="detail">{service.description}</p>
-                                        <div className="lets-work">
-                                            <Link to='/contact-us'>Let's Work Together</Link>
-                                            <img src={arrowTopRightDiagonal} alt="" />
-                                        </div>
+                                        <Link to='/contact-us'>
+                                            <div className="lets-work">
+                                                <Link to='/contact-us'>Let's Work Together</Link>
+                                                <img src={arrowTopRightDiagonal} alt="" />
+                                            </div>
+                                        </Link>
+
                                     </div>
 
                                 </div>

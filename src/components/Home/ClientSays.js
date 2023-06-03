@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import arrowRight from '../../images/arrowRight.svg'
-import manImage from '../../images/manImage.png'
-
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
+import { Autoplay, Pagination, Navigation } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -29,24 +26,20 @@ const ClientSays = () => {
 
                 <div className="heading">
                     <h2 className="title">What our client's says!</h2>
-
-                    {/* <div className="actions">
-                        <img className='left swiper-button-prev' src={arrowRight} alt="" />
-                        <img className='right swiper-button-next' src={arrowRight} alt="" />
-                    </div> */}
                 </div>
-
 
                 <div className="content">
                     <div className="review">
-
-
                         <Swiper
-                            navigation={false}
-                            modules={[Pagination, Navigation]}
+                            navigation={true}
                             pagination={{
                                 clickable: true,
                             }}
+                            autoplay={{
+                                delay: 5000,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[Pagination, Navigation, Autoplay]}
                             className="mySwiper">
 
                             {

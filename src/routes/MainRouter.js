@@ -11,6 +11,7 @@ import AdminProjects from "../components/Admin/AdminProjects";
 import AdminContact from "../components/Admin/AdminContact";
 import AdminProfile from "../components/Admin/AdminProfile";
 import AdminFooter from "../components/Admin/AdminFooter";
+import NotFound from "../components/Error/NotFound";
 
 
 const MainRouter = createBrowserRouter([
@@ -69,6 +70,10 @@ const MainRouter = createBrowserRouter([
                 element: <AdminFooter></AdminFooter>
             },
         ]
+    },
+    {
+        path: '*',
+        element: <NotFound></NotFound>
     }
 ]);
 

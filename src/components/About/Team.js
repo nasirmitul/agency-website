@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import niloy from '../../images/niloy.png'
-import { AiFillGithub } from 'react-icons/ai';
-import { BiUser } from 'react-icons/bi';
-import { GrFacebookOption } from 'react-icons/gr';
-import { ImLinkedin2 } from 'react-icons/im';
+
+import profile from '../../images/teamProfile.svg'
+import gitHub from '../../images/teamGitHub.svg'
+import linkedin from '../../images/teamLinkedin.svg'
+import facebook from '../../images/teamFacebook.svg'
+import instagram from '../../images/teamInstagram.svg'
+import twitter from '../../images/teamTwitter.svg'
+import dribble from '../../images/teamDribble.svg'
+import telegram from '../../images/teamTelegram.svg'
+import whatsapp from '../../images/teamWhatsapp.svg'
 
 
 const Team = () => {
-
-
     const [teamNoGap, setTeamNoGap] = useState([])
     const [allTeamMembers, setAllTeamMembers] = useState([])
     useEffect(() => {
@@ -41,12 +44,34 @@ const Team = () => {
                                     <div className="others-info">
                                         <h5 className="name">{member.name}</h5>
                                         <p className="role">{member.role}</p>
-                                        <p className="position">{member.position}</p>
                                         <div className="social">
-                                            <a href="" target='_blank'><AiFillGithub></AiFillGithub></a>
-                                            <a href="" target='_blank'><BiUser></BiUser></a>
-                                            <a href="" target='_blank'><GrFacebookOption></GrFacebookOption></a>
-                                            <a href="" target='_blank'><ImLinkedin2></ImLinkedin2></a>
+                                            {
+                                                member.portfolio && <a href={member.portfolio} target='_blank'><img src={profile} alt="" /></a>
+                                            }
+                                            {
+                                                member.github && <a href={member.github} target='_blank'><img src={gitHub} alt="" /></a>
+                                            }
+                                            {
+                                                member.linkedin && <a href={member.linkedin} target='_blank'><img src={linkedin} alt="" /></a>
+                                            }
+                                            {
+                                                member.facebook && <a href={member.facebook} target='_blank'><img src={facebook} alt="" /></a>
+                                            }
+                                            {
+                                                member.instagram && <a href={member.instagram} target='_blank'><img src={instagram} alt="" /></a>
+                                            }
+                                            {
+                                                member.twitter && <a href={member.twitter} target='_blank'><img src={twitter} alt="" /></a>
+                                            }
+                                            {
+                                                member.dribbble && <a href={member.dribbble} target='_blank'><img src={dribble} alt="" /></a>
+                                            }
+                                            {
+                                                member.telegram && <a href={`https://telegram.me/${member.telegram}`} target='_blank'><img src={telegram} alt="" /></a>
+                                            }
+                                            {
+                                                member.whatsapp && <a href={`https://wa.me/${member.whatsapp}`} target='_blank'><img src={whatsapp} alt="" /></a>
+                                            }
                                         </div>
                                     </div>
                                 </div>
