@@ -722,8 +722,7 @@ swiper-container {
     display: flex;
     justify-content: space-between;
     gap: 40px;
-
-    margin-bottom: 55px;
+    margin-bottom: 45px;
 }
 
 .service-provide .contents .service .count-name-action .count-name {
@@ -732,7 +731,7 @@ swiper-container {
 }
 
 .service-provide .contents .service .count-name-action .count-name .count p {
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: 300;
     color: var(--dark-100);
 }
@@ -741,6 +740,7 @@ swiper-container {
     font-size: 20px;
     color: var(--dark-85);
     font-weight: 400;
+    line-height: 20px;
 }
 
 .service-provide .contents .service .count-name-action .more-info {
@@ -758,7 +758,7 @@ swiper-container {
     width: 100%;
     left: 0;
     background: var(--dark-50);
-    bottom: -6px;
+    bottom: -2px;
 }
 
 .service-provide .contents .service .service-details-image {
@@ -835,7 +835,6 @@ swiper-container {
     width: 100%;
     height: auto;
 }
-
 
 
 
@@ -4196,6 +4195,62 @@ span.number-count {
 }
 
 @media only screen and (max-width: 900px) {
+
+    /* home */
+    .service-provide {
+        padding: 70px 0;
+    }
+
+    .service-provide .circles {
+        width: 350px;
+    }
+
+    .service-provide .heading {
+        font-size: 3rem;
+        line-height: 55px;
+    }
+
+    .service-provide .contents .service {
+        padding: 45px 0 1px 0;
+    }
+
+    .service-provide .contents .service .count-name-action {
+        margin-bottom: 30px;
+    }
+
+    .service-provide .contents .service .count-name-action .count-name .count p {
+        font-size: .9rem;
+    }
+
+    .service-provide .contents .service .count-name-action .count-name .name {
+        font-size: 18px;
+    }
+
+    .service-provide .contents .service .count-name-action .more-info {
+        font-size: .9rem;
+    }
+
+    .service-provide .contents .service .service-details-image {
+        gap: 50px;
+    }
+
+    .service-provide .contents .service .service-details-image .description-action .detail {
+        font-size: .9rem;
+    }
+
+    .service-provide .contents .service .service-details-image .description-action .lets-work a {
+        font-size: .9rem;
+    }
+
+    .service-provide .contents .service .service-details-image .description-action .lets-work img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .service-provide .contents .service .service-details-image .image {
+        width: 40%;
+    }
+
     .choose-us .content {
         flex-direction: column;
     }
@@ -4337,6 +4392,19 @@ span.number-count {
         top: 100%;
     }
 
+    .service-provide {
+        padding: 50px 0;
+    }
+
+    .service-provide .circles {
+        width: 300px;
+    }
+
+    .service-provide .heading {
+        font-size: 2.3rem;
+        line-height: 45px;
+    }
+
     .client-says .title {
         font-size: 2rem;
         margin-bottom: 25px !important;
@@ -4454,6 +4522,10 @@ span.number-count {
     .hero-section .right-section img.heroImageMobile {
         display: block;
         width: 100%;
+    }
+
+    .service-provide .contents .service .service-details-image {
+        gap: 20px;
     }
 
     .faqs .contents .faq .faq-name-info .info .detail {
@@ -4606,7 +4678,41 @@ span.number-count {
 
 @media only screen and (max-width: 450px) {
 
+
     /* home */
+    .service-provide .heading {
+        font-size: 2rem;
+        line-height: 40px;
+        margin: 10px 0 35px 0 !important;
+    }
+
+    .service-provide .circles {
+        width: 250px;
+    }
+
+    .service-provide .contents .service .service-details-image {
+        flex-direction: column-reverse;
+    }
+
+    .service-provide .contents .service .service-details-image .description-action {
+        width: 100%;
+    }
+
+    .service-provide .contents .service .service-details-image .description-action .detail {
+        margin-bottom: 20px !important;
+    }
+
+    .service-provide .contents .service .service-details-image .image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .service-provide .contents .service .service-details-image .image img {
+        width: 90%;
+    }
+
     .choose-us .content .right-content img {
         height: 270px;
     }
