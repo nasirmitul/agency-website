@@ -12,6 +12,8 @@ import AdminContact from "../components/Admin/AdminContact";
 import AdminProfile from "../components/Admin/AdminProfile";
 import AdminFooter from "../components/Admin/AdminFooter";
 import NotFound from "../components/Error/NotFound";
+import Login from "../components/Login/Login";
+import Loader from "../components/Loader/Loader";
 
 
 const MainRouter = createBrowserRouter([
@@ -72,9 +74,17 @@ const MainRouter = createBrowserRouter([
         ]
     },
     {
+        path: '/login',
+        element: <Login></Login>
+    },
+    {
+        path: '/loader',
+        element: <Loader></Loader>
+    },
+    {
         path: '*',
         element: <NotFound></NotFound>
-    }
+    },
 ]);
 
 export default MainRouter;

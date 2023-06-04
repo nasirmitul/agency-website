@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
+import { motion } from "framer-motion"
 import logo from '../../images/logo.svg'
 
 const AgencyNavigation = () => {
     const [navigationOpen, setNavigationOpen] = useState(false);
 
-
     navigationOpen ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
+
+    
 
     return (
         <div className='navigation-bg'>

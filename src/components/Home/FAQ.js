@@ -1,27 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
-const faqs = [
-    {
-        "id": 1,
-        "faqName": "Lorem ipsum dolor sit amet",
-        "faqDetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
-    },
-    {
-        "id": 2,
-        "faqName": "Lorem ipsum dolor sit amet",
-        "faqDetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
-    },
-    {
-        "id": 3,
-        "faqName": "Lorem ipsum dolor sit amet",
-        "faqDetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
-    },
-    {
-        "id": 4,
-        "faqName": "Lorem ipsum dolor sit amet",
-        "faqDetail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
-    }
-]
+import add from '../../images/add.svg'
 
 const FAQ = () => {
 
@@ -66,7 +44,8 @@ const FAQ = () => {
                                     </div>
                                 </div>
                                 <div className="action">
-                                    <p className={`more-info ${viewFaq === i ? 'show' : ''}`}>+</p>
+                                    <img className={`more-info ${viewFaq === i ? 'show' : ''}`} src={add} alt="" />
+                                    {/* <p >+</p> */}
                                 </div>
                             </div>
                         ))

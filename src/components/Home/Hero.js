@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import heroImage from '../../images/hero-image-two.svg'
+import heroImageMobile from '../../images/hero-image-mobile.svg'
 import wordMark from '../../images/wordMark.svg'
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import { Link } from 'react-router-dom';
@@ -25,7 +26,7 @@ const Hero = () => {
                     <div className="left-content">
                         <div className="heading">
                             <h1>
-                                Unleash Digital <span className='color'>Brilliance</span>. Your <span className='color'> Gateway</span> to Custom Apps, Stunning Websites, and Striking Designs.
+                                Unleash Digital <span className='color'>Brilliance</span>. Your <span className='color'> Gateway</span> to Custom Apps, Websites, and Striking Designs.
                             </h1>
                         </div>
                         <p className="description">{hero.description}</p>
@@ -49,7 +50,8 @@ const Hero = () => {
                     </div>
                 </section>
                 <section className="right-section">
-                    <img src={heroImage} alt="" />
+                    <img className='heroImage' src={heroImage} alt="" />
+                    <img className='heroImageMobile' src={heroImageMobile} alt="" />
                 </section>
 
                 <PageTopStyleBg></PageTopStyleBg>

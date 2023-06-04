@@ -35,11 +35,9 @@ const ServiceProvide = () => {
             <div className="container">
                 <SectionTitle title='Service We Provide'></SectionTitle>
 
-
                 <h1 className="heading">Turning your ideas into <br />process ...</h1>
 
-
-                <div className="contents">
+                {/* <div className="contents">
                     {
                         allServices.map((service, i) => (
                             <div onClick={() => toggle(i)} key={service._id} className="service">
@@ -67,7 +65,50 @@ const ServiceProvide = () => {
                             </div>
                         ))
                     }
+                </div> */}
+
+
+
+                <div className="contents">
+                    {
+                        allServices.map((service, i) => (
+                            <div onClick={() => toggle(i)} key={service._id} className="service">
+
+                                <div className="count-name-action">
+                                    <div className="count-name">
+                                        <div className="count">
+                                            <p>{i + 1}/</p>
+                                        </div>
+                                        <p className="name">{service.title}</p>
+                                    </div>
+
+                                    <p className="more-info">View {viewService === i ? 'Less' : 'More'} Information</p>
+                                </div>
+
+                                <div className={`info service-details-image ${viewService === i ? 'show' : ''}`}>
+                                    <div className="description-action">
+                                        <p className="detail">{service.description}</p>
+                                        <Link to='/contact-us'>
+                                            <div className="lets-work">
+                                                <Link to='/contact-us'>Let's Work Together</Link>
+                                                <img src={arrowTopRightDiagonal} alt="" />
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    <div className="image">
+                                        <img className="image" src={service.serviceImage} alt="" />
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        ))
+                    }
                 </div>
+
+
+
+
             </div>
         </div>
     );
