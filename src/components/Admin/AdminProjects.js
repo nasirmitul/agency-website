@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AdminPageTitle from '../Utilities/AdminPageTitle';
 import edit from '../../images/edit.svg'
 import deleteIcon from '../../images/Delete.svg'
@@ -7,6 +7,7 @@ import imageIcon from '../../images/image-icon.svg'
 import { MdCancel } from 'react-icons/md';
 import { RxCross2 } from 'react-icons/rx';
 import { toast } from 'react-hot-toast';
+import JoditEditor from 'jodit-react';
 
 
 const AdminProjects = () => {
@@ -22,6 +23,10 @@ const AdminProjects = () => {
     const [openEditProject, setOpenEditProject] = useState(null);
     const [holdPrevProjectImage, setHoldPrevProjectImage] = useState([]);
 
+    const editor = useRef(null);
+    const addEditor = useRef(null);
+    const [content, setContent] = useState('');
+    const [addContent, setAddContent] = useState('');
 
     useEffect(() => {
         fetch('https://projitize.vercel.app/projects/heading')
@@ -64,7 +69,6 @@ const AdminProjects = () => {
         const projectName = form.projectName.value;
         const projectType = form.projectType.value;
         const projectLiveLink = form.projectLiveLink.value;
-        const projectShortDesc = form.projectShortDesc.value;
         const projectImages = form.projectImages.files;
 
         const allProjectImage = [];
@@ -90,7 +94,7 @@ const AdminProjects = () => {
                             projectName,
                             projectType,
                             projectLiveLink,
-                            projectShortDesc,
+                            projectShortDesc:addContent,
                             projectImages: allProjectImage,
                             time: new Date()
                         }
@@ -235,7 +239,7 @@ const AdminProjects = () => {
         const projectName = form.projectName.value;
         const projectType = form.projectType.value;
         const projectLiveLink = form.projectLiveLink.value;
-        const projectShortDesc = form.projectShortDesc.value;
+        // const projectShortDesc = form.projectShortDesc.value;
 
         const projectImages = form.projectImages.files;
 
@@ -247,7 +251,7 @@ const AdminProjects = () => {
                 projectName,
                 projectType,
                 projectLiveLink,
-                projectShortDesc,
+                projectShortDesc: content,
                 projectImages: holdPrevProjectImage
             }
 
@@ -316,7 +320,7 @@ const AdminProjects = () => {
                                 projectName,
                                 projectType,
                                 projectLiveLink,
-                                projectShortDesc,
+                                projectShortDesc: content,
                                 projectImages: allNewImage
                             }
 
@@ -387,9 +391,7 @@ const AdminProjects = () => {
                             <input type="text" placeholder='Project Name' name='projectName' />
                             <input type="text" placeholder='Project Type' name='projectType' />
                             <input type="url" placeholder='Live Link' name='projectLiveLink' />
-                            <textarea type="text" placeholder='Short Description' name='projectShortDesc'></textarea>
-
-
+                            {/* <textarea type="text" placeholder='Short Description' name='projectShortDesc'></textarea> */}
 
                             {
                                 selectedImages.length > 0 &&
@@ -405,7 +407,6 @@ const AdminProjects = () => {
                                 </div>
                             }
 
-
                             <div className="add-image">
                                 <input onChange={handleProjectImages} id='projectImages' type="file" placeholder='Project Image' name='projectImages' accept="image/png, image/gif, image/jpg, image/svg, image/jpeg" multiple required />
                                 <label htmlFor="projectImages">
@@ -420,8 +421,14 @@ const AdminProjects = () => {
                                 </label>
                             </div>
 
+                            <JoditEditor
+                                ref={addEditor}
+                                value={addContent}
+                                defaultValue={openEditProject?.projectShortDesc}
+                                onChange={(newContent) => setAddContent(newContent)}
+                            ></JoditEditor>
 
-                            <button type='submit'>Add Project</button>
+                            <button className='add-project-button' type='submit'>Add Project</button>
                         </form>
                     </div>
                 </div>
@@ -445,11 +452,6 @@ const AdminProjects = () => {
                                 <span>Live Link</span>
                                 <input type="url" placeholder='Live Link' defaultValue={openEditProject?.projectLiveLink} name='projectLiveLink' required />
                             </div>
-                            <div className="input-field">
-                                <span>Short Description</span>
-                                <textarea type="text" placeholder='Short Description' defaultValue={openEditProject?.projectShortDesc} name='projectShortDesc' required ></textarea>
-                            </div>
-
                             {
                                 holdPrevProjectImage.length > 0 &&
                                 <div className="input-field edit-project-prev-images">
@@ -469,7 +471,6 @@ const AdminProjects = () => {
                                     }
                                 </div>
                             }
-
                             {
                                 selectedImagesEdit.length > 0 &&
                                 <div className="input-field edit-project-prev-images">
@@ -487,8 +488,6 @@ const AdminProjects = () => {
                                 </div>
                             }
 
-
-
                             <div className="add-image">
                                 <input onChange={handleProjectImagesEditNew} id='projectImagesEdit' type="file" placeholder='Project Image' name='projectImages' accept="image/png, image/gif, image/jpg, image/svg, image/jpeg" multiple />
                                 <label htmlFor="projectImagesEdit">
@@ -498,13 +497,19 @@ const AdminProjects = () => {
                                             <p>Change Images</p> :
                                             <p>Select <span>16:9</span> images for project. Supports, png, gif, jpg, svg, jpeg.</p>
                                     }
-
-
                                 </label>
                             </div>
 
-
-
+                            <div className="input-field">
+                                <span>Short Description</span>
+                                {/* <textarea type="text" placeholder='Short Description' defaultValue={openEditProject?.projectShortDesc} name='projectShortDesc' required ></textarea> */}
+                            </div>
+                            <JoditEditor
+                                ref={editor}
+                                value={content}
+                                defaultValue={openEditProject?.projectShortDesc}
+                                onChange={(newContent) => setContent(newContent)}
+                            ></JoditEditor>
                             <div className="actions">
                                 <div onClick={() => setOpenEditProject(false)} className='cancel'>Cancel</div>
                                 <button className='submit' type='submit'>Submit</button>

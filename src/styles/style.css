@@ -2235,6 +2235,7 @@ swiper-container {
     font-size: 1rem;
     font-weight: 400;
     color: var(--dark-85);
+    white-space: pre-line;
 }
 
 
@@ -3588,7 +3589,7 @@ span.number-count {
     border: 1px solid var(--primary-100);
 }
 
-.common-popup .add-new-project form button {
+.common-popup .add-new-project form .add-project-button {
     padding: 10px 15px;
     border: 1px solid var(--dark-50);
     background: var(--primary-100);

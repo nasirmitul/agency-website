@@ -58,7 +58,8 @@ const AllProjects = () => {
                     </div>
 
                     <div className="short-desc">
-                        <p className="desc">{projectDetails?.projectShortDesc}</p>
+                        <div dangerouslySetInnerHTML={{ __html: projectDetails?.projectShortDesc }}></div>
+                        {/* <p className="desc">{projectDetails?.projectShortDesc}</p> */}
                     </div>
                 </div>
             </div>
