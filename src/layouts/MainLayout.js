@@ -3,11 +3,13 @@ import AgencyNavigation from '../components/Navigation/AgencyNavigation';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import AnimatedCursor from "react-animated-cursor"
+import GoToTop from '../components/Utilities/GoToTop';
 
 const MainLayout = () => {
     return (
         <div>
             <AgencyNavigation></AgencyNavigation>
+            <GoToTop></GoToTop>
             <Outlet></Outlet>
             <Footer></Footer>
 
@@ -39,7 +41,8 @@ const MainLayout = () => {
                     '.faqs .contents .faq',
                     '.contact .possible-ways .ways .ways-detail .contact-way li',
                     '.all-projects .project .project-info .details',
-                    '.all-projects .project .project-img'
+                    '.all-projects .project .project-img',
+                    '.project-popup .project-name-cancel .cancel'
                 ]}
             />
         </div>

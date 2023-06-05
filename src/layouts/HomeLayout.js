@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Hero from '../components/Home/Hero';
 import Achievements from '../components/Home/Achievements';
 import ServiceProvide from '../components/Home/ServiceProvide';
@@ -8,13 +8,23 @@ import ChooseUs from '../components/Home/ChooseUs';
 import ClientSays from '../components/Home/ClientSays';
 import GotAProject from '../components/Home/GotAProject';
 import scrollToTop from '../components/Utilities/ScrollToTop';
-import GoToTop from '../components/Utilities/GoToTop';
+import Loader from '../components/Loader/Loader';
+import { AuthContext } from '../contexts/UserContext';
 
 const HomeLayout = () => {
     scrollToTop();
+
+    const { loading } = useContext(AuthContext);
+
+    // const [loading, setLoading] = useState(true);
+
+    /* setTimeout(() => {
+        setLoading(false);
+    }, 2000); */
+
     return (
         <div>
-            <GoToTop></GoToTop>
+            {loading && <Loader></Loader>}
             <Hero></Hero>
             <Achievements></Achievements>
             <ServiceProvide></ServiceProvide>

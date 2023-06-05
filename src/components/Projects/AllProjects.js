@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import topRightArrow from '../../images/topRightPrimary.svg'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
+import cancel from '../../images/add.svg'
 
 // Import Swiper styles
 import "swiper/css";
@@ -9,7 +10,7 @@ import "swiper/css/navigation";
 
 const AllProjects = () => {
 
-
+    const [projectDetails, setProjectDetails] = useState(null);
 
     const [allProjects, setAllProjects] = useState([])
     useEffect(() => {
@@ -23,7 +24,44 @@ const AllProjects = () => {
     return (
         <div>
 
+            <div className={`common-popup-bg ${projectDetails && 'open'}`}>
+                <div className="common-popup project-popup">
+                    <div className="project-name-cancel">
+                        <p className="name">{projectDetails?.projectName}</p>
+                        <div onClick={() => setProjectDetails(null)} className="cancel">
+                            <img src={cancel} alt="" />
+                        </div>
 
+                    </div>
+
+                    <div className="project-all-img">
+                        <Swiper
+                            pagination={{
+                                dynamicBullets: true,
+                            }}
+                            navigation={true}
+                            modules={[Navigation, Pagination]}
+                            className="project-img">
+                            {
+                                projectDetails?.projectImages?.map((image, i) =>
+                                    <SwiperSlide key={i}>
+                                        <img src={image} alt="" className="project-img" />
+                                    </SwiperSlide>
+                                )
+                            }
+                        </Swiper>
+                    </div>
+
+                    <div className="project-type-live">
+                        <p className="type">{projectDetails?.projectType}</p>
+                        <a href={projectDetails?.projectLiveLink} target='_blank' className="live">Live View {'> >'}</a>
+                    </div>
+
+                    <div className="short-desc">
+                        <p className="desc">{projectDetails?.projectShortDesc}</p>
+                    </div>
+                </div>
+            </div>
 
 
             <div className='container'>
@@ -56,7 +94,7 @@ const AllProjects = () => {
                                                 <p className="project-type">{project.projectType}</p>
                                             </div>
                                             <div className="project-actions">
-                                                <p className="details">Details {`>>`}</p>
+                                                <p onClick={() => setProjectDetails(project)} className="details">Details {`>>`}</p>
                                                 <a className="project-live-view" href={project.projectLiveLink} target='_blank'><img src={topRightArrow} alt="" /></a>
                                             </div>
                                         </div>

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import SectionTitle from '../Utilities/SectionTitle';
 import plane from '../../images/plane.svg'
 import scrollToTop from '../Utilities/ScrollToTop';
 import { toast } from 'react-hot-toast';
-import GoToTop from '../Utilities/GoToTop';
+import Loader from '../Loader/Loader';
+import { AuthContext } from '../../contexts/UserContext';
 
 
 
@@ -14,8 +15,13 @@ const Contact = () => {
     const [contactHeading, setContactHeading] = useState([]);
     const [contactThrough, setContactThrough] = useState([]);
     const [contactSocial, setContactSocial] = useState([]);
+    // const [loading, setLoading] = useState(true);
 
+    // setTimeout(() => {
+    //     setLoading(false);
+    // }, 2000);
 
+    const {loading} = useContext(AuthContext)
 
     useEffect(() => {
         fetch('https://projitize.vercel.app/contact/contact-through')
@@ -40,8 +46,6 @@ const Contact = () => {
                 setContactHeading(data);
             })
     }, [])
-
-
 
 
 
@@ -115,8 +119,10 @@ const Contact = () => {
 
 
     return (
+
         <div className='container pt-110'>
-            <GoToTop></GoToTop>
+            {loading && <Loader></Loader>}
+
             <div className="contact">
                 <div className="contact-heading">
                     <div className="heading-texts">

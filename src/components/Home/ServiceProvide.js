@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../Utilities/SectionTitle';
 import circles from '../../images/circles.svg'
+import add from '../../images/add.svg'
 import { Link } from 'react-router-dom';
 import arrowTopRightDiagonal from '../../images/arrowTopRightDiagonal.svg'
 
@@ -48,6 +49,8 @@ const ServiceProvide = () => {
                                     </div>
 
                                     <p className="more-info">View {viewService === i ? 'Less' : 'More'} Information</p>
+
+                                    <img className={`more-info-icon ${viewService === i && 'active'}`} src={add} alt="" />
                                 </div>
 
                                 <div className={`info service-details-image ${viewService === i ? 'show' : ''}`}>

@@ -3,14 +3,6 @@ import { motion } from 'framer-motion'
 
 const Loader = () => {
 
-    /* const styleDiv = {
-        height: 100 + 'vh',
-        width: 100 + '%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-
     const styleSVG = {
         height: 60,
         width: 60,
@@ -27,26 +19,21 @@ const Loader = () => {
                 ease: "easeInOut"
             }
         }
-    } */
+    }
 
     return (
-        <div>
-            {/* <svg style={styleSVG} id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.19 94.68">
-                <g style={{ "opacity": 1 }}>
-                    <motion.path
+        <div className='loader-style'>
+            <svg style={styleSVG} id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.19 94.68">
+                <g
+                    style={{ "opacity": 1 }}>
+                    <path
                         d="M850.34,492.11h25.48l20,22.78-20,22.67H850.34l20-22.67Z"
-                        variants={pathVariants}
-                        initial="hidden"
-                        animate="visible"
                         transform="translate(-803.59 -492.11)"
                         style={{ "fill": "#5928dc" }}
                     />
-                    <motion.polygon
+                    <polygon
                         points="27.08 0 5 94.68 24.66 94.68 46.73 0 27.08 0"
                         style={{ "fill": "#5928dc" }}
-                        variants={pathVariants}
-                        initial="hidden"
-                        animate="visible"
                     />
                 </g>
                 <motion.path
@@ -64,10 +51,10 @@ const Loader = () => {
                     initial="hidden"
                     animate="visible"
                 />
-            </svg> */}
+            </svg>
 
 
-            <div className="page-transition-animation page-bg">
+            {/* <div className="page-transition-animation page-bg">
                 <motion.div
                     initial={{ x: "100%" }}
                     animate={{ x: "0%"}}
@@ -100,7 +87,7 @@ const Loader = () => {
                         exit={{ x: "0%" }}
                         className="three-three"></motion.div>
                 </div>
-            </div>
+            </div> */}
 
 
         </div>

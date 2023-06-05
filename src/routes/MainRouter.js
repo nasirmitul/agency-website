@@ -14,6 +14,7 @@ import AdminFooter from "../components/Admin/AdminFooter";
 import NotFound from "../components/Error/NotFound";
 import Login from "../components/Login/Login";
 import Loader from "../components/Loader/Loader";
+import PrivateRoute from "./PrivateRoute";
 
 
 const MainRouter = createBrowserRouter([
@@ -41,7 +42,7 @@ const MainRouter = createBrowserRouter([
     },
     {
         path: '/admin',
-        element: <AdminLayout></AdminLayout>,
+        element: <PrivateRoute><AdminLayout></AdminLayout></PrivateRoute>,
         children: [
             {
                 path: '/admin',
