@@ -21,46 +21,48 @@ const AllProjects = () => {
             })
     }, [])
 
+    projectDetails ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
+
     return (
         <div>
-
-            <div className={`common-popup-bg ${projectDetails && 'open'}`}>
-                <div className="common-popup project-popup">
-                    <div className="project-name-cancel">
-                        <p className="name">{projectDetails?.projectName}</p>
-                        <div onClick={() => setProjectDetails(null)} className="cancel">
-                            <img src={cancel} alt="" />
+            <div className={`common-popup-bg-project ${projectDetails && 'open'}`}>
+                <div className="common-popup-project project-popup">
+                    <div className="project-data">
+                        <div className="project-name-cancel">
+                            <p className="name">{projectDetails?.projectName}</p>
+                            <div onClick={() => setProjectDetails(null)} className="cancel">
+                                <img src={cancel} alt="" />
+                            </div>
                         </div>
 
+                        <div className="project-all-img">
+                            <Swiper
+                                pagination={{
+                                    dynamicBullets: true,
+                                }}
+                                navigation={true}
+                                modules={[Navigation, Pagination]}
+                                className="project-img">
+                                {
+                                    projectDetails?.projectImages?.map((image, i) =>
+                                        <SwiperSlide key={i}>
+                                            <img src={image} alt="" className="project-img" />
+                                        </SwiperSlide>
+                                    )
+                                }
+                            </Swiper>
+                        </div>
+
+                        <div className="project-type-live">
+                            <p className="type">{projectDetails?.projectType}</p>
+                            <a href={projectDetails?.projectLiveLink} target='_blank' className="live">Live View {'> >'}</a>
+                        </div>
+
+                        <div className="short-desc">
+                            <div dangerouslySetInnerHTML={{ __html: projectDetails?.projectShortDesc }}></div>
+                        </div>
                     </div>
 
-                    <div className="project-all-img">
-                        <Swiper
-                            pagination={{
-                                dynamicBullets: true,
-                            }}
-                            navigation={true}
-                            modules={[Navigation, Pagination]}
-                            className="project-img">
-                            {
-                                projectDetails?.projectImages?.map((image, i) =>
-                                    <SwiperSlide key={i}>
-                                        <img src={image} alt="" className="project-img" />
-                                    </SwiperSlide>
-                                )
-                            }
-                        </Swiper>
-                    </div>
-
-                    <div className="project-type-live">
-                        <p className="type">{projectDetails?.projectType}</p>
-                        <a href={projectDetails?.projectLiveLink} target='_blank' className="live">Live View {'> >'}</a>
-                    </div>
-
-                    <div className="short-desc">
-                        <div dangerouslySetInnerHTML={{ __html: projectDetails?.projectShortDesc }}></div>
-                        {/* <p className="desc">{projectDetails?.projectShortDesc}</p> */}
-                    </div>
                 </div>
             </div>
 
