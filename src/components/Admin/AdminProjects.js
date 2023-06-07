@@ -60,16 +60,22 @@ const AdminProjects = () => {
         setSelectedImages(updatedImages);
     };
 
-    const handleProjectAddFormSubmit = (e) => {
-        toast.loading('Adding new project...');
-        setOpenAddProjectForm(false);
+    const handleAddProject = (e) => {
         e.preventDefault();
+
         const form = e.target;
 
         const projectName = form.projectName.value;
         const projectType = form.projectType.value;
         const projectLiveLink = form.projectLiveLink.value;
         const projectImages = form.projectImages.files;
+
+        if (addContent.length <= 0 || projectImages?.length <= 0) {
+            return toast.error('None of your field can be empty');;
+        }
+
+        toast.loading('Adding new project...');
+        setOpenAddProjectForm(false);
 
         const allProjectImage = [];
 
@@ -94,7 +100,7 @@ const AdminProjects = () => {
                             projectName,
                             projectType,
                             projectLiveLink,
-                            projectShortDesc:addContent,
+                            projectShortDesc: addContent,
                             projectImages: allProjectImage,
                             time: new Date()
                         }
@@ -232,17 +238,21 @@ const AdminProjects = () => {
     };
 
     const handleEditProject = (e) => {
-        toast.loading('Editing project...');
         e.preventDefault();
+
         const form = e.target;
 
         const projectName = form.projectName.value;
         const projectType = form.projectType.value;
         const projectLiveLink = form.projectLiveLink.value;
-        // const projectShortDesc = form.projectShortDesc.value;
-
         const projectImages = form.projectImages.files;
 
+        if (content.length <= 0 || (projectImages?.length <= 0 && holdPrevProjectImage?.length <= 0)) {
+            return toast.error('None of your field can be empty');;
+        }
+
+
+        toast.loading('Editing project...');
         const projectId = openEditProject._id;
 
 
@@ -298,7 +308,6 @@ const AdminProjects = () => {
 
         else {
             const updatedNewImage = [];
-
             for (let i = 0; i < projectImages.length; i++) {
                 const data = new FormData()
                 data.append('file', projectImages[i])
@@ -387,11 +396,10 @@ const AdminProjects = () => {
                             <h4>Add new Project</h4>
                             <MdCancel onClick={() => setOpenAddProjectForm(false)} className='cancel-icon'></MdCancel>
                         </div>
-                        <form onSubmit={handleProjectAddFormSubmit} action="">
-                            <input type="text" placeholder='Project Name' name='projectName' />
-                            <input type="text" placeholder='Project Type' name='projectType' />
-                            <input type="url" placeholder='Live Link' name='projectLiveLink' />
-                            {/* <textarea type="text" placeholder='Short Description' name='projectShortDesc'></textarea> */}
+                        <form onSubmit={handleAddProject} action="">
+                            <input type="text" placeholder='Project Name' name='projectName' required />
+                            <input type="text" placeholder='Project Type' name='projectType' required />
+                            <input type="url" placeholder='Live Link' name='projectLiveLink' required />
 
                             {
                                 selectedImages.length > 0 &&
@@ -408,7 +416,7 @@ const AdminProjects = () => {
                             }
 
                             <div className="add-image">
-                                <input onChange={handleProjectImages} id='projectImages' type="file" placeholder='Project Image' name='projectImages' accept="image/png, image/gif, image/jpg, image/svg, image/jpeg" multiple required />
+                                <input onChange={handleProjectImages} id='projectImages' type="file" placeholder='Project Image' name='projectImages' accept="image/png, image/gif, image/jpg, image/svg, image/jpeg" multiple />
                                 <label htmlFor="projectImages">
                                     <img src={imageIcon} alt="" />
                                     {
@@ -500,9 +508,8 @@ const AdminProjects = () => {
                                 </label>
                             </div>
 
-                            <div className="input-field">
+                            <div className="input-field jodit">
                                 <span>Short Description</span>
-                                {/* <textarea type="text" placeholder='Short Description' defaultValue={openEditProject?.projectShortDesc} name='projectShortDesc' required ></textarea> */}
                             </div>
                             <JoditEditor
                                 ref={editor}
