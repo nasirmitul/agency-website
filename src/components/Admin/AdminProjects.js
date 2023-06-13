@@ -60,11 +60,95 @@ const AdminProjects = () => {
         setSelectedImages(updatedImages);
     };
 
-    const handleAddProject = (e) => {
+    const handleAddProject = async (e) => {
         e.preventDefault();
-
         const form = e.target;
+        const projectName = form.projectName.value;
+        const projectType = form.projectType.value;
+        const projectLiveLink = form.projectLiveLink.value;
+        const projectImages = form.projectImages.files;
 
+        if (addContent.length <= 0 || projectImages?.length <= 0) {
+            return toast.error('None of your field can be empty');
+        }
+
+        toast.loading('Adding new project...');
+        setOpenAddProjectForm(false);
+
+        const allProjectImage = [];
+
+        try {
+            for (let i = 0; i < projectImages.length; i++) {
+                const data = new FormData();
+                data.append('file', projectImages[i]);
+                data.append('upload_preset', 'projitize_project');
+                data.append('cloud_name', 'projitize');
+
+                const response = await fetch('https://api.cloudinary.com/v1_1/projitize/image/upload', {
+                    method: 'POST',
+                    body: data
+                });
+
+                const result = await response.json();
+                console.log(result);
+                allProjectImage.push(result.url);
+                console.log(allProjectImage);
+            }
+
+            const addProject = {
+                projectName,
+                projectType,
+                projectLiveLink,
+                projectShortDesc: addContent,
+                projectImages: allProjectImage,
+                time: new Date()
+            };
+
+            console.log(addProject);
+
+            const addProjectResponse = await fetch('https://projitize.vercel.app/new-project', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(addProject)
+            });
+
+            const data = await addProjectResponse.json();
+            console.log(data);
+
+            if (data.acknowledged) {
+                form.reset();
+                setRefetch(!refetch);
+                setSelectedImages([]);
+                toast.dismiss();
+                setAddContent('');
+                toast.success('New project added.', {
+                    duration: 4000,
+                    style: {
+                        minWidth: 'fit-content'
+                    }
+                });
+            } else {
+                setOpenAddProjectForm(true);
+                toast.dismiss();
+                toast.error('Sorry, project not added. Please try again.', {
+                    duration: 4000,
+                    style: {
+                        minWidth: 'fit-content'
+                    }
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            toast.dismiss();
+            toast.error('Sorry, project not added. Please try again.');
+        }
+    };
+
+    /* const handleAddProject =  (e) => {
+        e.preventDefault();
+        const form = e.target;
         const projectName = form.projectName.value;
         const projectType = form.projectType.value;
         const projectLiveLink = form.projectLiveLink.value;
@@ -95,6 +179,11 @@ const AdminProjects = () => {
                     allProjectImage.push(data.url)
                     console.log(allProjectImage);
 
+                    if (data.asset_id) {
+
+                    }
+
+
                     if (allProjectImage.length === projectImages.length) {
                         const addProject = {
                             projectName,
@@ -121,6 +210,7 @@ const AdminProjects = () => {
                                     setRefetch(!refetch);
                                     setSelectedImages([]);
                                     toast.dismiss();
+                                    setAddContent('');
                                     toast.success('New project added.', {
                                         duration: 4000,
                                         style: {
@@ -140,17 +230,20 @@ const AdminProjects = () => {
                                 }
                             })
                             .catch(error => console.log(error))
-
                     }
+
                 })
                 .catch(error => {
                     console.log(error);
+                    toast.dismiss();
+                    toast.error('Sorry, project not added. Please try again.')
+
                 })
         }
-    }
+    } */
 
     const handleProjectDelete = () => {
-        toast.loading('deleting mail...');
+        toast.loading('deleting project...');
         fetch(`https://projitize.vercel.app/delete-project/${deleteProject}`, {
             method: 'DELETE',
             headers: {
@@ -237,7 +330,149 @@ const AdminProjects = () => {
         setSelectedImagesEdit(updatedImages);
     };
 
-    const handleEditProject = (e) => {
+    const handleEditProject = async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const projectName = form.projectName.value;
+        const projectType = form.projectType.value;
+        const projectLiveLink = form.projectLiveLink.value;
+        const projectImages = form.projectImages.files;
+
+        if (content.length <= 0 || (projectImages?.length <= 0 && holdPrevProjectImage?.length <= 0)) {
+            return toast.error('None of your field can be empty');
+        }
+
+        toast.loading('Editing project...');
+        const projectId = openEditProject._id;
+
+        try {
+            if (projectImages.length <= 0) {
+                const updateProject = {
+                    projectName,
+                    projectType,
+                    projectLiveLink,
+                    projectShortDesc: content,
+                    projectImages: holdPrevProjectImage
+                };
+
+                const response = await fetch(`https://projitize.vercel.app/projects/edit-project/${projectId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(updateProject)
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                if (data.modifiedCount >= 1) {
+                    form.reset();
+                    setRefetch(!refetch);
+                    setHoldPrevProjectImage([]);
+                    setOpenEditProject(null);
+                    setContent('');
+                    toast.dismiss();
+
+                    toast.success('Project edited', {
+                        duration: 4000,
+                        style: {
+                            minWidth: 'fit-content'
+                        }
+                    });
+                } else {
+                    setHoldPrevProjectImage([]);
+                    setOpenEditProject(null);
+                    toast.dismiss();
+                    toast.error('Sorry, project not edited. Please try again.', {
+                        duration: 4000,
+                        style: {
+                            minWidth: 'fit-content'
+                        }
+                    });
+                }
+            } else {
+                const updatedNewImage = [];
+
+                for (let i = 0; i < projectImages.length; i++) {
+                    const data = new FormData();
+                    data.append('file', projectImages[i]);
+                    data.append('upload_preset', 'projitize_project');
+                    data.append('cloud_name', 'projitize');
+
+                    const response = await fetch('https://api.cloudinary.com/v1_1/projitize/image/upload', {
+                        method: 'POST',
+                        body: data
+                    });
+
+                    const cloudinaryData = await response.json();
+                    updatedNewImage.push(cloudinaryData.url);
+
+                    if (updatedNewImage.length === projectImages.length) {
+                        const allNewImage = holdPrevProjectImage.concat(updatedNewImage);
+
+                        const updateProject = {
+                            projectName,
+                            projectType,
+                            projectLiveLink,
+                            projectShortDesc: content,
+                            projectImages: allNewImage
+                        };
+
+                        const updateResponse = await fetch(`https://projitize.vercel.app/projects/edit-project/${projectId}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(updateProject)
+                        });
+
+                        const updateData = await updateResponse.json();
+                        console.log(updateData);
+
+                        if (updateData.modifiedCount >= 1) {
+                            form.reset();
+                            setRefetch(!refetch);
+                            setHoldPrevProjectImage([]);
+                            setSelectedImagesEdit([]);
+                            setOpenEditProject(null);
+                            setContent('');
+                            toast.dismiss();
+
+                            toast.success('Project edited', {
+                                duration: 4000,
+                                style: {
+                                    minWidth: 'fit-content'
+                                }
+                            });
+                        } else {
+                            setHoldPrevProjectImage([]);
+                            setSelectedImagesEdit([]);
+                            setOpenEditProject(null);
+                            toast.dismiss();
+                            toast.error('Sorry, project not edited. Please try again.', {
+                                duration: 4000,
+                                style: {
+                                    minWidth: 'fit-content'
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleEditCancel = () => {
+        setOpenEditProject(false)
+        setContent('');
+    }
+
+    /* const handleEditProject = (e) => {
         e.preventDefault();
 
         const form = e.target;
@@ -281,6 +516,7 @@ const AdminProjects = () => {
                         setHoldPrevProjectImage([])
                         setOpenEditProject(null);
                         toast.dismiss();
+                        setContent('');
                         toast.success('Project edited', {
                             duration: 4000,
                             style: {
@@ -350,6 +586,7 @@ const AdminProjects = () => {
                                         setSelectedImagesEdit([])
                                         setOpenEditProject(null);
                                         toast.dismiss();
+                                        setContent('');
                                         toast.success('Project edited', {
                                             duration: 4000,
                                             style: {
@@ -385,7 +622,7 @@ const AdminProjects = () => {
 
         }
 
-    }
+    } */
 
     return (
         <div>
@@ -424,15 +661,12 @@ const AdminProjects = () => {
                                             <p>Change Images</p> :
                                             <p>Select <span>16:9</span> images for project. Supports, png, gif, jpg, svg, jpeg.</p>
                                     }
-
-
                                 </label>
                             </div>
 
                             <JoditEditor
                                 ref={addEditor}
                                 value={addContent}
-                                defaultValue={openEditProject?.projectShortDesc}
                                 onChange={(newContent) => setAddContent(newContent)}
                             ></JoditEditor>
 
@@ -513,12 +747,12 @@ const AdminProjects = () => {
                             </div>
                             <JoditEditor
                                 ref={editor}
-                                value={content}
-                                defaultValue={openEditProject?.projectShortDesc}
+                                value={content.length <= 1 ? (openEditProject?.projectShortDesc || '') : content}
                                 onChange={(newContent) => setContent(newContent)}
                             ></JoditEditor>
+
                             <div className="actions">
-                                <div onClick={() => setOpenEditProject(false)} className='cancel'>Cancel</div>
+                                <div onClick={handleEditCancel} className='cancel'>Cancel</div>
                                 <button className='submit' type='submit'>Submit</button>
                             </div>
                         </form>

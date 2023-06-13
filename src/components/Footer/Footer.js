@@ -5,6 +5,7 @@ import rightArrowWhite from '../../images/rightArrowWhite.svg'
 import { Link } from 'react-router-dom';
 import projitize from '../../images/logoFull.svg'
 
+
 const Footer = () => {
     return (
         <div className='footer'>
@@ -23,7 +24,6 @@ const Footer = () => {
                     </div>
                 </div>
 
-
                 <div className="email-links">
                     <div className="enter-email">
                         <h3 className="email-heading">Enter Your Email Address <br /> to make us communicate with you</h3>
@@ -34,11 +34,10 @@ const Footer = () => {
                         </form>
                     </div>
 
-
                     <div className="links">
                         <div className="service column">
                             <h5 className="link-title">Service</h5>
-                            <Link className='link' to='/'>App Development</Link>
+                            <Link className='link' to='/home#services'>App Development</Link>
                             <Link className='link' to='/'>Web Development</Link>
                             <Link className='link' to='/'>Web Design</Link>
                             <Link className='link' to='/'>Digital Marketing</Link>

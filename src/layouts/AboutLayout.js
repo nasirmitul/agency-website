@@ -20,9 +20,6 @@ const AboutLayout = () => {
         setLoading(false);
     }, 2000); */
 
-    const currentScale = window.devicePixelRatio;
-    console.log(currentScale);
-
     return (
         <div>
             {loading && <Loader></Loader>}

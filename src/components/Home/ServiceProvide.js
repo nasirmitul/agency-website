@@ -30,7 +30,7 @@ const ServiceProvide = () => {
 
 
     return (
-        <div className='service-provide'>
+        <div className='service-provide' id='services'>
             <img className='circles' src={circles} alt="" />
             <div className="container">
                 <SectionTitle title='Service We Provide'></SectionTitle>

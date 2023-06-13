@@ -27,6 +27,10 @@ const MainRouter = createBrowserRouter([
                 element: <HomeLayout></HomeLayout>
             },
             {
+                path: '/home',
+                element: <HomeLayout></HomeLayout>
+            },
+            {
                 path: '/about-us',
                 element: <AboutLayout></AboutLayout>
             },

@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import heroImage from '../../images/hero-image-two.svg'
-import heroImageMobile from '../../images/hero-image-mobile.svg'
-import wordMark from '../../images/wordMark.svg'
 import PageTopStyleBg from '../Utilities/PageTopStyleBg';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +22,6 @@ const Hero = () => {
     return (
         <div>
             {/* <div className='container'>
-            
             <div className="hero-section pt-110">
                 <section className="left-section">
                     <div className="left-content">
@@ -59,7 +55,7 @@ const Hero = () => {
                     <img className='heroImageMobile' src={heroImageMobile} alt="" />
                 </section>
 
-                <PageTopStyleBg></PageTopStyleBg>
+               
             </div>
             </div> */}
 
@@ -77,13 +73,14 @@ const Hero = () => {
                             </div>
                         </Link>
 
-                        
+
                         <img className='shape-one' src={heroShape} alt="" />
                         <img className='shape-two' src={heroShape} alt="" />
                     </div>
                     <div className="hero-bottom-img">
                         <img src={heroBottom} alt="" />
                     </div>
+                    <PageTopStyleBg></PageTopStyleBg>
                 </div>
             </div>
         </div>

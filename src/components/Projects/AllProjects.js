@@ -75,7 +75,7 @@ const AllProjects = () => {
                                 <div className="project">
                                     <div className="main-data">
                                         <div className="project-all-img">
-                                            <Swiper
+                                            {/* <Swiper
                                                 pagination={{
                                                     dynamicBullets: true,
                                                 }}
@@ -89,7 +89,8 @@ const AllProjects = () => {
                                                         </SwiperSlide>
                                                     )
                                                 }
-                                            </Swiper>
+                                            </Swiper> */}
+                                            <img src={project.projectImages[0]} alt="" className="project-img" />
                                         </div>
                                         <div className="project-info">
                                             <div className="project-name-type">
